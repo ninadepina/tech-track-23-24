@@ -33,9 +33,9 @@ function transformArrOfObj(data) {
 		.filter((item) => !isNaN(parseInt(item.age, 10)))
 		.map((item) => {
 			return {
-				name: item.name.toLowerCase().charAt(0).toUpperCase() + item.name.slice(1).toLowerCase(),
+				name: item.name.charAt(0).toUpperCase() + item.name.slice(1).toLowerCase(),
 				age: parseInt(item.age, 10),
-				residence: item.residence.toLowerCase().charAt(0).toUpperCase() + item.residence.slice(1).toLowerCase()
+				residence: item.residence.charAt(0).toUpperCase() + item.residence.slice(1).toLowerCase()
 			};
 		});
 
