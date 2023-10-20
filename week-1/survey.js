@@ -24,15 +24,14 @@ const getData = async () => {
 						break;
 
 					case 'Dag':
-						const date = value.split('/');
-						const [m, d, y] = date;
+						const [m, d, y] = value.split('/');
 						updatedItem['lievelingsdatum (dd/mm/yyyy)'] = `${d}/${m}/${y}`;
 						break;
 
 					case 'Timestamp':
-						const [datePart, timePart] = value.split(' ');
-						const [mm, dd, yy] = datePart.split('/');
-						updatedItem[`${modifiedKey} (dd/mm/yyyy hh/mm/ss)`] = `${dd}/${mm}/${yy} ${timePart}`;
+						const [date, time] = value.split(' ');
+						const [mm, dd, yy] = date.split('/');
+						updatedItem[`${modifiedKey} (dd/mm/yyyy hh/mm/ss)`] = `${dd}/${mm}/${yy} ${time}`;
 						break;
 
 					default:
