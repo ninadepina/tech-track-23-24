@@ -25,7 +25,7 @@ const getData = async () => {
 
 					case 'Dag':
 						const [m, d, y] = value.split('/');
-						updatedItem['lievelingsdatum (dd/mm/yyyy)'] = `${d}/${m}/${y}`;
+						updatedItem['lievelingsdag (dd/mm/yyyy)'] = `${d}/${m}/${y}`;
 						break;
 
 					case 'Timestamp':
