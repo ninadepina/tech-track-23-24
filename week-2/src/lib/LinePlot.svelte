@@ -1,62 +1,34 @@
 <script>
-	/* Example adapted from https://d3-graph-gallery.com/graph/barplot_basic.html */
+    import * as d3 from 'd3';
 
-	/* This uses the Onmount method but you'll probably want to adhere more strictly to the Svelte D3 docs
-  https://d3js.org/getting-started#d3-in-svelte */
+    export let data = [];
+    export let width = 640;
+    export let height = 400;
+    export let marginTop = 20;
+    export let marginRight = 20;
+    export let marginBottom = 30;
+    export let marginLeft = 40;
 
-	import { onMount } from 'svelte';
+    let gx;
+    let gy;
 
-	import * as d3 from 'd3';
-
-	onMount(async () => {
-		// set the dimensions and margins of the graph
-		const margin = { top: 30, right: 30, bottom: 70, left: 60 },
-			width = 460 - margin.left - margin.right,
-			height = 400 - margin.top - margin.bottom;
-
-		// append the svg object to the body of the page
-		const svg = d3
-			.select('#bar')
-			.append('svg')
-			.attr('width', width + margin.left + margin.right)
-			.attr('height', height + margin.top + margin.bottom)
-			.append('g')
-			.attr('transform', `translate(${margin.left},${margin.top})`);
-
-		// Parse the Data
-		d3.csv(
-			'https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv'
-		).then(function (data) {
-			// X axis
-			const x = d3
-				.scaleBand()
-				.range([0, width])
-				.domain(data.map((d) => d.Country))
-				.padding(0.2);
-			svg
-				.append('g')
-				.attr('transform', `translate(0, ${height})`)
-				.call(d3.axisBottom(x))
-				.selectAll('text')
-				.attr('transform', 'translate(-10,0)rotate(-45)')
-				.style('text-anchor', 'end');
-
-			// Add Y axis
-			const y = d3.scaleLinear().domain([0, 13000]).range([height, 0]);
-			svg.append('g').call(d3.axisLeft(y));
-
-			// Bars
-			svg
-				.selectAll('mybar')
-				.data(data)
-				.join('rect')
-				.attr('x', (d) => x(d.Country))
-				.attr('y', (d) => y(d.Value))
-				.attr('width', x.bandwidth())
-				.attr('height', (d) => height - y(d.Value))
-				.attr('fill', '#69b3a2');
-		});
-	});
+    $: x = d3.scaleLinear(
+        [0, data.length - 1],
+        [marginLeft, width - marginRight]
+    );
+    $: y = d3.scaleLinear(d3.extent(data), [height - marginBottom, marginTop]);
+    $: line = d3.line((d, i) => x(i), y);
+    $: d3.select(gy).call(d3.axisLeft(y));
+    $: d3.select(gx).call(d3.axisBottom(x));
 </script>
 
-<div id="bar" />
+<svg {width} {height}>
+    <g bind:this={gx} transform="translate(0,{height - marginBottom})" />
+    <g bind:this={gy} transform="translate({marginLeft},0)" />
+    <path fill="none" stroke="currentColor" stroke-width="1.5" d={line(data)} />
+    <g fill="white" stroke="currentColor" stroke-width="1.5">
+        {#each data as d, i}
+            <circle key={i} cx={x(i)} cy={y(d)} r="2.5" />
+        {/each}
+    </g>
+</svg>
