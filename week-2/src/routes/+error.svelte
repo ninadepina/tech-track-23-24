@@ -1,12 +1,4 @@
 <main>
-	<!-- <img src="/error.png" alt="404 error message" /> -->
+    <h1>404</h1>
+    <p>Page not found</p>
 </main>
-
-<style>
-	main {
-		padding: 0;
-	}
-	img {
-		width: 100%;
-	}
-</style>
