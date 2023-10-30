@@ -1,0 +1,16 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    outline: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* mapbox */
+.mapboxgl-ctrl-bottom-right,
+.mapboxgl-ctrl-bottom-left {
+    display: none;
+}
