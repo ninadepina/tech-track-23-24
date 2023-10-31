@@ -1,19 +1,12 @@
 <script>
     import { onMount } from 'svelte';
     import mapboxgl from 'mapbox-gl';
+    import { initializeMap } from '$lib/mapbox.js';
+
+    let map;
 
     onMount(() => {
-        mapboxgl.accessToken =
-            'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA';
-
-        let map = new mapboxgl.Map({
-            container: 'map',
-            // style: 'mapbox://styles/mapbox/dark-v11',
-            style: 'mapbox://styles/mapbox/streets-v12',
-            center: [8, 52],
-            zoom: 2,
-            minZoom: 1.2
-        });
+        map = initializeMap();
 
         map.addControl(new mapboxgl.NavigationControl());
         map.addControl(new mapboxgl.FullscreenControl());
