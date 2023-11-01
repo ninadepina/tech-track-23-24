@@ -11,13 +11,24 @@
 
 :root {
     --font-family: 'Quicksand', sans-serif;
+    --font-weight-title: 600;
+    --font-weight-text: 500;
+
+    --color-light: #fff;
+    --color-dark: #333;
+
+    --standard-margin: 0.625rem;
+
+    --border-radius: 0.25rem;
 }
 
 body {
     font-family: var(--font-family);
+    user-select: none;
 }
 
 /* mapbox */
+button.mapboxgl-ctrl-compass,
 .mapboxgl-ctrl-bottom-right,
 .mapboxgl-ctrl-bottom-left,
 .mapboxgl-popup-close-button {
