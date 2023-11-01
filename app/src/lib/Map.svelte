@@ -1,16 +1,9 @@
 <script>
     import { onMount } from 'svelte';
-    // import mapboxgl from 'mapbox-gl';
-    // import { initializeMap } from '$lib/mapbox.js';
-    import { renderMap } from '$lib/render.js';
-
-    // let map;
+    import { renderMap } from '$lib/renderMap.js';
 
     onMount(() => {
-        // map = initializeMap();
         renderMap();
-        // map.addControl(new mapboxgl.NavigationControl());
-        // map.addControl(new mapboxgl.FullscreenControl());
     });
 </script>
 
