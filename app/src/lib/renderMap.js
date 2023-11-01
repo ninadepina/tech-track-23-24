@@ -45,24 +45,28 @@ const renderMap = () => {
                 }
             });
 
+            // all dots except Schiphol
             map.addLayer({
-                id: 'dots',
+                id: 'other-dots',
                 type: 'circle',
                 source: 'dots',
                 paint: {
-                    'circle-radius': [
-                        'case',
-                        ['==', ['get', 'index'], 0],
-                        7, // radius for Schiphol
-                        5 // radius for all other dots
-                    ],
-                    'circle-color': [
-                        'case',
-                        ['==', ['get', 'index'], 0],
-                        '#914BD2', // color for Schiphol
-                        '#292f36' // color for all other dots
-                    ]
-                }
+                    'circle-radius': 5,
+                    'circle-color': '#292f36'
+                },
+                filter: ['!=', ['get', 'index'], 0] // filter out Schiphol dot
+            });
+
+            // Schiphol dot
+            map.addLayer({
+                id: 'schiphol-dot',
+                type: 'circle',
+                source: 'dots',
+                paint: {
+                    'circle-radius': 7,
+                    'circle-color': '#914BD2'
+                },
+                filter: ['==', ['get', 'index'], 0] // only show Schiphol dot
             });
         });
     };
