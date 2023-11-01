@@ -1,22 +1,19 @@
 <script>
-    import LinePlot from '$lib/LinePlot.svelte';
-    import * as d3 from 'd3';
-
-    let data = d3.ticks(-2, 2, 200).map(Math.sin);
-
-    function onMousemove(event) {
-        const [x, y] = d3.pointer(event);
-        data = data.slice(-200).concat(Math.atan2(x, y));
-    }
+    import Map from '$lib/Map.svelte';
 </script>
 
 <svelte:head>
-    <title>ninadepina</title>
-    <link rel="icon" href="/images/favicon.png" type="image/png" />
+    <!-- prettier-ignore -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+    <title>Schiphol</title>
 </svelte:head>
 
-<h1>ninadepina</h1>
+<h1>Schiphol</h1>
+<Map />
 
-<div role="figure" on:mousemove={onMousemove}>
-    <LinePlot {data} />
-</div>
+<style>
+    h1 {
+        position: relative;
+        z-index: 1;
+    }
+</style>
