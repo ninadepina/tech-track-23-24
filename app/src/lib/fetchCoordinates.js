@@ -90,7 +90,7 @@ import { getPages } from './fetchDestinations.js';
 import fetch from 'node-fetch';
 import fs from 'fs/promises';
 
-const cacheFileName = 'coordinateData.json';
+const cacheFileName = 'static/coordinateData.json';
 
 const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
 const accessToken =
