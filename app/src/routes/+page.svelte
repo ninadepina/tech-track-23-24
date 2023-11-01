@@ -14,6 +14,13 @@
 <style>
     h1 {
         position: relative;
+        display: inline-block;
+        margin: 0.625rem;
+        padding: 0.1em 0.4em;
+        font-weight: 600;
+        color: #333;
+        background-color: #fff;
+        border-radius: 0.25rem;
         z-index: 1;
     }
 </style>
