@@ -1,5 +1,6 @@
 <script>
     import Map from '$lib/Map.svelte';
+    import SwitchButton from '$lib/SwitchButton.svelte';
 </script>
 
 <svelte:head>
@@ -9,18 +10,19 @@
 </svelte:head>
 
 <h1>Schiphol destinations</h1>
+<SwitchButton label1="Dots" label2="Lines" />
 <Map />
 
 <style>
     h1 {
         position: relative;
         display: inline-block;
-        margin: 0.625rem;
+        margin: var(--standard-margin);
         padding: 0.1em 0.4em;
-        font-weight: 600;
-        color: #333;
-        background-color: #fff;
-        border-radius: 0.25rem;
+        font-weight: var(--font-weight-title);
+        color: var(--color-dark);
+        background-color: var(--color-light);
+        border-radius: var(--border-radius);
         z-index: 1;
     }
 </style>
