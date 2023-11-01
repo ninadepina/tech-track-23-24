@@ -48,7 +48,12 @@ const renderMap = () => {
                 type: 'circle',
                 source: 'dots',
                 paint: {
-                    'circle-radius': 5,
+                    'circle-radius': [
+                        'case',
+                        ['==', ['get', 'index'], 0],
+                        7, // radius for Schiphol
+                        5 // radius for all other dots
+                    ],
                     'circle-color': [
                         'case',
                         ['==', ['get', 'index'], 0],
