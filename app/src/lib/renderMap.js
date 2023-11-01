@@ -11,6 +11,7 @@ const renderMap = () => {
 
     const map = new mapboxgl.Map({
         container: 'map',
+        // style: 'mapbox://styles/mapbox/dark-v11',
         style: 'mapbox://styles/mapbox/streets-v12',
         center: [8, 52],
         zoom: 2,
