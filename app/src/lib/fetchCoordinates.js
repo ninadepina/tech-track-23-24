@@ -11,18 +11,22 @@
 // const getCoordinate = async () => {
 //     try {
 //         const cachedData = await readCachedData();
-//         if (cachedData) {
-//             console.log('okidoki');
-//             return cachedData;
+
+//         if (cachedData && isCacheValid(cachedData)) {
+//             console.log('Using cached data');
+//             return cachedData.data;
 //         }
+
+//         console.log('Fetching new data');
 
 //         let cities = await getPages();
 //         let coordinateArray = [[4.762197, 52.308039]];
 
 //         for (let city of cities) {
 //             try {
-//                 const cityLocation = `${url}${city}.json?limit=1&types=place%2Ccountry&access_token=${accessToken}`;
-//                 const res = await fetch(cityLocation, {
+//                 const loc = `${url}${city}.json?limit=1&types=place%2Ccountry&access_token=${accessToken}`;
+
+//                 const res = await fetch(loc, {
 //                     method: 'GET',
 //                     headers: {
 //                         Accept: 'application/json'
@@ -31,9 +35,11 @@
 
 //                 if (res.ok) {
 //                     const data = await res.json();
+
 //                     if (data.features && data.features.length > 0) {
 //                         const coordinate =
 //                             data.features[0].geometry.coordinates;
+
 //                         coordinateArray.push(coordinate);
 //                     }
 //                 }
@@ -42,7 +48,10 @@
 //             }
 //         }
 
-//         await cacheData(coordinateArray);
+//         await cacheData({
+//             data: coordinateArray,
+//             timestamp: Date.now()
+//         });
 
 //         console.log(coordinateArray);
 //         return coordinateArray;
@@ -51,23 +60,29 @@
 //     }
 // };
 
-// async function readCachedData() {
+// const readCachedData = async () => {
 //     try {
 //         const data = await fs.readFile(cacheFileName, 'utf-8');
 //         return JSON.parse(data);
 //     } catch (err) {
-//         console.error(`Oops, something went wrong: ${err}`);
+//         console.error(`No cached data found or error reading cache: ${err}`);
 //         return null;
 //     }
-// }
+// };
 
-// async function cacheData(data) {
+// const isCacheValid = (cachedData) => {
+//     const timestamp = cachedData.timestamp;
+//     const oneDayInMs = 24 * 60 * 60 * 1000;
+//     return Date.now() - timestamp <= oneDayInMs;
+// };
+
+// const cacheData = async (data) => {
 //     try {
 //         await fs.writeFile(cacheFileName, JSON.stringify(data));
 //     } catch (err) {
 //         console.error(`Oops, something went wrong: ${err}`);
 //     }
-// }
+// };
 
 // getCoordinate();
 
@@ -93,7 +108,9 @@ const getCoordinate = async () => {
         console.log('Fetching new data');
 
         let cities = await getPages();
-        let coordinateArray = [[4.762197, 52.308039]];
+        let coordinateData = [
+            { coordinates: [4.762197, 52.308039], place_name: 'Schiphol' }
+        ];
 
         for (let city of cities) {
             try {
@@ -112,8 +129,12 @@ const getCoordinate = async () => {
                     if (data.features && data.features.length > 0) {
                         const coordinate =
                             data.features[0].geometry.coordinates;
+                        const place_name = data.features[0].place_name;
 
-                        coordinateArray.push(coordinate);
+                        coordinateData.push({
+                            coordinates: coordinate,
+                            place_name: place_name
+                        });
                     }
                 }
             } catch (err) {
@@ -122,12 +143,12 @@ const getCoordinate = async () => {
         }
 
         await cacheData({
-            data: coordinateArray,
+            data: coordinateData,
             timestamp: Date.now()
         });
 
-        console.log(coordinateArray);
-        return coordinateArray;
+        console.log(coordinateData);
+        return coordinateData;
     } catch (err) {
         console.error(`Oops, something went wrong: ${err}`);
     }
