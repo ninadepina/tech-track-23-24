@@ -125,10 +125,9 @@ const getCoordinate = async () => {
 
                 if (res.ok) {
                     const data = await res.json();
-
+                    // prettier-ignore
                     if (data.features && data.features.length > 0) {
-                        const coordinate =
-                            data.features[0].geometry.coordinates;
+                        const coordinate = data.features[0].geometry.coordinates;
                         const place_name = data.features[0].place_name;
 
                         coordinateData.push({
