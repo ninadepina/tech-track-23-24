@@ -7,7 +7,6 @@ const renderMap = () => {
 
     const map = new mapboxgl.Map({
         container: 'map',
-        // style: 'mapbox://styles/mapbox/dark-v11',
         style: 'mapbox://styles/mapbox/streets-v12',
         center: [8, 52],
         zoom: 2,
@@ -16,6 +15,8 @@ const renderMap = () => {
 
     map.addControl(new mapboxgl.NavigationControl());
     map.addControl(new mapboxgl.FullscreenControl());
+
+    let popup = null;
 
     d3.json('coordinateData.json').then((data) => {
         update(data);
@@ -67,6 +68,29 @@ const renderMap = () => {
                     'circle-color': '#914BD2'
                 },
                 filter: ['==', ['get', 'index'], 0] // only show Schiphol dot
+            });
+
+            // hover effect for 'other-dots'
+            map.on('mouseenter', 'other-dots', (e) => {
+                const properties = e.features[0].properties;
+                const index = properties.index;
+                const info = data.data[index].place_name;
+
+                if (!popup) {
+                    popup = new mapboxgl.Popup()
+                        .setLngLat(e.lngLat)
+                        .setHTML(info)
+                        .addTo(map);
+                } else {
+                    popup.setHTML(info);
+                }
+            });
+
+            map.on('mouseleave', 'other-dots', () => {
+                if (popup) {
+                    popup.remove();
+                    popup = null;
+                }
             });
         });
     };

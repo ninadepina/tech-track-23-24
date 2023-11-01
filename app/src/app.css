@@ -11,6 +11,7 @@
 
 /* mapbox */
 .mapboxgl-ctrl-bottom-right,
-.mapboxgl-ctrl-bottom-left {
+.mapboxgl-ctrl-bottom-left,
+.mapboxgl-popup-close-button {
     display: none;
 }
