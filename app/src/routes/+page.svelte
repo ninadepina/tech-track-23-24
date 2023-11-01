@@ -8,7 +8,7 @@
     <title>Schiphol</title>
 </svelte:head>
 
-<h1>Schiphol</h1>
+<h1>Schiphol destinations</h1>
 <Map />
 
 <style>

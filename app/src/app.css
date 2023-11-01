@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Manrope;
+    src: url('/static/fonts/Manrope.ttf') format('truetype');
+}
+
 *,
 *::after,
 *::before {
@@ -7,6 +12,14 @@
 * {
     margin: 0;
     padding: 0;
+}
+
+:root {
+    --font-family: 'Manrope', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
 }
 
 /* mapbox */
