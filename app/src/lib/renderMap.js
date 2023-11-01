@@ -1,9 +1,13 @@
 import mapboxgl from 'mapbox-gl';
 import * as d3 from 'd3';
+// prettier-ignore
+const config = {
+    accessToken: 'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA',
+    dataFile: 'coordinateData.json',
+};
 
 const renderMap = () => {
-    mapboxgl.accessToken =
-        'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA';
+    mapboxgl.accessToken = config.accessToken;
 
     const map = new mapboxgl.Map({
         container: 'map',
@@ -18,11 +22,11 @@ const renderMap = () => {
 
     let popup = null;
 
-    d3.json('coordinateData.json').then((data) => {
-        update(data);
-    });
+    d3.json(config.dataFile)
+        .then((data) => initializeMap(data))
+        .catch((err) => console.error('Error loading data:', err));
 
-    const update = (data) => {
+    const initializeMap = (data) => {
         const coordinatesData = data.data.map((item, index) => ({
             coordinates: item.coordinates,
             index
