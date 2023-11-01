@@ -34,7 +34,9 @@ const renderMap = () => {
                     type: 'FeatureCollection',
                     features: coordinatesData.map((coords) => ({
                         type: 'Feature',
-                        properties: { index: coords.index },
+                        properties: {
+                            index: coords.index
+                        },
                         geometry: {
                             type: 'Point',
                             coordinates: coords.coordinates
