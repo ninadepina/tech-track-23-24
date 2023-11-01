@@ -1,13 +1,19 @@
 <script>
     export let label1 = 'Label 1';
     export let label2 = 'Label 2';
+
+    let val = label1;
+
+    const handleSwitch = (e) => {
+        val = e.target.value;
+    }
 </script>
 
 <div class="switch">
-    <input type="radio" id="radio-one" name="switch" value="{label1}" checked />
+    <input type="radio" id="radio-one" name="switch" value={label1} checked="{val === label1}" on:change={handleSwitch} />
     <label for="radio-one">{label1}</label>
 
-    <input type="radio" id="radio-two" name="switch" value="{label2}" />
+    <input type="radio" id="radio-two" name="switch" value={label2} checked="{val === label2}" on:change={handleSwitch} />
     <label for="radio-two">{label2}</label>
 </div>
 
