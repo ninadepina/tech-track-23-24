@@ -9,27 +9,28 @@
     let linesActive = false;
 
     const toggleLayer = (oldLayer, newLayer) => {
-        if (oldLayer === 'Dots') {
-            dotsActive = false;
-        } else if (oldLayer === 'Lines') {
-            linesActive = false;
-        }
+        const layerMap = {
+            Dots: 'other-dots',
+            Lines: 'lines-layer'
+        };
 
-        if (newLayer === 'Dots') {
-            dotsActive = true;
-        } else if (newLayer === 'Lines') {
-            linesActive = true;
-        }
+        const visibilityMap = {
+            Dots: dotsActive,
+            Lines: linesActive
+        };
+
+        visibilityMap[oldLayer] = false;
+        visibilityMap[newLayer] = true;
 
         map.setLayoutProperty(
-            'other-dots',
+            layerMap['Dots'],
             'visibility',
-            dotsActive ? 'visible' : 'none'
+            visibilityMap['Dots'] ? 'visible' : 'none'
         );
         map.setLayoutProperty(
-            'lines-layer',
+            layerMap['Lines'],
             'visibility',
-            linesActive ? 'visible' : 'none'
+            visibilityMap['Lines'] ? 'visible' : 'none'
         );
     };
 </script>
