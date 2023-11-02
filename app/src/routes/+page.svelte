@@ -1,7 +1,7 @@
 <script>
     import SwitchButton from '$lib/SwitchButton.svelte';
     import Map from '$lib/Map.svelte';
-    import { map } from '$lib/render.js';
+    import { map } from '$lib/renderMap.js';
 
     let labels = ['Dots', 'Lines'];
 

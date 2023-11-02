@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import { renderMap } from '$lib/render.js';
+    import { renderMap } from '$lib/renderMap.js';
 
     onMount(() => {
         renderMap();
