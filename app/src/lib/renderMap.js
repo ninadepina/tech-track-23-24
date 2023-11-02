@@ -142,15 +142,6 @@ const renderMap = () => {
                 return; // if layers not added to map, abort
             }
 
-            // enumerate ids of layers
-            const toggleableLayerIds = ['lines-layer', 'other-dots'];
-
-            // set up the corresponding toggle button for each layer
-            toggleableLayerIds.forEach((id) => {
-                const button = document.getElementById(id);
-                button.addEventListener('click', toggleLayerVisibility);
-            });
-
             const toggleLayerVisibility = (e) => {
                 e.preventDefault();
                 const clickedLayer = e.target.id;
@@ -171,6 +162,16 @@ const renderMap = () => {
                     e.target.classList.add('active');
                 }
             };
+            // enumerate ids of layers
+            const toggleableLayerIds = ['lines-layer', 'other-dots'];
+
+            // set up the corresponding toggle button for each layer
+            document.addEventListener('DOMContentLoaded', () => {
+                toggleableLayerIds.forEach((id) => {
+                    const button = document.getElementById(id);
+                    button.addEventListener('click', toggleLayerVisibility);
+                });
+            });
         });
     };
 };
