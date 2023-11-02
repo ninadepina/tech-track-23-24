@@ -5,8 +5,7 @@ import fs from 'fs/promises';
 const cacheFileName = 'static/coordinateData.json';
 
 const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
-const accessToken =
-    'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA';
+const accessToken ='pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA';
 
 const getCoordinate = async () => {
     try {
@@ -20,9 +19,7 @@ const getCoordinate = async () => {
         console.log('Fetching new data');
 
         let cities = await getPages();
-        let coordinateData = [
-            { coordinates: [4.762197, 52.308039], place_name: 'Schiphol' }
-        ];
+        let coordinateData = [{ coordinates: [4.762197, 52.308039], place_name: 'Schiphol' }];
 
         for (let city of cities) {
             try {
@@ -58,7 +55,7 @@ const getCoordinate = async () => {
             timestamp: Date.now()
         });
 
-        console.log(coordinateData);
+        // console.log(coordinateData);
         return coordinateData;
     } catch (err) {
         console.error(`Oops, something went wrong: ${err}`);

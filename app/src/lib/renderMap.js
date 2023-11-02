@@ -55,6 +55,20 @@ const renderMap = () => {
                     }))
                 }
             });
+            map.addLayer({
+                id: 'lines-layer',
+                type: 'line',
+                source: 'lines',
+                layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round',
+                    visibility: 'none'
+                },
+                paint: {
+                    'line-color': '#292f36',
+                    'line-width': 2
+                }
+            });
 
             map.addSource('dots', {
                 type: 'geojson',
@@ -72,22 +86,6 @@ const renderMap = () => {
                     }))
                 }
             });
-
-            map.addLayer({
-                id: 'lines-layer',
-                type: 'line',
-                source: 'lines',
-                layout: {
-                    'line-join': 'round',
-                    'line-cap': 'round',
-                    visibility: 'none'
-                },
-                paint: {
-                    'line-color': '#292f36',
-                    'line-width': 2
-                }
-            });
-
             // all dots except Schiphol
             map.addLayer({
                 id: 'other-dots',
@@ -100,9 +98,8 @@ const renderMap = () => {
                     'circle-radius': 5,
                     'circle-color': '#292f36'
                 },
-                filter: ['!=', ['get', 'index'], 0] // filter out Schiphol dot
+                filter: ['!=', ['get', 'index'], 0]
             });
-
             // Schiphol dot
             map.addLayer({
                 id: 'schiphol-dot',
@@ -112,41 +109,37 @@ const renderMap = () => {
                     'circle-radius': 7,
                     'circle-color': '#914BD2'
                 },
-                filter: ['==', ['get', 'index'], 0] // only show Schiphol dot
+                filter: ['==', ['get', 'index'], 0]
             });
 
             // hover effect for 'other-dots'
-            // map.on('mouseenter', 'other-dots', (e) => {
-            //     const properties = e.features[0].properties;
-            //     const index = properties.index;
-            //     const info = data.data[index].place_name;
+            map.on('mouseenter', 'other-dots', (e) => {
+                const properties = e.features[0].properties;
+                const index = properties.index;
+                const info = data.data[index].place_name;
 
-            //     if (!popup) {
-            //         popup = new mapboxgl.Popup()
-            //             .setLngLat(e.lngLat)
-            //             .setHTML(info)
-            //             .addTo(map);
-            //     } else {
-            //         popup.setHTML(info);
-            //     }
-            // });
+                if (!popup) {
+                    popup = new mapboxgl.Popup()
+                        .setLngLat(e.lngLat)
+                        .setHTML(info)
+                        .addTo(map);
+                } else {
+                    popup.setHTML(info);
+                }
+            });
 
-            // map.on('mouseleave', 'other-dots', () => {
-            //     if (popup) {
-            //         popup.remove();
-            //         popup = null;
-            //     }
-            // });
+            map.on('mouseleave', 'other-dots', () => {
+                if (popup) {
+                    popup.remove();
+                    popup = null;
+                }
+            });
         });
 
         map.on('idle', () => {
-            // if layers not added to map, abort
-            if (
-                !map.getLayer('lines-layer') ||
-                !map.getLayer('other-dots') ||
-                !map.getLayer('schiphol-dot')
-            ) {
-                return;
+            // prettier-ignore
+            if (!map.getLayer('lines-layer') || !map.getLayer('other-dots') || !map.getLayer('schiphol-dot')) {
+                return; // if layers not added to map, abort
             }
 
             // enumerate ids of layers
