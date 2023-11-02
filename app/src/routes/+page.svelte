@@ -1,8 +1,37 @@
 <script>
-    import Map from '$lib/Map.svelte';
     import SwitchButton from '$lib/SwitchButton.svelte';
+    import Map from '$lib/Map.svelte';
+    import { map } from '$lib/render.js';
 
     let labels = ['Dots', 'Lines'];
+
+    let dotsActive = true;
+    let linesActive = false;
+
+    const toggleLayer = (oldLayer, newLayer) => {
+        if (oldLayer === 'Dots') {
+            dotsActive = false;
+        } else if (oldLayer === 'Lines') {
+            linesActive = false;
+        }
+
+        if (newLayer === 'Dots') {
+            dotsActive = true;
+        } else if (newLayer === 'Lines') {
+            linesActive = true;
+        }
+
+        map.setLayoutProperty(
+            'other-dots',
+            'visibility',
+            dotsActive ? 'visible' : 'none'
+        );
+        map.setLayoutProperty(
+            'lines-layer',
+            'visibility',
+            linesActive ? 'visible' : 'none'
+        );
+    };
 </script>
 
 <svelte:head>
@@ -12,7 +41,7 @@
 </svelte:head>
 
 <h1>Schiphol destinations</h1>
-<SwitchButton {labels} />
+<SwitchButton {labels} {toggleLayer} />
 <Map />
 
 <style>

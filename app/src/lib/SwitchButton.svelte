@@ -1,9 +1,12 @@
 <script>
     export let labels = [];
-    let val = labels[0];
+    let activeLayer = labels[0];
+    export let toggleLayer;
 
     const handleSwitch = (e) => {
-        val = e.target.value;
+        const newLayer = e.target.value;
+        toggleLayer(activeLayer, newLayer);
+        activeLayer = newLayer;
     };
 </script>
 
@@ -14,7 +17,7 @@
             id={`radio-${label}`}
             name="switch"
             value={label}
-            checked={val === label}
+            checked={activeLayer === label}
             on:change={handleSwitch}
         />
         <label for={`radio-${label}`}>{label}</label>
