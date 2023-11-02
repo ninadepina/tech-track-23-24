@@ -47,12 +47,10 @@ const getPages = async () => {
 
     try {
         await Promise.all(promises);
-        // console.log(cities);
         return cities;
     } catch (err) {
         console.error(`Oops, something went wrong: ${err}`);
     }
 };
 
-// getPages();
 export { getPages };
