@@ -1,6 +1,8 @@
 <script>
     import Map from '$lib/Map.svelte';
     import SwitchButton from '$lib/SwitchButton.svelte';
+
+    let labels = ['Dots', 'Lines'];
 </script>
 
 <svelte:head>
@@ -10,7 +12,7 @@
 </svelte:head>
 
 <h1>Schiphol destinations</h1>
-<SwitchButton label1="Dots" label2="Lines" />
+<SwitchButton {labels} />
 <Map />
 
 <style>
