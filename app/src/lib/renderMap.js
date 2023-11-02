@@ -34,25 +34,25 @@ const renderMap = () => {
         }));
 
         map.on('load', () => {
-            map.addSource('lines', {
-                type: 'geojson',
-                data: {
-                    type: 'FeatureCollection',
-                    features: coordinatesData.map((coords) => ({
-                        type: 'Feature',
-                        properties: {
-                            index: coords.index
-                        },
-                        geometry: {
-                            type: 'LineString',
-                            coordinates: [
-                                coords.coordinates,
-                                coordinatesData[0].coordinates
-                            ]
-                        }
-                    }))
-                }
-            });
+            // map.addSource('lines', {
+            //     type: 'geojson',
+            //     data: {
+            //         type: 'FeatureCollection',
+            //         features: coordinatesData.map((coords) => ({
+            //             type: 'Feature',
+            //             properties: {
+            //                 index: coords.index
+            //             },
+            //             geometry: {
+            //                 type: 'LineString',
+            //                 coordinates: [
+            //                     coords.coordinates,
+            //                     coordinatesData[0].coordinates
+            //                 ]
+            //             }
+            //         }))
+            //     }
+            // });
 
             map.addSource('dots', {
                 type: 'geojson',
@@ -71,19 +71,19 @@ const renderMap = () => {
                 }
             });
 
-            map.addLayer({
-                id: 'lines-layer',
-                type: 'line',
-                source: 'lines',
-                layout: {
-                    'line-join': 'round',
-                    'line-cap': 'round'
-                },
-                paint: {
-                    'line-color': '#FF5733',
-                    'line-width': 2
-                }
-            });
+            // map.addLayer({
+            //     id: 'lines-layer',
+            //     type: 'line',
+            //     source: 'lines',
+            //     layout: {
+            //         'line-join': 'round',
+            //         'line-cap': 'round'
+            //     },
+            //     paint: {
+            //         'line-color': '#FF5733',
+            //         'line-width': 2
+            //     }
+            // });
 
             // all dots except Schiphol
             map.addLayer({

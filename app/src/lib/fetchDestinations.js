@@ -28,6 +28,7 @@ const fetchPage = async (page) => {
         const destinations = data.destinations;
 
         destinations.forEach((destination) => {
+            // console.log(destination);
             if (typeof destination.city === 'string') {
                 cities.push(destination.city);
             } else if (destination.publicName && destination.publicName.english) {
