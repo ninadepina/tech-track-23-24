@@ -117,15 +117,10 @@ const renderMap = () => {
                 const properties = e.features[0].properties;
                 const index = properties.index;
                 const info = data.data[index].place_name;
-
-                if (!popup) {
-                    popup = new mapboxgl.Popup()
-                        .setLngLat(e.lngLat)
-                        .setHTML(info)
-                        .addTo(map);
-                } else {
-                    popup.setHTML(info);
-                }
+                // prettier-ignore
+                !popup 
+                    ? popup = new mapboxgl.Popup().setLngLat(e.lngLat).setHTML(info).addTo(map) 
+                    : popup.setHTML(info);
             });
 
             map.on('mouseleave', 'other-dots', () => {
@@ -165,7 +160,7 @@ const renderMap = () => {
             // enumerate ids of layers
             const toggleableLayerIds = ['lines-layer', 'other-dots'];
 
-            // set up the corresponding toggle button for each layer
+            // corresponding toggle button for each layer
             document.addEventListener('DOMContentLoaded', () => {
                 toggleableLayerIds.forEach((id) => {
                     const button = document.getElementById(id);

@@ -6,7 +6,7 @@
     <h1>Error page</h1>
     <div>
         <span>4</span>
-        <img src="3d-globe.jpg" alt="" />
+        <img src="3d-globe.jpg" alt="3d globe" />
         <span>4</span>
     </div>
 </div>
@@ -29,8 +29,7 @@
         align-items: flex-start;
     }
 
-    /* h1 only for semantic value and screenreaders */
-    h1 {
+    h1 { /* only for semantic value and screenreaders */
         position: absolute;
         left: -10000px;
         top: auto;
@@ -39,6 +38,8 @@
     }
 
     span {
+        --margin-img: -0.4em;
+        
         margin-top: 0.025em;
         font-size: 16rem;
         font-weight: var(--font-weight-title);
@@ -46,10 +47,10 @@
         z-index: 2;
     }
     span:first-of-type {
-        margin-right: -0.4em;
+        margin-right: var(--margin-img);
     }
     span:last-of-type {
-        margin-left: -0.4em;
+        margin-left: var(--margin-img);
     }
 
     img {

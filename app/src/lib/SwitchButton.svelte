@@ -1,7 +1,7 @@
 <script>
     export let labels = [];
-    let activeLayer = labels[0];
     export let toggleLayer;
+    let activeLayer = labels[0];
 
     const handleSwitch = (e) => {
         const newLayer = e.target.value;
@@ -48,10 +48,10 @@
         font-size: 14px;
         font-weight: var(--font-weight-text);
         line-height: 1;
+        text-align: center;
         color: rgba(0, 0, 0, 0.6);
         background-color: var(--color-light);
         border: 1px solid var(--color-dark);
-        text-align: center;
         transition: all 0.1s ease-in-out;
     }
     .switch label:first-of-type {
