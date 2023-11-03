@@ -53,16 +53,13 @@
         background-color: var(--color-light);
         border: 1px solid var(--color-dark);
         transition: all 0.1s ease-in-out;
+        cursor: pointer;
     }
     .switch label:first-of-type {
         border-radius: var(--border-radius) 0 0 var(--border-radius);
     }
     .switch label:last-of-type {
         border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    }
-
-    .switch label:hover {
-        cursor: pointer;
     }
 
     .switch input:checked + label {
