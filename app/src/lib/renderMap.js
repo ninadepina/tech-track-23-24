@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl';
-import * as d3 from 'd3';
+import { json } from 'd3';
 // prettier-ignore
 const config = {
     accessToken: 'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA',
@@ -25,7 +25,7 @@ const renderMap = () => {
 
     let popup = null;
 
-    d3.json(config.dataFile)
+    json(config.dataFile)
         .then((data) => initializeMap(data))
         .catch((err) => console.error('Error loading data:', err));
 
