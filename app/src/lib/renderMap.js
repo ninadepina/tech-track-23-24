@@ -113,7 +113,7 @@ const renderMap = () => {
             });
 
             // hover effect for 'other-dots'
-            map.on('mouseenter', 'other-dots', (e) => {
+            map.on('click', 'other-dots', (e) => {
                 const properties = e.features[0].properties;
                 const index = properties.index;
                 const info = data.data[index].place_name;

@@ -29,8 +29,8 @@ const fetchPage = async (page) => {
 
         destinations.forEach((destination) => {
             // console.log(destination);
-            if (typeof destination.city === 'string') {
-                cities.push(destination.city);
+            if (typeof destination.city === 'string' && typeof destination.iata === 'string') {
+                cities.push({ city: destination.city, iata: destination.iata });
             }
         });
     } catch (err) {

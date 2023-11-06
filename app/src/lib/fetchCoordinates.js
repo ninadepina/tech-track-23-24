@@ -19,11 +19,11 @@ const getCoordinate = async () => {
         console.log('Fetching new data');
 
         let cities = await getPages();
-        let coordinateData = [{ coordinates: [4.762197, 52.308039], place_name: 'Schiphol' }];
+        let coordinateData = [{ coordinates: [4.762197, 52.308039], place_name: 'Schiphol', iata: 'AMS' }];
 
         for (let city of cities) {
             try {
-                const loc = `${url}${city}.json?limit=1&types=place%2Ccountry&access_token=${accessToken}`;
+                const loc = `${url}${city.city}.json?limit=1&types=place%2Ccountry&access_token=${accessToken}`;
 
                 const res = await fetch(loc, {
                     method: 'GET',
@@ -41,7 +41,8 @@ const getCoordinate = async () => {
 
                         coordinateData.push({
                             coordinates: coordinate,
-                            place_name: place_name
+                            place_name: place_name,
+                            iata: city.iata
                         });
                     }
                 }
