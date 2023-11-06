@@ -138,12 +138,12 @@ const renderMap = () => {
             if (!map.getLayer('lines-layer') || !map.getLayer('other-dots') || !map.getLayer('schiphol-dot')) {
                 return; // if layers not added to map, abort
             }
-
+            // prettier-ignore
             const toggleLayerVisibility = (e) => {
                 e.preventDefault();
                 const clickedLayer = e.target.id;
                 const visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-                // prettier-ignore
+
                 if (visibility === 'visible') {
                     map.setLayoutProperty(clickedLayer, 'visibility', 'none');
                     e.target.classList.remove('active');
