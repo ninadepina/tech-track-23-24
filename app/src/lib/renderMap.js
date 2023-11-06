@@ -142,20 +142,13 @@ const renderMap = () => {
             const toggleLayerVisibility = (e) => {
                 e.preventDefault();
                 const clickedLayer = e.target.id;
-                const visibility = map.getLayoutProperty(
-                    clickedLayer,
-                    'visibility'
-                );
-
+                const visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+                // prettier-ignore
                 if (visibility === 'visible') {
                     map.setLayoutProperty(clickedLayer, 'visibility', 'none');
                     e.target.classList.remove('active');
                 } else {
-                    map.setLayoutProperty(
-                        clickedLayer,
-                        'visibility',
-                        'visible'
-                    );
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
                     e.target.classList.add('active');
                 }
             };
