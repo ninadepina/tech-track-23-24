@@ -33,3 +33,8 @@ button.mapboxgl-ctrl-compass,
 .mapboxgl-ctrl-bottom-left {
     display: none;
 }
+
+div.mapboxgl-popup-content {
+    font-family: var(--font-family);
+    user-select: text;
+}

@@ -128,7 +128,7 @@ const renderMap = () => {
                 }
                 // prettier-ignore
                 !popup 
-                    ? popup = new mapboxgl.Popup({ closeOnClick: false }).setLngLat(e.lngLat).setHTML(info).addTo(map) 
+                    ? popup = new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(info).addTo(map) 
                     : popup.setHTML(info);
             });
         });
