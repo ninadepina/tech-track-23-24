@@ -7,7 +7,7 @@
 
     let dotsActive = true;
     let linesActive = false;
-
+    // prettier-ignore
     const toggleLayer = (oldLayer, newLayer) => {
         const layerMap = {
             Dots: 'other-dots',
@@ -22,16 +22,8 @@
         visibilityMap[oldLayer] = false;
         visibilityMap[newLayer] = true;
 
-        map.setLayoutProperty(
-            layerMap['Dots'],
-            'visibility',
-            visibilityMap['Dots'] ? 'visible' : 'none'
-        );
-        map.setLayoutProperty(
-            layerMap['Lines'],
-            'visibility',
-            visibilityMap['Lines'] ? 'visible' : 'none'
-        );
+        map.setLayoutProperty(layerMap['Dots'], 'visibility', visibilityMap['Dots'] ? 'visible' : 'none');
+        map.setLayoutProperty(layerMap['Lines'], 'visibility', visibilityMap['Lines'] ? 'visible' : 'none');
     };
 </script>
 
