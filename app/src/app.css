@@ -30,7 +30,6 @@ body {
 /* mapbox */
 button.mapboxgl-ctrl-compass,
 .mapboxgl-ctrl-bottom-right,
-.mapboxgl-ctrl-bottom-left,
-.mapboxgl-popup-close-button {
+.mapboxgl-ctrl-bottom-left {
     display: none;
 }

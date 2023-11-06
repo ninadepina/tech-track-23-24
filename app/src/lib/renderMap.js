@@ -116,21 +116,20 @@ const renderMap = () => {
             map.on('click', 'other-dots', (e) => {
                 const properties = e.features[0].properties;
                 const index = properties.index;
+                
                 const placeName = data.data[index].place_name;
                 const iata = data.data[index].iata;
 
                 const info = `${placeName} (${iata})`;
-                // prettier-ignore
-                !popup 
-                    ? popup = new mapboxgl.Popup().setLngLat(e.lngLat).setHTML(info).addTo(map) 
-                    : popup.setHTML(info);
-            });
 
-            map.on('mouseleave', 'other-dots', () => {
                 if (popup) {
                     popup.remove();
                     popup = null;
                 }
+                // prettier-ignore
+                !popup 
+                    ? popup = new mapboxgl.Popup({closeOnClick: false}).setLngLat(e.lngLat).setHTML(info).addTo(map) 
+                    : popup.setHTML(info);
             });
         });
 
