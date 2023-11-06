@@ -112,11 +112,14 @@ const renderMap = () => {
                 filter: ['==', ['get', 'index'], 0]
             });
 
-            // hover effect for 'other-dots'
+            // click effect for 'other-dots'
             map.on('click', 'other-dots', (e) => {
                 const properties = e.features[0].properties;
                 const index = properties.index;
-                const info = data.data[index].place_name;
+                const placeName = data.data[index].place_name;
+                const iata = data.data[index].iata;
+
+                const info = `${placeName} (${iata})`;
                 // prettier-ignore
                 !popup 
                     ? popup = new mapboxgl.Popup().setLngLat(e.lngLat).setHTML(info).addTo(map) 
