@@ -1,4 +1,7 @@
 <script>
+    export let data;
+    console.log(data);
+
     import SwitchButton from '$lib/SwitchButton.svelte';
     import Map from '$lib/Map.svelte';
     import { map } from '$lib/renderMap.js';

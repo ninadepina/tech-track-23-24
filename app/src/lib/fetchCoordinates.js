@@ -5,7 +5,7 @@ import fs from 'fs/promises';
 const cacheFileName = 'static/coordinateData.json';
 
 const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
-const accessToken ='pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA';
+const accessToken = 'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA';
 
 const getCoordinate = async () => {
     try {
@@ -17,9 +17,24 @@ const getCoordinate = async () => {
         }
 
         console.log('Fetching new data');
+        fetchNewDataInBackground();
 
-        let cities = await getPages();
-        let coordinateData = [{ coordinates: [4.762197, 52.308039], place_name: 'Schiphol', iata: 'AMS' }];
+        return [];
+    } catch (err) {
+        console.error(`Oops, something went wrong: ${err}`);
+    }
+};
+
+const fetchNewDataInBackground = async () => {
+    try {
+        const cities = await getPages();
+        let coordinateData = [
+            {
+                coordinates: [4.762197, 52.308039],
+                place_name: 'Schiphol',
+                iata: 'AMS'
+            }
+        ];
 
         for (let city of cities) {
             try {
@@ -56,10 +71,9 @@ const getCoordinate = async () => {
             timestamp: Date.now()
         });
 
-        // console.log(coordinateData);
-        return coordinateData;
+        console.log('New data has been fetched');
     } catch (err) {
-        console.error(`Oops, something went wrong: ${err}`);
+        console.error(`Oops, something went wrong while fetching new data: ${err}`);
     }
 };
 
@@ -87,4 +101,4 @@ const cacheData = async (data) => {
     }
 };
 
-getCoordinate();
+export { getCoordinate };
