@@ -27,6 +27,105 @@ body {
     user-select: none;
 }
 
+.flightCard {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    white-space: nowrap;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    border: 2px solid #e6e7ed;
+    border-radius: 0.625em;
+    user-select: none;
+}
+.flightCard + .flightCard {
+    margin-top: 0.5em;
+}
+
+.flightCard > div:first-of-type,
+.flightCard > div:last-of-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+}
+.flightCard > div:first-of-type {
+    border-bottom: 1px solid #e6e7ed;
+}
+.flightCard > div:last-of-type {
+    gap: 0.5em;
+    border-top: 1px solid #e6e7ed;
+}
+
+.flightCard > div:first-of-type > div {
+    display: flex;
+    align-items: center;
+}
+
+.flightCard > div:first-of-type > span {
+    padding: 0.125em 0.5em 0.15em 0.5em;
+    font-size: 0.55em;
+    font-weight: 500;
+    background-color: #d0e1fb;
+    border: 2px solid #c8dcfb;
+    border-radius: 50px;
+}
+
+.flightName {
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.flightAirline {
+    color: #5e6f86;
+    font-size: 0.65em;
+    font-weight: 500;
+}
+
+.flightCity,
+.flightTime,
+.flightCard > div:last-of-type > div span {
+    color: #5e6f86;
+    font-size: 0.55em;
+    font-weight: 500;
+}
+
+.flightCity {
+    color: var(--color-dark);
+}
+
+.flightTime {
+    font-size: 0.75em;
+}
+
+.flightCityAbbr {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+.flightCard > div:last-of-type .flightCityAbbr {
+    margin-left: -0.05em;
+}
+
+.flightCard > div:last-of-type > div {
+    display: flex;
+    flex-direction: column;
+}
+.flightCard > div:last-of-type > div:last-of-type {
+    align-items: flex-end;
+}
+
+.flightCard > div:last-of-type > div span {
+    display: flex;
+    align-items: center;
+    gap: 0.125em;
+    margin-left: -0.1em;
+}
+
+.flightCard > div:last-of-type > div span svg {
+    width: 1.25em;
+    height: 1.25em;
+}
+
 /* mapbox */
 button.mapboxgl-ctrl-compass,
 .mapboxgl-ctrl-bottom-right,
@@ -35,6 +134,7 @@ button.mapboxgl-ctrl-compass,
 }
 
 div.mapboxgl-popup-content {
+    width: 20em;
     font-family: var(--font-family);
     user-select: text;
 }

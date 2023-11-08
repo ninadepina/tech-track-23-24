@@ -31,24 +31,37 @@ const fetchData = async (iata, direction) => {
 
         if (data && data.flights && data.flights.length > 0) {
             const firstFlight = data.flights[0];
-            console.log(`First ${direction} flight:`, firstFlight);
+            // console.log(`First ${direction} flight:`, firstFlight);
+            return firstFlight;
         } else {
             console.log(`No ${direction} flights found in the response.`);
+            return null;
         }
     } catch (err) {
         console.error(`Oops, something went wrong: ${err}`);
+        throw err;
     }
 };
 
 const fetchIata = async (iata) => {
     try {
-        await Promise.all([
+        const [departureData, arrivalData] = await Promise.all([
             fetchData(iata, 'departure'),
             fetchData(iata, 'arrival')
         ]);
+
+        if (departureData && arrivalData) {
+            return {
+                departureData,
+                arrivalData
+            };
+        } else {
+            return null;
+        }
     } catch (err) {
         console.error(`Oops, something went wrong: ${err}`);
+        throw err;
     }
 };
 
-fetchIata('LAX');
+export { fetchIata };
