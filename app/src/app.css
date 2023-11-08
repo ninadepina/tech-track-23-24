@@ -27,6 +27,7 @@ body {
     user-select: none;
 }
 
+/* popup */
 .flightCard {
     display: flex;
     flex-direction: column;
@@ -124,6 +125,22 @@ body {
 .flightCard > div:last-of-type > div span svg {
     width: 1.25em;
     height: 1.25em;
+}
+
+.emptyCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-dark);
+}
+
+.emptyCard img {
+    width: 100%;
+}
+
+.emptyCard p {
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 /* mapbox */

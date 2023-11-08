@@ -16,8 +16,6 @@ const getIATAData = async (selectedIATA) => {
 
     if (res.ok) {
         iataData = await res.text();
-    } else {
-        console.error('Request failed');
     }
 };
 
@@ -381,7 +379,10 @@ const renderMap = () => {
                         `;
                 } else {
                     htmlContent = `
-                        <p>no data available</p>
+                        <div class="emptyCard">
+                            <img src="empty.png" alt="" />
+                            <p>no data available</p>
+                        </div>
                     `;
                 }
 
