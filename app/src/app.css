@@ -110,6 +110,7 @@ body {
 .flightCard > div:last-of-type > div {
     display: flex;
     flex-direction: column;
+    min-width: 3.5em;
 }
 .flightCard > div:last-of-type > div:last-of-type {
     align-items: flex-end;
