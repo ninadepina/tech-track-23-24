@@ -16,9 +16,11 @@
 
     --color-light: #fff;
     --color-dark: #333;
+    --color-card: #5e6f86;
 
     --standard-margin: 0.625rem;
 
+    --border-color-card: #e6e7ed;
     --border-radius: 0.25rem;
 }
 
@@ -40,7 +42,7 @@ body {
     white-space: nowrap;
     color: var(--color-dark);
     background-color: var(--color-light);
-    border: 2px solid #e6e7ed;
+    border: 2px solid var(--border-color-card);
     border-radius: 0.625em;
     user-select: none;
 }
@@ -57,11 +59,11 @@ body {
     padding: 0.5em;
 }
 .flightCard > div:first-of-type {
-    border-bottom: 1px solid #e6e7ed;
+    border-bottom: 1px solid var(--border-color-card);
 }
 .flightCard > div:last-of-type {
     gap: 0.5em;
-    border-top: 1px solid #e6e7ed;
+    border-top: 1px solid var(--border-color-card);
 }
 
 .flightCard > div:first-of-type > div {
@@ -84,7 +86,7 @@ body {
 }
 
 .flightAirline {
-    color: #5e6f86;
+    color: var(--color-card);
     font-size: 0.65em;
     font-weight: 500;
 }
@@ -92,7 +94,7 @@ body {
 .flightCity,
 .flightTime,
 .flightCard > div:last-of-type > div span {
-    color: #5e6f86;
+    color: var(--color-card);
     font-size: 0.55em;
     font-weight: 500;
 }

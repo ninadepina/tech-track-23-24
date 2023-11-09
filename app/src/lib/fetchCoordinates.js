@@ -28,13 +28,11 @@ const getCoordinate = async () => {
 const fetchNewDataInBackground = async () => {
     try {
         const cities = await getPages();
-        let coordinateData = [
-            {
-                coordinates: [4.762197, 52.308039],
-                place_name: 'Schiphol',
-                iata: 'AMS'
-            }
-        ];
+        let coordinateData = [{
+            coordinates: [4.762197, 52.308039],
+            place_name: 'Schiphol',
+            iata: 'AMS'
+        }];
 
         for (let city of cities) {
             try {

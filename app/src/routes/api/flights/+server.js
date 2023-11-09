@@ -23,11 +23,10 @@ export const GET = async (request) => {
     if (iata) {
         const data = await fetchIata(iata, dateTime);
 
-        if (data !== null) {
-            return new Response(JSON.stringify(data), options);
-        } else {
-            return new Response('No data found', options);
-        }
+        return data !== null 
+            ? new Response(JSON.stringify(data), options) 
+            : new Response('No data found', options);
+
     } else {
         options.status = 400;
         return new Response('Missing "iata" parameter', options);

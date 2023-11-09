@@ -132,6 +132,7 @@ const renderMap = () => {
                 const iata = data.data[index].iata;
 
                 let htmlContent = '';
+                
                 await getIATAData(iata);
 
                 if (iataData !== 'No data found' && iataData !== 'Missing "iata" parameter') {

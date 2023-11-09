@@ -9,7 +9,7 @@ const params = {
     arrival: '?flightDirection=A&route='
 };
 const params2 = '&includedelays=false&page=0&sort=%2BscheduleTime&fromDateTime=';
-const params3 = '&searchDateTimeField=scheduleDateTime'
+const params3 = '&searchDateTimeField=scheduleDateTime';
 const headers = {
     resourceversion: 'v4',
     app_id: process.env.APP_ID,
@@ -30,14 +30,10 @@ const fetchData = async (iata, dateTime, direction) => {
 
         const data = await res.json();
 
-        if (data && data.flights && data.flights.length > 0) {
-            const firstFlight = data.flights[0];
-            // console.log(`First ${direction} flight:`, firstFlight);
-            return firstFlight;
-        } else {
-            // console.log(`No ${direction} flights found in the response.`);
-            return null;
-        }
+        return data && data.flights && data.flights.length > 0
+            ? data.flights[0]
+            : null;
+
     } catch (err) {
         return null;
     }
@@ -50,14 +46,10 @@ const fetchIata = async (iata, dateTime) => {
             fetchData(iata, dateTime, 'arrival')
         ]);
 
-        if (departureData && arrivalData) {
-            return {
-                departureData,
-                arrivalData
-            };
-        } else {
-            return null;
-        }
+        return departureData && arrivalData
+            ? { departureData, arrivalData }
+            : null;
+
     } catch (err) {
         return null;
     }
