@@ -11,9 +11,8 @@ const headers = {
     Accept: 'application/json'
 };
 
-const cities = [];
-
 const fetchPage = async (page) => {
+    let cities = [];
     try {
         const res = await fetch(`${url}${page}`, {
             method: 'GET',
@@ -29,27 +28,48 @@ const fetchPage = async (page) => {
 
         destinations.forEach((destination) => {
             if (typeof destination.city === 'string' && typeof destination.iata === 'string') {
-                cities.push({ city: destination.city, iata: destination.iata });
+                cities.push({ iata: destination.iata });
             }
         });
     } catch (err) {
         console.error(`Oops, something went wrong: ${err}`);
     }
+    return cities;
 };
 
+// const getPages = async () => {
+//     const promises = [];
+
+//     for (let page = 1; page <= 50; page++) {
+//         promises.push(fetchPage(page));
+//     }
+
+//     try {
+//         await Promise.all(promises);
+//         return cities;
+//     } catch (err) {
+//         console.error(`Oops, something went wrong: ${err}`);
+//     }
+// };
 const getPages = async () => {
-    const promises = [];
+    let page = 1;
+    let cities = [];
 
-    for (let page = 1; page <= 50; page++) {
-        promises.push(fetchPage(page));
+    while (true) {
+        try {
+            const result = await fetchPage(page);
+            if (result.length === 0) {
+                break;
+            }
+            cities = cities.concat(result);
+            page++;
+        } catch (err) {
+            console.error(`Oops, something went wrong: ${err}`);
+            break;
+        }
     }
 
-    try {
-        await Promise.all(promises);
-        return cities;
-    } catch (err) {
-        console.error(`Oops, something went wrong: ${err}`);
-    }
+    return cities;
 };
 
 export { getPages };

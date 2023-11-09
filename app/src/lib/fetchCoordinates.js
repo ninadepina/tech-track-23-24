@@ -4,9 +4,6 @@ import fs from 'fs/promises';
 
 const cacheFileName = 'static/coordinateData.json';
 
-const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
-const accessToken = 'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA';
-
 const getCoordinate = async () => {
     try {
         const cachedData = await readCachedData();
@@ -28,40 +25,32 @@ const getCoordinate = async () => {
 const fetchNewDataInBackground = async () => {
     try {
         const cities = await getPages();
-        let coordinateData = [{
-            coordinates: [4.762197, 52.308039],
-            place_name: 'Schiphol',
-            iata: 'AMS'
-        }];
+        let coordinateData = [];
+
+        let jsonData = await fs.readFile('static/airports-code@public.json');
+        let airports = JSON.parse(jsonData);
 
         for (let city of cities) {
             try {
-                const loc = `${url}${city.city}.json?limit=1&types=place%2Ccountry&access_token=${accessToken}`;
+                let airport = airports.find((airport) => airport.column_1 === city.iata);
 
-                const res = await fetch(loc, {
-                    method: 'GET',
-                    headers: {
-                        Accept: 'application/json'
-                    }
-                });
-
-                if (res.ok) {
-                    const data = await res.json();
-                    // prettier-ignore
-                    if (data.features && data.features.length > 0) {
-                        const coordinate = data.features[0].geometry.coordinates;
-                        const place_name = data.features[0].place_name;
-
-                        coordinateData.push({
-                            coordinates: coordinate,
-                            place_name: place_name,
-                            iata: city.iata
-                        });
-                    }
+                if (airport) {
+                    coordinateData.push({
+                        iata: airport.column_1,
+                        lat: airport.latitude,
+                        long: airport.longitude,
+                        city: airport.city_name
+                    });
                 }
             } catch (err) {
                 console.error(`Oops, something went wrong: ${err}`);
             }
+        }
+
+        let index = coordinateData.findIndex(obj => obj.iata === 'AMS');
+        if (index !== -1) {
+            let AMSData = coordinateData.splice(index, 1)[0];
+            coordinateData.unshift(AMSData);
         }
 
         await cacheData({
@@ -71,7 +60,9 @@ const fetchNewDataInBackground = async () => {
 
         console.log('New data has been fetched');
     } catch (err) {
-        console.error(`Oops, something went wrong while fetching new data: ${err}`);
+        console.error(
+            `Oops, something went wrong while fetching new data: ${err}`
+        );
     }
 };
 
@@ -87,8 +78,8 @@ const readCachedData = async () => {
 
 const isCacheValid = (cachedData) => {
     const timestamp = cachedData.timestamp;
-    const oneDayInMs = 24 * 60 * 60 * 1000;
-    return Date.now() - timestamp <= oneDayInMs;
+    const oneMonthInMs = 24 * 60 * 60 * 1000 * 30.44;
+    return Date.now() - timestamp <= oneMonthInMs;
 };
 
 const cacheData = async (data) => {

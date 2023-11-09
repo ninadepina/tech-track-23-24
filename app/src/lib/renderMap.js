@@ -22,7 +22,9 @@ const getIATAData = async (selectedIATA) => {
 
 const renderMap = () => {
     mapboxgl.accessToken = config.accessToken;
-    mapboxgl.setRTLTextPlugin(config.RTLPlugin, null, true);
+    if (mapboxgl.getRTLTextPluginStatus() === 'unavailable') {
+        mapboxgl.setRTLTextPlugin(config.RTLPlugin, null, true) 
+    }
 
     map = new mapboxgl.Map({
         container: 'map',
@@ -45,7 +47,7 @@ const renderMap = () => {
 
     const initializeMap = (data) => {
         const coordinatesData = data.data.map((item, index) => ({
-            coordinates: item.coordinates,
+            coordinates: [item.long, item.lat],
             index
         }));
 
@@ -156,7 +158,9 @@ const renderMap = () => {
                 },
                 paint: {
                     'circle-radius': 5,
-                    'circle-color': '#292f36'
+                    'circle-color': '#292f36',
+                    'circle-stroke-color': 'rgba(255, 255, 255, 0)',
+                    'circle-stroke-width': 5
                 },
                 filter: ['!=', ['get', 'index'], 0]
             });
@@ -176,7 +180,7 @@ const renderMap = () => {
                 const properties = e.features[0].properties;
                 const index = properties.index;
 
-                const placeName = data.data[index].place_name.split(',')[0];
+                const city = data.data[index].city;
                 const iata = data.data[index].iata;
 
                 let htmlContent = '';
@@ -222,13 +226,7 @@ const renderMap = () => {
                                 <div>
                                     <div>
                                         <span>
-                                            <svg
-                                                width="13"
-                                                height="13"
-                                                viewBox="0 0 13 13"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
+                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M9.54136 3.1816C7.784 1.42424 4.93475 1.42424 3.17739 3.1816C1.42004 4.93896 1.42004 7.7882 3.17739 9.54556C4.93475 11.3029 7.784 11.3029 9.54136 9.54556C11.2987 7.7882 11.2987 4.93896 9.54136 3.1816Z"
                                                     fill="#A0AAB8"
@@ -252,10 +250,7 @@ const renderMap = () => {
                                         <p class="flightCityAbbr">AMS</p>
                                         <p class="flightTime">${estDepartureTimeD || '-'}</p>
                                     </div>
-                                    <svg
-                                        viewBox="0 0 76 23"
-                                        fill="none"
-                                    >
+                                    <svg viewBox="0 0 76 23" fill="none">
                                         <path
                                             d="M5 11.5C5 12.8807 3.88071 14 2.5 14C1.11929 14 0 12.8807 0 11.5C0 10.1193 1.11929 9 2.5 9C3.88071 9 5 10.1193 5 11.5Z"
                                             fill="#8B95A9"
@@ -284,13 +279,7 @@ const renderMap = () => {
                             
                                     <div>
                                         <span>
-                                            <svg
-                                                width="13"
-                                                height="13"
-                                                viewBox="0 0 13 13"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
+                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M9.54594 9.54624C11.3033 7.78888 11.3033 4.93964 9.54594 3.18228C7.78858 1.42492 4.93934 1.42492 3.18198 3.18228C1.42462 4.93964 1.42462 7.78888 3.18198 9.54624C4.93934 11.3036 7.78858 11.3036 9.54594 9.54624Z"
                                                     fill="#A0AAB8"
@@ -310,7 +299,7 @@ const renderMap = () => {
                                             </svg>
                                             <p class="flightDate">${estLandingDateD || '-'}</p>
                                         </span>
-                                        <p class="flightCity">${placeName}</p>
+                                        <p class="flightCity">${city}</p>
                                         <p class="flightCityAbbr">${iata}</p>
                                         <p class="flightTime">-</p>
                                     </div>
@@ -359,7 +348,7 @@ const renderMap = () => {
                                             </svg>
                                             <p class="flightDate">${scheduleDateA || '-'}</p>
                                         </span>
-                                        <p class="flightCity">${placeName}</p>
+                                        <p class="flightCity">${city}</p>
                                         <p class="flightCityAbbr">${iata}</p>
                                         <p class="flightTime">${estDepartureTimeA || '-'}</p>
                                     </div>
@@ -428,6 +417,8 @@ const renderMap = () => {
                                 </div>
                             </div>
                         `;
+
+                        
                 } else {
                     htmlContent = `
                         <div class="emptyCard">
