@@ -4,6 +4,7 @@ import { json } from 'd3';
 const config = {
     accessToken: 'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA',
     dataFile: 'coordinateData.json',
+    RTLPlugin: 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js',
 };
 
 let map;
@@ -21,6 +22,7 @@ const getIATAData = async (selectedIATA) => {
 
 const renderMap = () => {
     mapboxgl.accessToken = config.accessToken;
+    mapboxgl.setRTLTextPlugin(config.RTLPlugin, null, true);
 
     map = new mapboxgl.Map({
         container: 'map',
