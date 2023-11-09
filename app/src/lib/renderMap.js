@@ -131,25 +131,26 @@ const renderMap = () => {
                 const placeName = data.data[index].place_name.split(',')[0];
                 const iata = data.data[index].iata;
 
+                let htmlContent = '';
                 await getIATAData(iata);
                 // console.log(iataData);
-                let htmlContent = '';
 
                 if (iataData) {
                     const iataDataObject = JSON.parse(iataData);
 
-                    const estLandingDateA = new Date(iataDataObject.arrivalData.estimatedLandingTime).toISOString().split('T')[0];
-                    const piecesA = estLandingDateA.split('-');
-                    const estLandingDateAFormatted = `${piecesA[2]}-${piecesA[1]}-${piecesA[0]}`;
-                    const estLandingDateD = new Date(iataDataObject.departureData.estimatedLandingTime).toISOString().split('T')[0];
-                    const piecesD = estLandingDateD.split('-');
-                    const estLandingDateDFormatted = `${piecesD[2]}-${piecesD[1]}-${piecesD[0]}`;
+                    const estLandingDateA = iataDataObject.arrivalData.estimatedLandingTime 
+                        ? iataDataObject.arrivalData.estimatedLandingTime.split('T')[0].split('-').reverse().join('-') 
+                        : null;
+                    const estLandingDateD = iataDataObject.departureData.estimatedLandingTime 
+                        ? iataDataObject.departureData.estimatedLandingTime.split('T')[0].split('-').reverse().join('-') 
+                        : null;
 
-                    const estLandingTimeA = formatTime(iataDataObject.arrivalData.estimatedLandingTime);
-                    const estLandingTimeD = formatTime(iataDataObject.departureData.estimatedLandingTime);
-
-                    const estDepartureTimeA = iataDataObject.arrivalData.scheduleTime.split(':').slice(0, 2).join(':');
-                    const estDepartureTimeD = iataDataObject.departureData.scheduleTime.split(':').slice(0, 2).join(':');
+                    const estDepartureTimeA = iataDataObject.arrivalData.scheduleTime
+                        ? iataDataObject.arrivalData.scheduleTime.split(':').slice(0, 2).join(':')
+                        : null;
+                    const estDepartureTimeD = iataDataObject.departureData.scheduleTime
+                        ? iataDataObject.departureData.scheduleTime.split(':').slice(0, 2).join(':')
+                        : null;
 
                     const partsA = iataDataObject.arrivalData.scheduleDate.split('-');
                     const scheduleDateA = `${partsA[2]}-${partsA[1]}-${partsA[0]}`;
@@ -258,11 +259,11 @@ const renderMap = () => {
                                                     fill="white"
                                                 />
                                             </svg>
-                                            <p class="flightDate">${estLandingDateDFormatted || '-'}</p>
+                                            <p class="flightDate">${estLandingDateD || '-'}</p>
                                         </span>
                                         <p class="flightCity">${placeName}</p>
                                         <p class="flightCityAbbr">${iata}</p>
-                                        <p class="flightTime">${estLandingTimeD || '-'}</p>
+                                        <p class="flightTime">-</p>
                                     </div>
                                 </div>
                             </div>
@@ -368,11 +369,11 @@ const renderMap = () => {
                                                     fill="white"
                                                 />
                                             </svg>
-                                            <p class="flightDate">${estLandingDateAFormatted || '-'}</p>
+                                            <p class="flightDate">${estLandingDateA || '-'}</p>
                                         </span>
                                         <p class="flightCity">Amsterdam</p>
                                         <p class="flightCityAbbr">AMS</p>
-                                        <p class="flightTime">${estLandingTimeA || '-'}</p>
+                                        <p class="flightTime">-</p>
                                     </div>
                                 </div>
                             </div>
@@ -431,12 +432,5 @@ const renderMap = () => {
         });
     };
 };
-
-function formatTime(inputTime) {
-    const date = new Date(inputTime);
-    const hours = String(date.getUTCHours()).padStart(2, '0');
-    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
-    return `${hours}:${minutes}`;
-}
 
 export { map, renderMap };
