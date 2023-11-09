@@ -17,6 +17,7 @@
     --color-light: #fff;
     --color-dark: #333;
     --color-card: #5e6f86;
+    --color-schiphol: rgb(145, 75, 210);
 
     --standard-margin: 0.625rem;
 
@@ -152,6 +153,10 @@ body {
     text-transform: uppercase;
 }
 
+.schipholCard {
+    color: var(--color-light);
+}
+
 /* mapbox */
 button.mapboxgl-ctrl-compass,
 .mapboxgl-ctrl-bottom-right,
@@ -168,4 +173,14 @@ div.mapboxgl-popup-content {
 
 button.mapboxgl-popup-close-button {
     padding: 0.0625rem 0.375rem;
+}
+
+div.mapboxgl-popup.mapboxgl-popup-anchor-bottom:has(.schipholCard) div.mapboxgl-popup-tip {
+    border-top-color: var(--color-schiphol);
+} 
+div.mapboxgl-popup-content:has(.schipholCard) {
+    background-color: var(--color-schiphol);
+}
+.schipholCard + .mapboxgl-popup-close-button {
+    color: var(--color-light);
 }
