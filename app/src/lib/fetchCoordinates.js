@@ -48,9 +48,10 @@ const fetchNewDataInBackground = async () => {
         }
 
         let index = coordinateData.findIndex(obj => obj.iata === 'AMS');
+
         if (index !== -1) {
-            let AMSData = coordinateData.splice(index, 1)[0];
-            coordinateData.unshift(AMSData);
+            let AMS = coordinateData.splice(index, 1)[0];
+            coordinateData.unshift(AMS);
         }
 
         await cacheData({

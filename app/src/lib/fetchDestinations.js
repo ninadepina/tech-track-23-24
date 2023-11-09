@@ -31,26 +31,13 @@ const fetchPage = async (page) => {
                 cities.push({ iata: destination.iata });
             }
         });
+        
     } catch (err) {
         console.error(`Oops, something went wrong: ${err}`);
     }
     return cities;
 };
 
-// const getPages = async () => {
-//     const promises = [];
-
-//     for (let page = 1; page <= 50; page++) {
-//         promises.push(fetchPage(page));
-//     }
-
-//     try {
-//         await Promise.all(promises);
-//         return cities;
-//     } catch (err) {
-//         console.error(`Oops, something went wrong: ${err}`);
-//     }
-// };
 const getPages = async () => {
     let page = 1;
     let cities = [];
@@ -68,7 +55,6 @@ const getPages = async () => {
             break;
         }
     }
-
     return cities;
 };
 
