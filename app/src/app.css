@@ -164,3 +164,7 @@ div.mapboxgl-popup-content {
     font-family: var(--font-family);
     user-select: text;
 }
+
+button.mapboxgl-popup-close-button {
+    padding: 0.0625rem 0.375rem;
+}
