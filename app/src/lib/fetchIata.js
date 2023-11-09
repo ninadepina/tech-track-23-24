@@ -35,7 +35,7 @@ const fetchData = async (iata, dateTime, direction) => {
             // console.log(`First ${direction} flight:`, firstFlight);
             return firstFlight;
         } else {
-            console.log(`No ${direction} flights found in the response.`);
+            // console.log(`No ${direction} flights found in the response.`);
             return null;
         }
     } catch (err) {
