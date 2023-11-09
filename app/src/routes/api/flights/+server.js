@@ -12,6 +12,10 @@ export const GET = async (request) => {
     };
 
     const currentDateTime = new Date();
+    
+    if (currentDateTime.getHours() >= 2) {
+        currentDateTime.setHours(currentDateTime.getHours() - 2);
+    }
     // prettier-ignore
     const dateTime = 
         `${currentDateTime.getFullYear()}-${String(currentDateTime.getMonth() + 1).padStart(2, '0')}-${String(currentDateTime.getDate()).padStart(2, '0')}T${String(currentDateTime.getHours()).padStart(2, '0')}%3A${String(currentDateTime.getMinutes()).padStart(2, '0')}%3A${String(currentDateTime.getSeconds()).padStart(2, '0')}`;
