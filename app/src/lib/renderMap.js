@@ -47,7 +47,53 @@ const renderMap = () => {
             index
         }));
 
+        const size = 100;
+
+        const pulsingDot = {
+            width: size,
+            height: size,
+            data: new Uint8Array(size * size * 4),
+
+            onAdd: function () {
+                const canvas = document.createElement('canvas');
+                canvas.width = this.width;
+                canvas.height = this.height;
+                this.context = canvas.getContext('2d');
+            },
+
+            render: function () {
+                const duration = 1000;
+                const t = (performance.now() % duration) / duration;
+
+                const radius = (size / 2) * 0.3;
+                const outerRadius = (size / 2) * 0.7 * t + radius;
+                const context = this.context;
+
+                // outer circle.
+                context.clearRect(0, 0, this.width, this.height);
+                context.beginPath();
+                context.arc(this.width / 2, this.height / 2, outerRadius, 0, Math.PI * 2);
+                context.fillStyle = `rgba(145, 75, 210, ${1 - t})`;
+                context.fill();
+
+                // inner circle.
+                context.beginPath();
+                context.arc(this.width / 2, this.height / 2, radius, 0, Math.PI * 2);
+                context.fillStyle = 'rgba(145, 75, 210, 1)';
+                context.fill();
+
+                this.data = context.getImageData(0, 0, this.width, this.height).data;
+
+                // repaint map => smooth animation
+                map.triggerRepaint();
+
+                return true;
+            }
+        };
+
         map.on('load', () => {
+            map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
+
             map.addSource('lines', {
                 type: 'geojson',
                 data: {
@@ -115,11 +161,10 @@ const renderMap = () => {
             // Schiphol dot
             map.addLayer({
                 id: 'schiphol-dot',
-                type: 'circle',
+                type: 'symbol',
                 source: 'dots',
-                paint: {
-                    'circle-radius': 7,
-                    'circle-color': '#914BD2'
+                layout: {
+                    'icon-image': 'pulsing-dot'
                 },
                 filter: ['==', ['get', 'index'], 0]
             });
@@ -133,9 +178,9 @@ const renderMap = () => {
                 const iata = data.data[index].iata;
 
                 let htmlContent = '';
-                
-                await getIATAData(iata);
 
+                await getIATAData(iata);
+                // prettier-ignore
                 if (iataData !== 'No data found' && iataData !== 'Missing "iata" parameter') {
                     const iataDataObject = JSON.parse(iataData);
 
@@ -158,7 +203,7 @@ const renderMap = () => {
                     const partsD = iataDataObject.departureData.scheduleDate.split('-');
                     const scheduleDateD = `${partsD[2]}-${partsD[1]}-${partsD[0]}`;
 
-                        htmlContent = `
+                    htmlContent = `
                             <h2 class="flightCardHeading">Upcoming/recent departure:</h2>
                             <div class="flightCard">
                                 <div>
