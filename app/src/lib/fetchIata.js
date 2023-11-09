@@ -39,8 +39,7 @@ const fetchData = async (iata, dateTime, direction) => {
             return null;
         }
     } catch (err) {
-        console.error(`Oops, something went wrong: ${err}`);
-        throw err;
+        return null;
     }
 };
 
@@ -60,8 +59,7 @@ const fetchIata = async (iata, dateTime) => {
             return null;
         }
     } catch (err) {
-        console.error(`Oops, something went wrong: ${err}`);
-        throw err;
+        return null;
     }
 };
 

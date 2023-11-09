@@ -12,7 +12,7 @@ export const GET = async (request) => {
     };
 
     const currentDateTime = new Date();
-    
+
     if (currentDateTime.getHours() >= 2) {
         currentDateTime.setHours(currentDateTime.getHours() - 2);
     }
@@ -23,7 +23,7 @@ export const GET = async (request) => {
     if (iata) {
         const data = await fetchIata(iata, dateTime);
 
-        if (data) {
+        if (data !== null) {
             return new Response(JSON.stringify(data), options);
         } else {
             return new Response('No data found', options);

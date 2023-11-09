@@ -133,9 +133,8 @@ const renderMap = () => {
 
                 let htmlContent = '';
                 await getIATAData(iata);
-                // console.log(iataData);
 
-                if (iataData) {
+                if (iataData !== 'No data found' && iataData !== 'Missing "iata" parameter') {
                     const iataDataObject = JSON.parse(iataData);
 
                     const estLandingDateA = iataDataObject.arrivalData.estimatedLandingTime 
