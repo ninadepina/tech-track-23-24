@@ -158,6 +158,7 @@ const renderMap = () => {
                     const scheduleDateD = `${partsD[2]}-${partsD[1]}-${partsD[0]}`;
 
                         htmlContent = `
+                            <h2 class="flightCardHeading">Upcoming/recent departure:</h2>
                             <div class="flightCard">
                                 <div>
                                     <div>
@@ -268,6 +269,7 @@ const renderMap = () => {
                                 </div>
                             </div>
 
+                            <h2 class="flightCardHeading">Upcoming/recent arrival:</h2>
                             <div class="flightCard">
                                 <div>
                                     <div>

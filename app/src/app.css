@@ -28,6 +28,11 @@ body {
 }
 
 /* popup */
+.flightCardHeading {
+    margin-left: 0.2em;
+    font-size: 1em;
+}
+
 .flightCard {
     display: flex;
     flex-direction: column;
@@ -39,7 +44,8 @@ body {
     border-radius: 0.625em;
     user-select: none;
 }
-.flightCard + .flightCard {
+
+.flightCard + .flightCardHeading {
     margin-top: 0.5em;
 }
 
