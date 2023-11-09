@@ -8,7 +8,8 @@ const params = {
     departure: '?flightDirection=D&route=',
     arrival: '?flightDirection=A&route='
 };
-const params2 = '&includedelays=false&page=0&sort=%2BscheduleTime';
+const params2 = '&includedelays=false&page=0&sort=%2BscheduleTime&fromDateTime=';
+const params3 = '&searchDateTimeField=scheduleDateTime'
 const headers = {
     resourceversion: 'v4',
     app_id: process.env.APP_ID,
@@ -16,9 +17,9 @@ const headers = {
     Accept: 'application/json'
 };
 
-const fetchData = async (iata, direction) => {
+const fetchData = async (iata, dateTime, direction) => {
     try {
-        const res = await fetch(`${url}${params[direction]}${iata}${params2}`, {
+        const res = await fetch(`${url}${params[direction]}${iata}${params2}${dateTime}${params3}`, {
             method: 'GET',
             headers
         });
@@ -43,11 +44,11 @@ const fetchData = async (iata, direction) => {
     }
 };
 
-const fetchIata = async (iata) => {
+const fetchIata = async (iata, dateTime) => {
     try {
         const [departureData, arrivalData] = await Promise.all([
-            fetchData(iata, 'departure'),
-            fetchData(iata, 'arrival')
+            fetchData(iata, dateTime, 'departure'),
+            fetchData(iata, dateTime, 'arrival')
         ]);
 
         if (departureData && arrivalData) {

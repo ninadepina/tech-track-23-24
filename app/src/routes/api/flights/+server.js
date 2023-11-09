@@ -11,11 +11,16 @@ export const GET = async (request) => {
         }
     };
 
+    const currentDateTime = new Date();
+    // prettier-ignore
+    const dateTime = 
+        `${currentDateTime.getFullYear()}-${String(currentDateTime.getMonth() + 1).padStart(2, '0')}-${String(currentDateTime.getDate()).padStart(2, '0')}T${String(currentDateTime.getHours()).padStart(2, '0')}%3A${String(currentDateTime.getMinutes()).padStart(2, '0')}%3A${String(currentDateTime.getSeconds()).padStart(2, '0')}`;
+
     if (iata) {
-        const data = await fetchIata(iata);
+        const data = await fetchIata(iata, dateTime);
 
         if (data) {
-            return new Response(JSON.stringify(data), options); 
+            return new Response(JSON.stringify(data), options);
         } else {
             return new Response('No data found', options);
         }
