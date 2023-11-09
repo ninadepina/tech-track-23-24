@@ -58,7 +58,7 @@ const renderMap = () => {
                 const canvas = document.createElement('canvas');
                 canvas.width = this.width;
                 canvas.height = this.height;
-                this.context = canvas.getContext('2d');
+                this.context = canvas.getContext('2d', { willReadFrequently: true });
             },
 
             render: function () {
