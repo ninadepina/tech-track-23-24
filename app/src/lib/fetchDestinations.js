@@ -31,7 +31,7 @@ const fetchPage = async (page) => {
                 cities.push({ iata: destination.iata });
             }
         });
-        
+
     } catch (err) {
         console.error(`Oops, something went wrong: ${err}`);
     }

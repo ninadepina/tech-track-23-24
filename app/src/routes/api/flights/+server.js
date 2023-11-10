@@ -22,7 +22,7 @@ export const GET = async (request) => {
 
     if (iata) {
         const data = await fetchIata(iata, dateTime);
-
+        // prettier-ignore
         return data !== null 
             ? new Response(JSON.stringify(data), options) 
             : new Response('No data found', options);
