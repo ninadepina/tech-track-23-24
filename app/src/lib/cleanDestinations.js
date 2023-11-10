@@ -16,7 +16,7 @@ const cleanDestinations = async () => {
         const cities = await getPages();
         let cleanedData = [];
 
-        for (let city of cities) {
+        await Promise.all(cities.map(async (city) => {
 
             let retries = 0;
             while (retries < 3) {
@@ -59,7 +59,7 @@ const cleanDestinations = async () => {
                     break;
                 }
             }
-        }
+        }));
 
         return cleanedData;
     } catch (err) {
