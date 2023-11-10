@@ -1,9 +1,4 @@
 {
-    "functions": {
-        "api/flights/*.js": {
-            "maxDuration": 7200
-        }
-    },
     "github": {
         "silent": true
     },
