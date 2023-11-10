@@ -11,4 +11,15 @@ const formatScheduleDate = (scheduleDate) => {
     return `${parts[2]}-${parts[1]}-${parts[0]}`;
 };
 
-export { formatDateString, formatScheduleDate }
+const getStatus = (actualLandingTime, scheduleDateTime) => {
+    if (actualLandingTime && scheduleDateTime) {
+        return 'landed';
+    }
+
+    const currentDateTime = new Date();
+    const scheduleDateTimeObj = new Date(scheduleDateTime);
+
+    return scheduleDateTimeObj < currentDateTime ? 'enroute' : 'scheduled';
+};
+
+export { formatDateString, formatScheduleDate, getStatus };

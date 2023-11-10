@@ -19,6 +19,13 @@
     --color-card: #5e6f86;
     --color-schiphol: rgb(145, 75, 210);
 
+    --color-scheduled: #fbedd0;
+    --border-color-scheduled: #fbebca;
+    --color-enroute: #d0e1fb;
+    --border-color-enroute: #c8dcfb;
+    --color-landed: #d9f2e3;
+    --border-color-landed: #d2f0de;
+
     --standard-margin: 0.625rem;
 
     --border-color-card: #e6e7ed;
@@ -76,9 +83,20 @@ body {
     padding: 0.125em 0.5em 0.15em 0.5em;
     font-size: 0.55em;
     font-weight: 500;
-    background-color: #d0e1fb;
-    border: 2px solid #c8dcfb;
     border-radius: 50px;
+    text-transform: capitalize;
+}
+.flightCard > div:first-of-type > span.scheduled {
+    background-color: var(--color-scheduled);
+    border: 2px solid var(--border-color-scheduled);
+}
+.flightCard > div:first-of-type > span.enroute {
+    background-color: var(--color-enroute);
+    border: 2px solid var(--border-color-enroute);
+}
+.flightCard > div:first-of-type > span.landed {
+    background-color: var(--color-landed);
+    border: 2px solid var(--border-color-landed);
 }
 
 .flightName {
