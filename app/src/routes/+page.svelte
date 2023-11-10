@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from 'svelte';
     import SwitchButton from '$lib/SwitchButton.svelte';
     import Map from '$lib/Map.svelte';
     import { map } from '$lib/renderMap.js';
@@ -25,6 +26,13 @@
         map.setLayoutProperty(layerMap['Dots'], 'visibility', visibilityMap['Dots'] ? 'visible' : 'none');
         map.setLayoutProperty(layerMap['Lines'], 'visibility', visibilityMap['Lines'] ? 'visible' : 'none');
     };
+    // prettier-ignore
+    onMount(() => {
+        const scaleControl = document.querySelector('.mapboxgl-ctrl.mapboxgl-ctrl-scale');
+        
+        document.querySelector('.mapboxgl-ctrl-bottom-left').removeChild(scaleControl);
+        document.querySelector('.mapboxgl-ctrl-bottom-right').appendChild(scaleControl);
+    });
 </script>
 
 <svelte:head>

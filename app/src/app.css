@@ -183,7 +183,7 @@ body {
 
 /* mapbox */
 button.mapboxgl-ctrl-compass,
-.mapboxgl-ctrl-bottom-right,
+.mapboxgl-ctrl-bottom-right div.mapboxgl-ctrl.mapboxgl-ctrl-attrib,
 a.mapboxgl-ctrl-logo,
 .mapboxgl-ctrl-bottom-left div.mapboxgl-ctrl:not(div.mapboxgl-ctrl.mapboxgl-ctrl-scale) {
     display: none !important;
