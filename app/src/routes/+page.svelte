@@ -54,6 +54,7 @@
         padding: 0.1em 0.4em;
         font-weight: var(--font-weight-title);
         word-wrap: break-word;
+        text-align: center;
         color: var(--color-dark);
         background-color: var(--color-light);
         border-radius: var(--border-radius);
