@@ -159,6 +159,10 @@ body {
     user-select: none;
 }
 
+.schipholCard h2 {
+    margin-bottom: 0.25em;
+}
+
 /* mapbox */
 button.mapboxgl-ctrl-compass,
 .mapboxgl-ctrl-bottom-right,
