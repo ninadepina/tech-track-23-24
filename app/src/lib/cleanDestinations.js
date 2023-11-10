@@ -49,11 +49,10 @@ const cleanDestinations = async () => {
 
                     const data = JSON.parse(text);
 
-                    if (data.flights && data.flights.length > 0) {
-                        cleanedData.push({ iata: city.iata });
-                    } else {
-                        console.log(`No flights found for ${city.iata}.`);
-                    }
+                    data.flights && data.flights.length > 0 
+                        ? cleanedData.push({ iata: city.iata }) 
+                        : console.log(`No flights found for ${city.iata}.`);
+
                     break;
                 } catch (err) {
                     console.error(`Oops, something went wrong for city ${city}: ${err}`);

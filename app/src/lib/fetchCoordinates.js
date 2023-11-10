@@ -1,5 +1,4 @@
 import { cleanDestinations } from './cleanDestinations.js';
-import fetch from 'node-fetch';
 import fs from 'fs/promises';
 
 const cacheFileName = 'static/coordinateData.json';
@@ -61,9 +60,7 @@ const fetchNewDataInBackground = async () => {
 
         console.log('New data has been fetched');
     } catch (err) {
-        console.error(
-            `Oops, something went wrong while fetching new data: ${err}`
-        );
+        console.error(`Oops, something went wrong while fetching new data: ${err}`);
     }
 };
 

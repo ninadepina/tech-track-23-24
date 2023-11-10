@@ -1,6 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import { json } from 'd3';
-// prettier-ignore
+import { formatDateString, formatScheduleDate } from './formatData.js';
+
 const config = {
     accessToken: 'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA',
     dataFile: 'coordinateData.json',
@@ -177,8 +178,8 @@ const renderMap = () => {
 
             // click effect for 'other-dots'
             map.on('click', 'other-dots', async (e) => {
-                const properties = e.features[0].properties;
-                const index = properties.index;
+                const { properties: { index } } = e.features[0];
+
 
                 const city = data.data[index].city;
                 const iata = data.data[index].iata;
@@ -190,12 +191,8 @@ const renderMap = () => {
                 if (iataData !== 'No data found' && iataData !== 'Missing "iata" parameter') {
                     const iataDataObject = JSON.parse(iataData);
 
-                    const estLandingDateA = iataDataObject.arrivalData.estimatedLandingTime 
-                        ? iataDataObject.arrivalData.estimatedLandingTime.split('T')[0].split('-').reverse().join('-') 
-                        : null;
-                    const estLandingDateD = iataDataObject.departureData.estimatedLandingTime 
-                        ? iataDataObject.departureData.estimatedLandingTime.split('T')[0].split('-').reverse().join('-') 
-                        : null;
+                    const estLandingDateA = formatDateString(iataDataObject.arrivalData.estimatedLandingTime);
+                    const estLandingDateD = formatDateString(iataDataObject.departureData.estimatedLandingTime);
 
                     const estDepartureTimeA = iataDataObject.arrivalData.scheduleTime
                         ? iataDataObject.arrivalData.scheduleTime.split(':').slice(0, 2).join(':')
@@ -204,10 +201,8 @@ const renderMap = () => {
                         ? iataDataObject.departureData.scheduleTime.split(':').slice(0, 2).join(':')
                         : null;
 
-                    const partsA = iataDataObject.arrivalData.scheduleDate.split('-');
-                    const scheduleDateA = `${partsA[2]}-${partsA[1]}-${partsA[0]}`;
-                    const partsD = iataDataObject.departureData.scheduleDate.split('-');
-                    const scheduleDateD = `${partsD[2]}-${partsD[1]}-${partsD[0]}`;
+                    const scheduleDateA = formatScheduleDate(iataDataObject.arrivalData.scheduleDate);
+                    const scheduleDateD = formatScheduleDate(iataDataObject.departureData.scheduleDate);
 
                     htmlContent = `
                             <h2 class="flightCardHeading">Upcoming/recent departure:</h2>
@@ -432,7 +427,7 @@ const renderMap = () => {
                     popup.remove();
                     popup = null;
                 }
-                // prettier-ignore
+
                 !popup 
                     ? popup = new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map) 
                     : popup.setHTML(htmlContent);
@@ -447,7 +442,7 @@ const renderMap = () => {
                         <p>Welcome to Schiphol Airport, the primary international airport of the Netherlands. A bustling hub near Amsterdam, Schiphol connects travelers worldwide with efficient services and modern facilities since 1916.</p>
                     </div>
                 `;
-                // prettier-ignore
+
                 new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map);
             });
         });
@@ -471,6 +466,7 @@ const renderMap = () => {
                     e.target.classList.add('active');
                 }
             };
+
             // enumerate ids of layers
             const toggleableLayerIds = ['lines-layer', 'other-dots'];
 

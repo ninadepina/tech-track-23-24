@@ -23,7 +23,7 @@ const fetchData = async (iata, dateTime, direction) => {
             method: 'GET',
             headers
         });
-        // prettier-ignore
+
         if (!res.ok) {
             throw new Error(`HTTP error for ${direction}! Status: ${res.status}`);
         }
