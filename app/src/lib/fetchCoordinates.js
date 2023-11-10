@@ -27,7 +27,12 @@ const getCoordinate = async () => {
 const fetchNewDataInBackground = async () => {
     try {
         const cities = await cleanDestinations();
-        let coordinateData = [];
+        let coordinateData = [{
+            iata: 'AMS',
+            lat: 52.308039,
+            long: 4.762197,
+            city: 'Amsterdam'
+        }];
 
         let jsonData = await fs.readFile('static/airports-code@public.json');
         let airports = JSON.parse(jsonData);
@@ -47,13 +52,6 @@ const fetchNewDataInBackground = async () => {
             } catch (err) {
                 console.error(`Oops, something went wrong: ${err}`);
             }
-        }
-
-        let index = coordinateData.findIndex(obj => obj.iata === 'AMS');
-
-        if (index !== -1) {
-            let AMS = coordinateData.splice(index, 1)[0];
-            coordinateData.unshift(AMS);
         }
 
         await cacheData({
