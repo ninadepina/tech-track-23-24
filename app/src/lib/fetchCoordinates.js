@@ -1,4 +1,4 @@
-import { getPages } from './fetchDestinations.js';
+import { cleanDestinations } from './cleanDestinations.js';
 import fetch from 'node-fetch';
 import fs from 'fs/promises';
 
@@ -14,17 +14,19 @@ const getCoordinate = async () => {
         }
 
         console.log('Fetching new data');
-        fetchNewDataInBackground();
+        await fetchNewDataInBackground();
 
-        return [];
+        const newData = await readCachedData();
+        return newData ? newData.data : [];
     } catch (err) {
         console.error(`Oops, something went wrong: ${err}`);
+        return [];
     }
 };
 
 const fetchNewDataInBackground = async () => {
     try {
-        const cities = await getPages();
+        const cities = await cleanDestinations();
         let coordinateData = [];
 
         let jsonData = await fs.readFile('static/airports-code@public.json');

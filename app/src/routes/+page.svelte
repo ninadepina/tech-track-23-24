@@ -33,7 +33,7 @@
     <title>Schiphol</title>
 </svelte:head>
 
-<h1>Schiphol destinations</h1>
+<h1>Upcoming flights from/to Schiphol</h1>
 <SwitchButton {labels} {toggleLayer} />
 <Map />
 
@@ -41,9 +41,11 @@
     h1 {
         position: relative;
         display: inline-block;
+        max-width: 290px;
         margin: var(--standard-margin);
         padding: 0.1em 0.4em;
         font-weight: var(--font-weight-title);
+        word-wrap: break-word;
         color: var(--color-dark);
         background-color: var(--color-light);
         border-radius: var(--border-radius);
