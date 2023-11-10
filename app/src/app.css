@@ -142,6 +142,7 @@ body {
     flex-direction: column;
     align-items: center;
     color: var(--color-dark);
+    user-select: none;
 }
 
 .emptyCard img {
@@ -155,6 +156,7 @@ body {
 
 .schipholCard {
     color: var(--color-light);
+    user-select: none;
 }
 
 /* mapbox */
@@ -177,6 +179,9 @@ button.mapboxgl-popup-close-button {
 
 div.mapboxgl-popup.mapboxgl-popup-anchor-bottom:has(.schipholCard) div.mapboxgl-popup-tip {
     border-top-color: var(--color-schiphol);
+} 
+div.mapboxgl-popup.mapboxgl-popup-anchor-top:has(.schipholCard) div.mapboxgl-popup-tip {
+    border-bottom-color: var(--color-schiphol);
 } 
 div.mapboxgl-popup-content:has(.schipholCard) {
     background-color: var(--color-schiphol);
