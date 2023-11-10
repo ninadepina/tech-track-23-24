@@ -1,3 +1,4 @@
+import { get } from 'http';
 import { cleanDestinations } from './cleanDestinations.js';
 import fs from 'fs/promises';
 
@@ -88,4 +89,5 @@ const cacheData = async (data) => {
     }
 };
 
-export { getCoordinate };
+getCoordinate();
+// export { getCoordinate };
