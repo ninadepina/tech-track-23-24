@@ -32,7 +32,7 @@
             currentFocus = -1;
 
             autocompleteList = document.createElement('ul');
-            autocompleteList.setAttribute('id', this.id + 'autocompleteList');
+            autocompleteList.setAttribute('id', this.id + 'AutocompleteList');
             autocompleteList.setAttribute('class', 'autocompleteItems');
 
             input.parentNode.appendChild(autocompleteList);
@@ -73,19 +73,19 @@
 
         input.addEventListener('keydown', function (e) {
             // autocomplete container (for readability: 'x')
-            let x = document.querySelector('#autocompleteList');
-            if (x) x = x.getElementsByTagName('li');
+            let x = document.querySelector('#searchAutocompleteList');
+            if (x) {
+                x = x.getElementsByTagName('li');
+            }
 
             switch (e.key) {
                 case 'ArrowDown':
                     currentFocus++;
                     addActive(x);
-                    console.log('down', currentFocus);
                     break;
                 case 'ArrowUp':
                     currentFocus--;
                     addActive(x);
-                    console.log('up', currentFocus);
                     break;
                 case 'Enter':
                     if (currentFocus > -1 && x) {
@@ -105,14 +105,8 @@
             if (currentFocus < 0) currentFocus = 0;
             x[currentFocus].classList.add('autocompleteActive');
             // makes sure the active suggestion is always visible
-            if (
-                x[currentFocus].offsetTop + x[currentFocus].offsetHeight >
-                x[0].parentNode.scrollTop + x[0].parentNode.offsetHeight
-            ) {
-                x[0].parentNode.scrollTop =
-                    x[currentFocus].offsetTop +
-                    x[currentFocus].offsetHeight -
-                    x[0].parentNode.offsetHeight;
+            if (x[currentFocus].offsetTop + x[currentFocus].offsetHeight > x[0].parentNode.scrollTop + x[0].parentNode.offsetHeight) {
+                x[0].parentNode.scrollTop = x[currentFocus].offsetTop + x[currentFocus].offsetHeight - x[0].parentNode.offsetHeight;
             } else if (x[currentFocus].offsetTop < x[0].parentNode.scrollTop) {
                 x[0].parentNode.scrollTop = x[currentFocus].offsetTop;
             }
