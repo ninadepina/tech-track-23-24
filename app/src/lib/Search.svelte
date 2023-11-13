@@ -3,6 +3,7 @@
 
     let input;
     let suggestions = [];
+    let hasSuggestions = true;
 
     const fetchData = async () => {
         try {
@@ -47,8 +48,7 @@
                         '<strong>$&</strong>'
                     );
                     autocompleteItem.innerHTML = suggestion;
-                    autocompleteItem.innerHTML +=
-                        "<input type='hidden' value='" + array[i] + "'>";
+                    autocompleteItem.innerHTML += "<input type='hidden' value='" + array[i] + "'>";
 
                     // adds clicked autocomplete item to input and submits the form
                     autocompleteItem.addEventListener('click', function (e) {
@@ -69,6 +69,16 @@
                         : autocompleteList.appendChild(autocompleteItem);
                 }
             }
+
+            hasSuggestions = autocompleteList.childNodes.length > 0;
+
+            // If no suggestions, display a "No suggestions" message
+            if (!hasSuggestions) {
+                const noSuggestionItem = document.createElement('li');
+                noSuggestionItem.setAttribute('class', 'empty');
+                noSuggestionItem.textContent = 'No suggestions';
+                autocompleteList.appendChild(noSuggestionItem);
+            }
         });
 
         input.addEventListener('keydown', function (e) {
@@ -80,12 +90,16 @@
 
             switch (e.key) {
                 case 'ArrowDown':
-                    currentFocus++;
-                    addActive(x);
+                    if (hasSuggestions) {
+                        currentFocus++;
+                        addActive(x);
+                    }
                     break;
                 case 'ArrowUp':
-                    currentFocus--;
-                    addActive(x);
+                    if (hasSuggestions) {
+                        currentFocus--;
+                        addActive(x);
+                    }
                     break;
                 case 'Enter':
                     if (currentFocus > -1 && x) {
@@ -122,7 +136,10 @@
         const closeAllLists = (e) => {
             const x = document.getElementsByClassName('autocompleteItems');
             for (let i = 0; i < x.length; i++) {
-                if (e != x[i] && e != input) x[i].parentNode.removeChild(x[i]);
+                if (e != x[i] && e != input) {
+                    x[i].parentNode.removeChild(x[i]);
+                    hasSuggestions = true;
+                }
             }
         };
     };
@@ -155,7 +172,7 @@
         margin-left: var(--standard-margin);
         font-family: var(--font-family);
         text-indent: 1.2em;
-        border: 1px solid var(--color-dark);
+        border: none;
         border-radius: var(--border-radius);
     }
 
