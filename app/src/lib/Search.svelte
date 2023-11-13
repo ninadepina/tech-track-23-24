@@ -16,6 +16,7 @@
         type="search"
         name="search"
         id="search"
+        class="border-radius"
         autocomplete="off"
         placeholder="Search for destinations.."
         bind:this={input}
@@ -34,10 +35,12 @@
         font-family: var(--font-family);
         text-indent: 0.8em;
         border: none;
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
-
     input[type='search']:not(:placeholder-shown) {
         border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+    input[type='search'].border-radius {
+        border-radius: var(--border-radius);
     }
 </style>

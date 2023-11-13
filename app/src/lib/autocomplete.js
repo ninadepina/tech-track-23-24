@@ -23,6 +23,10 @@ const autocomplete = (input, array) => {
     let currentFocus;
 
     input.addEventListener('input', function (e) {
+        !input.value 
+            ? input.classList.add('border-radius') 
+            : input.classList.remove('border-radius');
+
         let autocompleteList,
             autocompleteItem,
             i,
@@ -109,6 +113,7 @@ const autocomplete = (input, array) => {
                     x[currentFocus].click();
                 }
                 closeAllLists();
+                input.classList.add('border-radius');
                 break;
         }
     });
@@ -158,6 +163,7 @@ const autocomplete = (input, array) => {
     
         if (!isClickInsideInput && !isClickInsideAutocompleteList) {
             closeAllLists();
+            input.classList.add('border-radius');
         }
     });
 };
