@@ -102,6 +102,13 @@ const renderMap = () => {
             }
 
             if (!map.getLayer('lines-layer')) {
+                const currentStyleURL = map.getStyle().name;
+                let lineColor = '#292f36';
+                
+                if (currentStyleURL === 'Mapbox Dark' || currentStyleURL === 'Mapbox Satellite Streets') {
+                    lineColor = '#fff';
+                }
+
                 map.addSource('lines', {
                     type: 'geojson',
                     data: {
@@ -131,7 +138,7 @@ const renderMap = () => {
                         visibility: 'none'
                     },
                     paint: {
-                        'line-color': '#292f36',
+                        'line-color': lineColor,
                         'line-width': 2
                     }
                 });

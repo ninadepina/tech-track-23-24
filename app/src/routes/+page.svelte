@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import LayerSwitchButton from '$lib/LayerSwitchButton.svelte';
     import StyleSwitchButton from '$lib/StyleSwitchButton.svelte';
+    import Search from '$lib/Search.svelte';
     import Map from '$lib/Map.svelte';
     import { map } from '$lib/renderMap.js';
 
@@ -53,8 +54,11 @@
 </svelte:head>
 
 <div id="mapInfo">
-    <h1>Upcoming flights from/to Schiphol</h1>
-    <div>
+    <div class="header">
+        <h1>Upcoming flights from/to Schiphol</h1>
+        <Search />
+    </div>
+    <div class="switches">
         <LayerSwitchButton {labelsLayer} {toggleLayer} />
         <StyleSwitchButton />
     </div>
@@ -69,10 +73,19 @@
         height: 100vh;
     }
 
+    #mapInfo > div {
+        z-index: 1;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+    }
+
     h1 {
         position: relative;
         display: inline-block;
-        max-width: 290px;
+        width: 290px;
         margin: var(--standard-margin);
         padding: 0.1em 0.4em;
         font-weight: var(--font-weight-title);
@@ -84,7 +97,7 @@
         z-index: 1;
     }
 
-    #mapInfo > div {
+    .switches {
         display: flex;
         gap: var(--standard-margin);
         margin: 0 0 var(--standard-margin) var(--standard-margin);
