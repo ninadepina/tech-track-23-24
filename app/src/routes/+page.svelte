@@ -41,7 +41,12 @@
         for (const input of inputs) {
             input.onclick = (layer) => {
                 const layerId = layer.target.id;
-                map.setStyle('mapbox://styles/mapbox/' + layerId);
+                const currentLayerUrl = map.getStyle().sprite.split('/');
+
+                if (currentLayerUrl[currentLayerUrl.length - 1] !== layerId) {
+                    map.setStyle('mapbox://styles/mapbox/' + layerId);
+                    document.querySelector('#radio-Dots').checked = true;
+                }
             };
         }
     });
