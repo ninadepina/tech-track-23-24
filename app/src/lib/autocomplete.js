@@ -1,3 +1,5 @@
+import { map } from './renderMap.js';
+
 let hasSuggestions = true;
 let processedData = [];
 
@@ -52,7 +54,13 @@ const autocomplete = (input, array) => {
                     const selectedLabel = this.getElementsByTagName('input')[0].value;
                     const selectedCoordinates = processedData.find((item) => item.label === selectedLabel)?.coordinates;
 
-                    if (selectedCoordinates) console.log(selectedCoordinates.lat, selectedCoordinates.long);
+                    if (selectedCoordinates) {
+                        map.flyTo({
+                            center: [selectedCoordinates.long, selectedCoordinates.lat],
+                            zoom: 4,
+                            essential: true
+                        });
+                    }
 
                     input.value = selectedLabel;
                     closeAllLists();
