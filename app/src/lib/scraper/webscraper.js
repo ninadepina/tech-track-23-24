@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import fs from 'fs/promises';
 
-async function start() {
+const start = async () => {
     const browser = await puppeteer.launch({ headless: 'new' });
     const page = await browser.newPage();
     await page.goto('https://www.schipholairport.eu/flights.shtml', {
