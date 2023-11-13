@@ -8,9 +8,6 @@
     <input id="satellite-streets-v12" type="radio" name="rtoggle" value="satellite" />
     <label for="satellite-streets-v12">satellite</label>
 
-    <input id="outdoors-v12" type="radio" name="rtoggle" value="outdoors" />
-    <label for="outdoors-v12">outdoors</label>
-
     <input id="light-v11" type="radio" name="rtoggle" value="light" />
     <label for="light-v11">light</label>
 
