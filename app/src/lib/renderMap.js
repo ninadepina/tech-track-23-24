@@ -96,86 +96,91 @@ const renderMap = () => {
             }
         };
 
-        map.on('load', () => {
-            map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
+        map.on('styledata', () => {
+            if (!map.hasImage('pulsing-dot')) {
+                map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
+            }
 
-            map.addSource('lines', {
-                type: 'geojson',
-                data: {
-                    type: 'FeatureCollection',
-                    features: coordinatesData.map((coords) => ({
-                        type: 'Feature',
-                        properties: {
-                            index: coords.index
-                        },
-                        geometry: {
-                            type: 'LineString',
-                            coordinates: [
-                                coords.coordinates,
-                                coordinatesData[0].coordinates
-                            ]
-                        }
-                    }))
-                }
-            });
-            map.addLayer({
-                id: 'lines-layer',
-                type: 'line',
-                source: 'lines',
-                layout: {
-                    'line-join': 'round',
-                    'line-cap': 'round',
-                    visibility: 'none'
-                },
-                paint: {
-                    'line-color': '#292f36',
-                    'line-width': 2
-                }
-            });
-
-            map.addSource('dots', {
-                type: 'geojson',
-                data: {
-                    type: 'FeatureCollection',
-                    features: coordinatesData.map((coords) => ({
-                        type: 'Feature',
-                        properties: {
-                            index: coords.index
-                        },
-                        geometry: {
-                            type: 'Point',
-                            coordinates: coords.coordinates
-                        }
-                    }))
-                }
-            });
-            // all dots except Schiphol
-            map.addLayer({
-                id: 'other-dots',
-                type: 'circle',
-                source: 'dots',
-                layout: {
-                    visibility: 'visible'
-                },
-                paint: {
-                    'circle-radius': 5,
-                    'circle-color': '#292f36',
-                    'circle-stroke-color': 'rgba(255, 255, 255, 0)',
-                    'circle-stroke-width': 5
-                },
-                filter: ['!=', ['get', 'index'], 0]
-            });
-            // Schiphol dot
-            map.addLayer({
-                id: 'schiphol-dot',
-                type: 'symbol',
-                source: 'dots',
-                layout: {
-                    'icon-image': 'pulsing-dot'
-                },
-                filter: ['==', ['get', 'index'], 0]
-            });
-
+            if (!map.getLayer('lines-layer')) {
+                map.addSource('lines', {
+                    type: 'geojson',
+                    data: {
+                        type: 'FeatureCollection',
+                        features: coordinatesData.map((coords) => ({
+                            type: 'Feature',
+                            properties: {
+                                index: coords.index
+                            },
+                            geometry: {
+                                type: 'LineString',
+                                coordinates: [
+                                    coords.coordinates,
+                                    coordinatesData[0].coordinates
+                                ]
+                            }
+                        }))
+                    }
+                });
+                map.addLayer({
+                    id: 'lines-layer',
+                    type: 'line',
+                    source: 'lines',
+                    layout: {
+                        'line-join': 'round',
+                        'line-cap': 'round',
+                        visibility: 'none'
+                    },
+                    paint: {
+                        'line-color': '#292f36',
+                        'line-width': 2
+                    }
+                });
+            }
+            
+            if (!map.getLayer('other-dots')) {
+                map.addSource('dots', {
+                    type: 'geojson',
+                    data: {
+                        type: 'FeatureCollection',
+                        features: coordinatesData.map((coords) => ({
+                            type: 'Feature',
+                            properties: {
+                                index: coords.index
+                            },
+                            geometry: {
+                                type: 'Point',
+                                coordinates: coords.coordinates
+                            }
+                        }))
+                    }
+                });
+                // all dots except Schiphol
+                map.addLayer({
+                    id: 'other-dots',
+                    type: 'circle',
+                    source: 'dots',
+                    layout: {
+                        visibility: 'visible'
+                    },
+                    paint: {
+                        'circle-radius': 5,
+                        'circle-color': '#292f36',
+                        'circle-stroke-color': 'rgba(255, 255, 255, 0)',
+                        'circle-stroke-width': 5
+                    },
+                    filter: ['!=', ['get', 'index'], 0]
+                });
+                // Schiphol dot
+                map.addLayer({
+                    id: 'schiphol-dot',
+                    type: 'symbol',
+                    source: 'dots',
+                    layout: {
+                        'icon-image': 'pulsing-dot'
+                    },
+                    filter: ['==', ['get', 'index'], 0]
+                });
+            }
             // click effect for 'other-dots'
             map.on('click', 'other-dots', async (e) => {
                 const { properties: { index } } = e.features[0];
