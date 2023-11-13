@@ -1,4 +1,4 @@
-import { fetchIata } from '$lib/fetchIata.js';
+import { fetchIata } from '$lib/server/fetchData.js';
 
 export const GET = async (request) => {
     const { searchParams } = new URL(request.url);

@@ -1,0 +1,1222 @@
+[
+  {
+    "city": "Aalborg ",
+    "iata": "AAL",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Aalesund ",
+    "iata": "AES",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Aberdeen ",
+    "iata": "ABZ",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Accra ",
+    "iata": "ACC",
+    "operator": "KLM"
+  },
+  {
+    "city": "Agadir ",
+    "iata": "AGA",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Ajaccio ",
+    "iata": "AJA",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Al Maktoum International ",
+    "iata": "DWC",
+    "operator": "Emirates"
+  },
+  {
+    "city": "Alicante ",
+    "iata": "ALC",
+    "operator": "easyJet, Transavia, Vueling"
+  },
+  {
+    "city": "Almaty ",
+    "iata": "ALA",
+    "operator": "KLM"
+  },
+  {
+    "city": "Almeria ",
+    "iata": "LEI",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Amman Queen Alia ",
+    "iata": "AMM",
+    "operator": "Royal Jordanian"
+  },
+  {
+    "city": "Antalya ",
+    "iata": "AYT",
+    "operator": "Pegasus, Sunexpress, Transavia"
+  },
+  {
+    "city": "Aruba ",
+    "iata": "AUA",
+    "operator": "KLM, TUIfly Netherlands"
+  },
+  {
+    "city": "Astana ",
+    "iata": "TSE",
+    "operator": "KLM"
+  },
+  {
+    "city": "Athens ",
+    "iata": "ATH",
+    "operator": "Aegean Airlines, KLM, Transavia"
+  },
+  {
+    "city": "Atyrau ",
+    "iata": "GUW",
+    "operator": "Air Astana"
+  },
+  {
+    "city": "Baku Bina ",
+    "iata": "GYD",
+    "operator": "Silk Way West"
+  },
+  {
+    "city": "Bangalore ",
+    "iata": "BLR",
+    "operator": "Singapore Airlines"
+  },
+  {
+    "city": "Bangkok ",
+    "iata": "BKK",
+    "operator": "China Airlines, EVA Air, KLM"
+  },
+  {
+    "city": "Barcelona ",
+    "iata": "BCN",
+    "operator": "Emirates, Transavia, Vueling"
+  },
+  {
+    "city": "Bari ",
+    "iata": "BRI",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Belfast Aldergrove ",
+    "iata": "BFS",
+    "operator": "easyJet"
+  },
+  {
+    "city": "Belfast City ",
+    "iata": "BHD",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Belgrade Nikola Tesla ",
+    "iata": "BEG",
+    "operator": "Air Serbia, Transavia"
+  },
+  {
+    "city": "Bergen ",
+    "iata": "BGO",
+    "operator": "KLM"
+  },
+  {
+    "city": "Berlin Schönefeld ",
+    "iata": "SXF",
+    "operator": "easyJet"
+  },
+  {
+    "city": "Berlin tegel Otto Lilienthal ",
+    "iata": "TXL",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Berne ",
+    "iata": "BRN",
+    "operator": "SkyWork Airlines"
+  },
+  {
+    "city": "Bilbao ",
+    "iata": "BIO",
+    "operator": "KLM, KLM Cityhopper, Vueling"
+  },
+  {
+    "city": "Billund ",
+    "iata": "BLL",
+    "operator": "KLM, KLM Cityhopper, Turkish Airlines"
+  },
+  {
+    "city": "Birmingham ",
+    "iata": "BHX",
+    "operator": "FlyBE, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Boa Vista Rabil ",
+    "iata": "BVC",
+    "operator": "TUIfly Netherlands"
+  },
+  {
+    "city": "Bogota ",
+    "iata": "BOG",
+    "operator": "KLM"
+  },
+  {
+    "city": "Bologna ",
+    "iata": "BLQ",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Bordeaux ",
+    "iata": "BOD",
+    "operator": "Cityjet, easyJet, KLM"
+  },
+  {
+    "city": "Boston ",
+    "iata": "BOS",
+    "operator": "Delta Air Lines"
+  },
+  {
+    "city": "Bremen ",
+    "iata": "BRE",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Bristol ",
+    "iata": "BRS",
+    "operator": "easyJet, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Brussels ",
+    "iata": "BRU",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Budapest ",
+    "iata": "BUD",
+    "operator": "easyJet, KLM"
+  },
+  {
+    "city": "Buenos Aires Ezeiza Ministro Pistarini ",
+    "iata": "EZE",
+    "operator": "KLM"
+  },
+  {
+    "city": "Cagliari ",
+    "iata": "CAG",
+    "operator": "KLM"
+  },
+  {
+    "city": "Cairo ",
+    "iata": "CAI",
+    "operator": "Egyptair, Martinair"
+  },
+  {
+    "city": "Calgary ",
+    "iata": "YYC",
+    "operator": "Air Transat, KLM"
+  },
+  {
+    "city": "Campinas Viracopos ",
+    "iata": "VCP",
+    "operator": "Martinair"
+  },
+  {
+    "city": "Cape Town ",
+    "iata": "CPT",
+    "operator": "KLM"
+  },
+  {
+    "city": "Cardiff ",
+    "iata": "CWL",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Casablanca Mohamed V ",
+    "iata": "CMN",
+    "operator": "Royal Air Maroc, Transavia"
+  },
+  {
+    "city": "Catania ",
+    "iata": "CTA",
+    "operator": "easyJet, Transavia"
+  },
+  {
+    "city": "Chania ",
+    "iata": "CHQ",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Chengdu ",
+    "iata": "CTU",
+    "operator": "KLM"
+  },
+  {
+    "city": "Chicago O'Hare ",
+    "iata": "ORD",
+    "operator": "Emirates, KLM, Qatar Airways, United Airlines"
+  },
+  {
+    "city": "Clermont Ferrand ",
+    "iata": "CFE",
+    "operator": "Air France, HOP"
+  },
+  {
+    "city": "Columbus Rickenbacker ",
+    "iata": "LCK",
+    "operator": "Emirates"
+  },
+  {
+    "city": "Copenhagen ",
+    "iata": "CPH",
+    "operator": "Cimber, Emirates, KLM, KLM Cityhopper, Norwegian Air International, SAS"
+  },
+  {
+    "city": "Cork ",
+    "iata": "ORK",
+    "operator": "Aer Lingus"
+  },
+  {
+    "city": "Curacao ",
+    "iata": "CUR",
+    "operator": "KLM, TUIfly Netherlands"
+  },
+  {
+    "city": "Dalaman ",
+    "iata": "DLM",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Dallas ",
+    "iata": "DFW",
+    "operator": "American Airlines"
+  },
+  {
+    "city": "Dammam King Fahd ",
+    "iata": "DMM",
+    "operator": "KLM"
+  },
+  {
+    "city": "Detroit ",
+    "iata": "DTW",
+    "operator": "Delta Air Lines"
+  },
+  {
+    "city": "Doha ",
+    "iata": "DOH",
+    "operator": "Qatar Airways"
+  },
+  {
+    "city": "Doncaster Sheffield ",
+    "iata": "DSA",
+    "operator": "FlyBE"
+  },
+  {
+    "city": "Dresden ",
+    "iata": "DRS",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Dubai ",
+    "iata": "DXB",
+    "operator": "Emirates, KLM"
+  },
+  {
+    "city": "Dublin ",
+    "iata": "DUB",
+    "operator": "Aer Lingus, KLM, KLM Cityhopper, Ryanair"
+  },
+  {
+    "city": "Dubrovnik ",
+    "iata": "DBV",
+    "operator": "Croatia Airlines, easyJet, Transavia"
+  },
+  {
+    "city": "Dulles ",
+    "iata": "IAD",
+    "operator": "KLM"
+  },
+  {
+    "city": "Dusseldorf ",
+    "iata": "DUS",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "East Midlands ",
+    "iata": "EMA",
+    "operator": "FlyBE"
+  },
+  {
+    "city": "Edinburgh ",
+    "iata": "EDI",
+    "operator": "easyJet, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Edmonton ",
+    "iata": "YEG",
+    "operator": "KLM"
+  },
+  {
+    "city": "Ekaterinburg ",
+    "iata": "SVX",
+    "operator": "AirBridgeCargo"
+  },
+  {
+    "city": "Exeter ",
+    "iata": "EXT",
+    "operator": "FlyBE"
+  },
+  {
+    "city": "Faro ",
+    "iata": "FAO",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Florence ",
+    "iata": "FLR",
+    "operator": "KLM, KLM Cityhopper, Vueling"
+  },
+  {
+    "city": "Frankfurt ",
+    "iata": "FRA",
+    "operator": "Emirates, KLM, KLM Cityhopper, Lufthansa"
+  },
+  {
+    "city": "Freetown Lungi ",
+    "iata": "FNA",
+    "operator": "KLM"
+  },
+  {
+    "city": "Fuerteventura ",
+    "iata": "FUE",
+    "operator": "Transavia, Vueling"
+  },
+  {
+    "city": "Funchal ",
+    "iata": "FNC",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Gatwick ",
+    "iata": "LGW",
+    "operator": "British Airways, easyJet"
+  },
+  {
+    "city": "Gdansk ",
+    "iata": "GDN",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Geneva ",
+    "iata": "GVA",
+    "operator": "easyJet, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Genova ",
+    "iata": "GOA",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Girona ",
+    "iata": "GRO",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Glasgow ",
+    "iata": "GLA",
+    "operator": "easyJet, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Gothenburg Landvetter ",
+    "iata": "GOT",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Graz ",
+    "iata": "GRZ",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Guangzhou ",
+    "iata": "CAN",
+    "operator": "China Southern Airlines"
+  },
+  {
+    "city": "Hamburg ",
+    "iata": "HAM",
+    "operator": "Eurowings, Germanwings, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Hangzhou ",
+    "iata": "HGH",
+    "operator": "KLM"
+  },
+  {
+    "city": "Hanover ",
+    "iata": "HAJ",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Havana Jose Marti ",
+    "iata": "HAV",
+    "operator": "KLM"
+  },
+  {
+    "city": "Heathrow ",
+    "iata": "LHR",
+    "operator": "British Airways, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Helsinki ",
+    "iata": "HEL",
+    "operator": "Finnair, KLM, Norwegian Air International, Transavia"
+  },
+  {
+    "city": "Heraklion ",
+    "iata": "HER",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Hong Kong ",
+    "iata": "HKG",
+    "operator": "Cathay Pacific, KLM"
+  },
+  {
+    "city": "Houston ",
+    "iata": "IAH",
+    "operator": "KLM, United Airlines"
+  },
+  {
+    "city": "Humberside ",
+    "iata": "HUY",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Ibiza ",
+    "iata": "IBZ",
+    "operator": "easyJet, Transavia, Vueling"
+  },
+  {
+    "city": "Innsbruck ",
+    "iata": "INN",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Inverness ",
+    "iata": "INV",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Istanbul Ataturk ",
+    "iata": "IST",
+    "operator": "Atlasglobal, KLM, MNG Airlines, Onur Air, Turkish Airlines"
+  },
+  {
+    "city": "Istanbul Sabiha Gokcen ",
+    "iata": "SAW",
+    "operator": "Pegasus, Turkish Airlines"
+  },
+  {
+    "city": "Izmir Adnan Menderes ",
+    "iata": "ADB",
+    "operator": "Pegasus, Sunexpress"
+  },
+  {
+    "city": "Jakarta Soekarno Hatta ",
+    "iata": "CGK",
+    "operator": "Garuda Indonesia"
+  },
+  {
+    "city": "Jeddah ",
+    "iata": "JED",
+    "operator": "Saudia"
+  },
+  {
+    "city": "Johannesburg ",
+    "iata": "JNB",
+    "operator": "KLM, Martinair"
+  },
+  {
+    "city": "Kalamata ",
+    "iata": "KLX",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Katowice ",
+    "iata": "KTW",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Kerkyra ",
+    "iata": "CFU",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Kigali ",
+    "iata": "KGL",
+    "operator": "KLM"
+  },
+  {
+    "city": "Kilimanjaro ",
+    "iata": "JRO",
+    "operator": "KLM"
+  },
+  {
+    "city": "Kithira ",
+    "iata": "KIT",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Kos ",
+    "iata": "KGS",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Krakow ",
+    "iata": "KRK",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Kralendijk ",
+    "iata": "BON",
+    "operator": "KLM, TUIfly Netherlands"
+  },
+  {
+    "city": "Kristiansand ",
+    "iata": "KRS",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Kuala Lumpur ",
+    "iata": "KUL",
+    "operator": "KLM"
+  },
+  {
+    "city": "Kuwait City ",
+    "iata": "KWI",
+    "operator": "KLM"
+  },
+  {
+    "city": "Lagos ",
+    "iata": "LOS",
+    "operator": "KLM"
+  },
+  {
+    "city": "Lanzarote ",
+    "iata": "ACE",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Larnaca ",
+    "iata": "LCA",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Las Palmas ",
+    "iata": "LPA",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Leeds ",
+    "iata": "LBA",
+    "operator": "Jet2, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Lima Jorge Chavez ",
+    "iata": "LIM",
+    "operator": "KLM"
+  },
+  {
+    "city": "Linkoping ",
+    "iata": "LPI",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Lisbon ",
+    "iata": "LIS",
+    "operator": "easyJet, TAP Portugal, Transavia, Vueling"
+  },
+  {
+    "city": "Liverpool ",
+    "iata": "LPL",
+    "operator": "easyJet"
+  },
+  {
+    "city": "Ljubljana ",
+    "iata": "LJU",
+    "operator": "Adria Airways, Transavia"
+  },
+  {
+    "city": "London City ",
+    "iata": "LCY",
+    "operator": "BA CityFlyer, British Airways, FlyBE, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Los Angeles ",
+    "iata": "LAX",
+    "operator": "KLM"
+  },
+  {
+    "city": "Luanda ",
+    "iata": "LAD",
+    "operator": "KLM"
+  },
+  {
+    "city": "Luton ",
+    "iata": "LTN",
+    "operator": "easyJet, Vueling"
+  },
+  {
+    "city": "Luxembourg ",
+    "iata": "LUX",
+    "operator": "Cargolux, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Lyon St Exupéry ",
+    "iata": "LYS",
+    "operator": "easyJet, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Madrid ",
+    "iata": "MAD",
+    "operator": "Iberia, Iberia Express"
+  },
+  {
+    "city": "Malaga ",
+    "iata": "AGP",
+    "operator": "easyJet, Ryanair, Transavia, Vueling"
+  },
+  {
+    "city": "Malta ",
+    "iata": "MLA",
+    "operator": "Air Malta, Transavia"
+  },
+  {
+    "city": "Manchester ",
+    "iata": "MAN",
+    "operator": "easyJet, FlyBE, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Marrakech ",
+    "iata": "RAK",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Marseille ",
+    "iata": "MRS",
+    "operator": "Air France, easyJet"
+  },
+  {
+    "city": "Menorca ",
+    "iata": "MAH",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Miami ",
+    "iata": "MIA",
+    "operator": "Centurion Cargo, KLM, Martinair"
+  },
+  {
+    "city": "Mikonos ",
+    "iata": "JMK",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Milan Linate ",
+    "iata": "LIN",
+    "operator": "Alitalia, easyJet, KLM"
+  },
+  {
+    "city": "Milan Malpensa ",
+    "iata": "MXP",
+    "operator": "AirBridgeCargo, easyJet, Etihad Airways, KLM, KLM Cityhopper, NCA Nippon Cargo Airlines, Vueling"
+  },
+  {
+    "city": "Montpellier ",
+    "iata": "MPL",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Montreal ",
+    "iata": "YUL",
+    "operator": "KLM"
+  },
+  {
+    "city": "Moscow Domodedovo ",
+    "iata": "DME",
+    "operator": "AirBridgeCargo"
+  },
+  {
+    "city": "Moscow Sheremetyevo ",
+    "iata": "SVO",
+    "operator": "AirBridgeCargo"
+  },
+  {
+    "city": "Mulhouse basel ",
+    "iata": "BSL",
+    "operator": "AirBridgeCargo, easyJet, Emirates, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Mumbai ",
+    "iata": "BOM",
+    "operator": "Cathay Pacific, Jet Airways India"
+  },
+  {
+    "city": "Munich ",
+    "iata": "MUC",
+    "operator": "Air Berlin, Air Dolomiti, AirBridgeCargo, Eurowings, KLM, Lufthansa, Lufthansa Cityline, Transavia, Yangtze River Express"
+  },
+  {
+    "city": "Nador ",
+    "iata": "NDR",
+    "operator": "Air Arabia Maroc, Transavia"
+  },
+  {
+    "city": "Nantes ",
+    "iata": "NTE",
+    "operator": "Air France, HOP"
+  },
+  {
+    "city": "Naples ",
+    "iata": "NAP",
+    "operator": "easyJet, Transavia"
+  },
+  {
+    "city": "New York JFK ",
+    "iata": "JFK",
+    "operator": "Kalitta Air"
+  },
+  {
+    "city": "Newark ",
+    "iata": "EWR",
+    "operator": "Delta Air Lines, United Airlines"
+  },
+  {
+    "city": "Newcastle ",
+    "iata": "NCL",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Nice ",
+    "iata": "NCE",
+    "operator": "easyJet, KLM, KLM Cityhopper, Transavia"
+  },
+  {
+    "city": "Ningbo ",
+    "iata": "NGB",
+    "operator": "China Cargo"
+  },
+  {
+    "city": "Norwich ",
+    "iata": "NWI",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Nürnberg ",
+    "iata": "NUE",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Olbia ",
+    "iata": "OLB",
+    "operator": "easyJet, Transavia"
+  },
+  {
+    "city": "Orlando Sanford ",
+    "iata": "SFB",
+    "operator": "TUIfly Netherlands"
+  },
+  {
+    "city": "Orly ",
+    "iata": "ORY",
+    "operator": "Transavia, Transavia France"
+  },
+  {
+    "city": "Osaka Kansai ",
+    "iata": "KIX",
+    "operator": "KLM"
+  },
+  {
+    "city": "Oslo ",
+    "iata": "OSL",
+    "operator": "AirBridgeCargo, Emirates, KLM, KLM Cityhopper, Norwegian Air Shuttle, SAS"
+  },
+  {
+    "city": "Palermo ",
+    "iata": "PMO",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Palma de Mallorca ",
+    "iata": "PMI",
+    "operator": "easyJet, Transavia, Vueling"
+  },
+  {
+    "city": "Panama City Tocumen ",
+    "iata": "PTY",
+    "operator": "KLM"
+  },
+  {
+    "city": "Paphos ",
+    "iata": "PFO",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Paramaribo Zanderij ",
+    "iata": "PBM",
+    "operator": "KLM, Surinam Airways, TUIfly Netherlands"
+  },
+  {
+    "city": "Paris Charles De Gaulle ",
+    "iata": "CDG",
+    "operator": "AirBridgeCargo, Emirates"
+  },
+  {
+    "city": "Philadelphia ",
+    "iata": "PHL",
+    "operator": "American Airlines"
+  },
+  {
+    "city": "Philipsburg ",
+    "iata": "SXM",
+    "operator": "KLM, TUIfly Netherlands"
+  },
+  {
+    "city": "Pisa ",
+    "iata": "PSA",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Portland ",
+    "iata": "PDX",
+    "operator": "Delta Air Lines"
+  },
+  {
+    "city": "Porto ",
+    "iata": "OPO",
+    "operator": "Portugalia Airlines, TAP Portugal, Transavia, Vueling"
+  },
+  {
+    "city": "Prague ",
+    "iata": "PRG",
+    "operator": "easyJet, KLM Cityhopper"
+  },
+  {
+    "city": "Preveza Lefkas ",
+    "iata": "PVK",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Quito ",
+    "iata": "UIO",
+    "operator": "KLM"
+  },
+  {
+    "city": "Rennes St Jacques ",
+    "iata": "RNS",
+    "operator": "Air France, HOP"
+  },
+  {
+    "city": "Reus ",
+    "iata": "REU",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Reykjavik ",
+    "iata": "KEF",
+    "operator": "Icelandair, WOW Air"
+  },
+  {
+    "city": "Rhodes ",
+    "iata": "RHO",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Richmond Vancouver ",
+    "iata": "YVR",
+    "operator": "Air Transat, KLM"
+  },
+  {
+    "city": "Riga ",
+    "iata": "RIX",
+    "operator": "Air Baltic"
+  },
+  {
+    "city": "Rio De Janeiro ",
+    "iata": "GIG",
+    "operator": "KLM"
+  },
+  {
+    "city": "Riyadh ",
+    "iata": "RUH",
+    "operator": "Saudia"
+  },
+  {
+    "city": "Rome Fiumicino ",
+    "iata": "FCO",
+    "operator": "Alitalia, easyJet, KLM, Vueling"
+  },
+  {
+    "city": "Sal ",
+    "iata": "SID",
+    "operator": "TUIfly Netherlands"
+  },
+  {
+    "city": "San Francisco ",
+    "iata": "SFO",
+    "operator": "KLM"
+  },
+  {
+    "city": "Santa Cruz De La Palma ",
+    "iata": "SPC",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Santiago De Compostela ",
+    "iata": "SCQ",
+    "operator": "Vueling"
+  },
+  {
+    "city": "Santorini ",
+    "iata": "JTR",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Sao Paulo Aeroporto Internacional Guarulhos ",
+    "iata": "GRU",
+    "operator": "KLM"
+  },
+  {
+    "city": "Sao Vicente ",
+    "iata": "VXE",
+    "operator": "TUIfly Netherlands"
+  },
+  {
+    "city": "Seattle ",
+    "iata": "SEA",
+    "operator": "Delta Air Lines"
+  },
+  {
+    "city": "Sevilla ",
+    "iata": "SVQ",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Shanghai Pu Dong ",
+    "iata": "PVG",
+    "operator": "Air China, China Cargo"
+  },
+  {
+    "city": "Sharjah ",
+    "iata": "SHJ",
+    "operator": "Singapore Airlines"
+  },
+  {
+    "city": "Singapore Changi ",
+    "iata": "SIN",
+    "operator": "KLM, Singapore Airlines"
+  },
+  {
+    "city": "Sofia ",
+    "iata": "SOF",
+    "operator": "Bulgaria Air, Transavia"
+  },
+  {
+    "city": "Southampton ",
+    "iata": "SOU",
+    "operator": "FlyBE, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Southend ",
+    "iata": "SEN",
+    "operator": "easyJet"
+  },
+  {
+    "city": "Split ",
+    "iata": "SPU",
+    "operator": "easyJet, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "St Petersburg Pulkovo ",
+    "iata": "LED",
+    "operator": "KLM"
+  },
+  {
+    "city": "Stansted ",
+    "iata": "STN",
+    "operator": "Cargolux, easyJet, Swiftair"
+  },
+  {
+    "city": "Stavanger ",
+    "iata": "SVG",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Stockholm ",
+    "iata": "ARN",
+    "operator": "Cityjet, KLM, Korean Air, Norwegian Air Shuttle, SAS"
+  },
+  {
+    "city": "Strasbourg ",
+    "iata": "SXB",
+    "operator": "Air France, HOP"
+  },
+  {
+    "city": "Stuttgart ",
+    "iata": "STR",
+    "operator": "Eurowings, Germanwings, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Tallinn Ulemiste ",
+    "iata": "TLL",
+    "operator": "Air Baltic, LOT Polish Airlines, Regional Jet"
+  },
+  {
+    "city": "Tangier ",
+    "iata": "TNG",
+    "operator": "Air Arabia Maroc, Royal Air Maroc"
+  },
+  {
+    "city": "Tbilisi ",
+    "iata": "TBS",
+    "operator": "Coyne Airways, Etihad Airways, Georgian Airways"
+  },
+  {
+    "city": "Teesside ",
+    "iata": "MME",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Tehran Imam Khomeini ",
+    "iata": "IKA",
+    "operator": "Iran Air, KLM"
+  },
+  {
+    "city": "Tel Aviv Yafo Ben Gurion ",
+    "iata": "TLV",
+    "operator": "Arkia Israeli Airlines, easyJet, El Al, KLM, Transavia"
+  },
+  {
+    "city": "Tenerife ",
+    "iata": "TFS",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Thessaloniki ",
+    "iata": "SKG",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Tianjin Binhai ",
+    "iata": "TSN",
+    "operator": "Air China, China Cargo, Yangtze River Express"
+  },
+  {
+    "city": "Tirana ",
+    "iata": "TIA",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Tokyo ",
+    "iata": "NRT",
+    "operator": "KLM, NCA Nippon Cargo Airlines"
+  },
+  {
+    "city": "Toronte ",
+    "iata": "YYZ",
+    "operator": "Air Canada, Air Transat, Jet Airways India, KLM"
+  },
+  {
+    "city": "Torp ",
+    "iata": "TRF",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Toulouse ",
+    "iata": "TLS",
+    "operator": "easyJet, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Trondheim ",
+    "iata": "TRD",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Tunis ",
+    "iata": "TUN",
+    "operator": "Tunisair"
+  },
+  {
+    "city": "Turin ",
+    "iata": "TRN",
+    "operator": "KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Valencia ",
+    "iata": "VLC",
+    "operator": "Transavia, Vueling"
+  },
+  {
+    "city": "Varadero ",
+    "iata": "VRA",
+    "operator": "TUIfly Netherlands"
+  },
+  {
+    "city": "Venice ",
+    "iata": "VCE",
+    "operator": "easyJet, KLM, KLM Cityhopper"
+  },
+  {
+    "city": "Verona ",
+    "iata": "VRN",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Vienna Schwechat ",
+    "iata": "VIE",
+    "operator": "Austrian, easyJet, KLM"
+  },
+  {
+    "city": "Vilnius ",
+    "iata": "VNO",
+    "operator": "Air Baltic"
+  },
+  {
+    "city": "Volos ",
+    "iata": "VOL",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Warsaw ",
+    "iata": "WAW",
+    "operator": "KLM, LOT Polish Airlines"
+  },
+  {
+    "city": "Xi An Xianyang ",
+    "iata": "XIY",
+    "operator": "China Cargo"
+  },
+  {
+    "city": "Zagreb ",
+    "iata": "ZAG",
+    "operator": "KLM Cityhopper"
+  },
+  {
+    "city": "Zakinthos ",
+    "iata": "ZTH",
+    "operator": "Transavia"
+  },
+  {
+    "city": "Zaragoza ",
+    "iata": "ZAZ",
+    "operator": "Air China, China Cargo, Emirates"
+  },
+  {
+    "city": "Zurich ",
+    "iata": "ZRH",
+    "operator": "easyJet, Edelweiss Air, KLM, KLM Cityhopper, SWISS, Swiss Global, Transavia"
+  }
+]

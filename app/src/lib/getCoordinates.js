@@ -1,5 +1,3 @@
-import { get } from 'http';
-import { cleanDestinations } from './cleanDestinations.js';
 import fs from 'fs/promises';
 
 const cacheFileName = 'static/coordinateData.json';
@@ -26,7 +24,9 @@ const getCoordinate = async () => {
 
 const fetchNewDataInBackground = async () => {
     try {
-        const cities = await cleanDestinations();
+        let cityJson = await fs.readFile('static/destinations.json');
+        const cities = JSON.parse(cityJson);
+
         let coordinateData = [{
             iata: 'AMS',
             lat: 52.308039,
@@ -40,13 +40,14 @@ const fetchNewDataInBackground = async () => {
         for (let city of cities) {
             try {
                 let airport = airports.find((airport) => airport.column_1 === city.iata);
-
+                
                 if (airport) {
                     coordinateData.push({
                         iata: airport.column_1,
                         lat: airport.latitude,
                         long: airport.longitude,
-                        city: airport.city_name
+                        city: airport.city_name,
+                        operator: city.operator
                     });
                 }
             } catch (err) {
@@ -89,5 +90,4 @@ const cacheData = async (data) => {
     }
 };
 
-getCoordinate();
-// export { getCoordinate };
+export { getCoordinate };

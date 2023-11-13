@@ -1,8 +1,8 @@
-// import { getCoordinate } from '$lib/fetchCoordinates.js';
+import { getCoordinate } from '$lib/getCoordinates.js';
 
-// export const load = async () => {
-//     const coordinateData = await getCoordinate();
-//     return {
-//         data: coordinateData
-//     };
-// };
+export const load = async () => {
+    const coordinateData = await getCoordinate();
+    return {
+        data: coordinateData
+    };
+};
