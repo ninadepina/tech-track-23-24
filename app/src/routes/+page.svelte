@@ -1,10 +1,11 @@
 <script>
     import { onMount } from 'svelte';
-    import SwitchButton from '$lib/SwitchButton.svelte';
+    import LayerSwitchButton from '$lib/LayerSwitchButton.svelte';
     import Map from '$lib/Map.svelte';
     import { map } from '$lib/renderMap.js';
 
     let labels = ['Dots', 'Lines'];
+    let labelsLayer = ['Dots', 'Lines'];
 
     let dotsActive = true;
     let linesActive = false;
@@ -42,7 +43,7 @@
 </svelte:head>
 
 <h1>Upcoming flights from/to Schiphol</h1>
-<SwitchButton {labels} {toggleLayer} />
+<LayerSwitchButton {labelsLayer} {toggleLayer} />
 <Map />
 
 <style>

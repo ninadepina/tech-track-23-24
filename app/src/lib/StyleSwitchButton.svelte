@@ -1,27 +1,21 @@
 <script>
-    export let labels = [];
-    export let toggleLayer;
-    let activeLayer = labels[0];
-
-    const handleSwitch = (e) => {
-        const newLayer = e.target.value;
-        toggleLayer(activeLayer, newLayer);
-        activeLayer = newLayer;
-    };
 </script>
 
-<div class="switch">
-    {#each labels as label (label)}
-        <input
-            type="radio"
-            id={`radio-${label}`}
-            name="switch"
-            value={label}
-            checked={activeLayer === label}
-            on:change={handleSwitch}
-        />
-        <label for={`radio-${label}`}>{label}</label>
-    {/each}
+<div id="menu" class="switch">
+    <input id="streets-v12" type="radio" name="rtoggle" value="streets" checked="checked" />
+    <label for="streets-v12">streets</label>
+
+    <input id="satellite-streets-v12" type="radio" name="rtoggle" value="satellite" />
+    <label for="satellite-streets-v12">satellite</label>
+
+    <input id="outdoors-v12" type="radio" name="rtoggle" value="outdoors" />
+    <label for="outdoors-v12">outdoors</label>
+
+    <input id="light-v11" type="radio" name="rtoggle" value="light" />
+    <label for="light-v11">light</label>
+
+    <input id="dark-v11" type="radio" name="rtoggle" value="dark" />
+    <label for="dark-v11">dark</label>
 </div>
 
 <style>
@@ -49,6 +43,7 @@
         font-weight: var(--font-weight-text);
         line-height: 1;
         text-align: center;
+        text-transform: capitalize;
         color: rgba(0, 0, 0, 0.6);
         background-color: var(--color-light);
         border: 1px solid var(--color-dark);
