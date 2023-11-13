@@ -22,7 +22,7 @@
     .switch {
         position: relative;
         display: flex;
-        margin-left: var(--standard-margin);
+        padding-right: 1px;
         overflow: hidden;
         z-index: 1;
     }

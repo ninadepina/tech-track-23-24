@@ -52,12 +52,23 @@
     <title>Schiphol</title>
 </svelte:head>
 
-<h1>Upcoming flights from/to Schiphol</h1>
-<LayerSwitchButton {labelsLayer} {toggleLayer} />
-<StyleSwitchButton />
+<div id="mapInfo">
+    <h1>Upcoming flights from/to Schiphol</h1>
+    <div>
+        <LayerSwitchButton {labelsLayer} {toggleLayer} />
+        <StyleSwitchButton />
+    </div>
+</div>
 <Map />
 
 <style>
+    #mapInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+    }
+
     h1 {
         position: relative;
         display: inline-block;
@@ -71,5 +82,11 @@
         background-color: var(--color-light);
         border-radius: var(--border-radius);
         z-index: 1;
+    }
+
+    #mapInfo > div {
+        display: flex;
+        gap: var(--standard-margin);
+        margin: 0 0 var(--standard-margin) var(--standard-margin);
     }
 </style>
