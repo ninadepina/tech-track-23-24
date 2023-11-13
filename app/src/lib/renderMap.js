@@ -136,8 +136,15 @@ const renderMap = () => {
                     }
                 });
             }
-            
+
             if (!map.getLayer('other-dots')) {
+                const currentStyleURL = map.getStyle().name;
+                let circleColor = '#292f36';
+                
+                if (currentStyleURL === 'Mapbox Dark' || currentStyleURL === 'Mapbox Satellite Streets') {
+                    circleColor = '#fff';
+                }
+
                 map.addSource('dots', {
                     type: 'geojson',
                     data: {
@@ -164,7 +171,7 @@ const renderMap = () => {
                     },
                     paint: {
                         'circle-radius': 5,
-                        'circle-color': '#292f36',
+                        'circle-color': circleColor,
                         'circle-stroke-color': 'rgba(255, 255, 255, 0)',
                         'circle-stroke-width': 5
                     },
