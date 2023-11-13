@@ -16,7 +16,7 @@ const data = [
 	}
 ];
 
-function generateTable() {
+const generateTable = () => {
 	// const table = document.querySelector('table');
 	const thead = document.querySelector('thead');
 	const tbody = document.querySelector('tbody');

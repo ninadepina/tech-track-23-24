@@ -28,7 +28,7 @@ let data = [
 	}
 ];
 
-function transformArrOfObj(data) {
+const transformArrOfObj = (data) => {
 	data = data.map((item) => {
 		return {
 			id: parseInt(item.id, 10),
@@ -40,7 +40,7 @@ function transformArrOfObj(data) {
 	return data;
 }
 
-function generateTable() {
+const generateTable = () => {
 	const transformedData = transformArrOfObj(data);
 	const thead = document.querySelector('thead');
 	const tbody = document.querySelector('tbody');

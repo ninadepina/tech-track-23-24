@@ -28,7 +28,7 @@ let data = [
 	}
 ];
 
-function transformArrOfObj(data) {
+const transformArrOfObj = (data) => {
 	data = data
 		.filter((item) => !isNaN(parseInt(item.age, 10)))
 		.map((item) => {
