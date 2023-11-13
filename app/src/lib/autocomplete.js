@@ -143,6 +143,23 @@ const autocomplete = (input, array) => {
             }
         }
     };
+
+    document.body.addEventListener('click', (e) => {
+        const autocompleteLists = document.getElementsByClassName('autocompleteItems');
+        const isClickInsideInput = e.target === input;
+        let isClickInsideAutocompleteList = false;
+    
+        for (let i = 0; i < autocompleteLists.length; i++) {
+            if (e.target === autocompleteLists[i] || autocompleteLists[i].contains(e.target)) {
+                isClickInsideAutocompleteList = true;
+                break;
+            }
+        }
+    
+        if (!isClickInsideInput && !isClickInsideAutocompleteList) {
+            closeAllLists();
+        }
+    });
 };
 
 export { autocomplete, fetchData };
