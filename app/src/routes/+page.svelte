@@ -85,9 +85,9 @@
     h1 {
         position: relative;
         display: inline-block;
-        width: 290px;
+        width: var(--searchbar-width);
         margin: var(--standard-margin);
-        padding: 0.1em 0.4em;
+        padding: 0.1em;
         font-weight: var(--font-weight-title);
         word-wrap: break-word;
         text-align: center;

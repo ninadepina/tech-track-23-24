@@ -28,11 +28,11 @@
     }
 
     input[type='search'] {
-        width: 290px;
+        width: var(--searchbar-width);
         height: 2em;
         margin-left: var(--standard-margin);
         font-family: var(--font-family);
-        text-indent: 1.2em;
+        text-indent: 0.8em;
         border: none;
         border-radius: var(--border-radius);
     }

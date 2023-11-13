@@ -30,6 +30,8 @@
 
     --border-color-card: #e6e7ed;
     --border-radius: 0.25rem;
+
+    --searchbar-width: 280px;
 }
 
 body {
@@ -193,7 +195,7 @@ body {
     top: 100%;
     left: 0;
     right: 0;
-    width: 290px;
+    width: var(--searchbar-width);
     max-height: 7.2em;
     margin-left: var(--standard-margin);
     border: none;
