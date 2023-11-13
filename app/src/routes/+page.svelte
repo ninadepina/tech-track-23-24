@@ -1,10 +1,10 @@
 <script>
     import { onMount } from 'svelte';
     import LayerSwitchButton from '$lib/LayerSwitchButton.svelte';
+    import StyleSwitchButton from '$lib/StyleSwitchButton.svelte';
     import Map from '$lib/Map.svelte';
     import { map } from '$lib/renderMap.js';
 
-    let labels = ['Dots', 'Lines'];
     let labelsLayer = ['Dots', 'Lines'];
 
     let dotsActive = true;
@@ -33,6 +33,16 @@
         
         document.querySelector('.mapboxgl-ctrl-bottom-left').removeChild(scaleControl);
         document.querySelector('.mapboxgl-ctrl-bottom-right').appendChild(scaleControl);
+
+        const layerList = document.getElementById('menu');
+        const inputs = layerList.getElementsByTagName('input');
+
+        for (const input of inputs) {
+            input.onclick = (layer) => {
+                const layerId = layer.target.id;
+                map.setStyle('mapbox://styles/mapbox/' + layerId);
+            };
+        }
     });
 </script>
 
@@ -44,6 +54,7 @@
 
 <h1>Upcoming flights from/to Schiphol</h1>
 <LayerSwitchButton {labelsLayer} {toggleLayer} />
+<StyleSwitchButton />
 <Map />
 
 <style>
