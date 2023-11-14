@@ -7,9 +7,9 @@ let marker;
 
 const fetchData = async () => {
     try {
-        const data = await (await fetch('coordinateData.json')).json();
+        const { data } = await (await fetch('coordinateData.json')).json();
 
-        processedData = data.data.map((item) => ({
+        processedData = data.map((item) => ({
             label: `${item.city} (${item.iata})`,
             coordinates: { lat: item.lat, long: item.long }
         }));
@@ -100,7 +100,7 @@ const autocomplete = (input, array) => {
         }
     });
 
-    input.addEventListener('keydown', function (e) {
+    input.addEventListener('keydown', (e) => {
         // autocomplete container (for readability: 'x')
         let x = document.querySelector('#searchAutocompleteList');
         if (x) x = x.getElementsByTagName('li');
@@ -134,13 +134,14 @@ const autocomplete = (input, array) => {
         removeActive(x);
         if (currentFocus >= x.length) currentFocus = x.length - 1;
         if (currentFocus < 0) currentFocus = 0;
-        x[currentFocus].classList.add('autocompleteActive');
+        const currentNode = x[currentFocus];
+        currentNode.classList.add('autocompleteActive');
 
         // makes sure the active suggestion is always visible
-        if (x[currentFocus].offsetTop + x[currentFocus].offsetHeight > x[0].parentNode.scrollTop + x[0].parentNode.offsetHeight) {
-            x[0].parentNode.scrollTop = x[currentFocus].offsetTop + x[currentFocus].offsetHeight - x[0].parentNode.offsetHeight;
-        } else if (x[currentFocus].offsetTop < x[0].parentNode.scrollTop) {
-            x[0].parentNode.scrollTop = x[currentFocus].offsetTop;
+        if (currentNode.offsetTop + currentNode.offsetHeight > x[0].parentNode.scrollTop + x[0].parentNode.offsetHeight) {
+            x[0].parentNode.scrollTop = currentNode.offsetTop + currentNode.offsetHeight - x[0].parentNode.offsetHeight;
+        } else if (currentNode.offsetTop < x[0].parentNode.scrollTop) {
+            x[0].parentNode.scrollTop = currentNode.offsetTop;
         }
     };
 
