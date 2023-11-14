@@ -77,10 +77,7 @@ const fetchNewDataInBackground = async () => {
 const findAirport = async (airports, city) => {
     return new Promise((resolve, reject) => {
         try {
-            let airport = airports.find((airport) =>
-                airport.airport_name.trim().toLowerCase().includes(city.city.trim().toLowerCase()) 
-                || city.city.trim().toLowerCase().includes(airport.airport_name.trim().toLowerCase())) 
-                || airports.find(airport => airport.city_name.trim().toLowerCase().includes(city.city.trim().toLowerCase()));
+            let airport = airports.find(airport => airport.city_name.trim().toLowerCase() === (city.city.trim().toLowerCase()) || airport.airport_name.trim().toLowerCase() === (city.city.trim().toLowerCase()) || city.city.trim().toLowerCase().includes(airport.airport_name.trim().toLowerCase()));
 
             resolve(airport);
         } catch (err) {
