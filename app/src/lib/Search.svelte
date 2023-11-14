@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import { autocomplete, fetchData } from './autocomplete.js';
+    import { autocomplete, fetchData, marker } from './autocomplete.js';
 
     let input;
     let suggestions = [];
@@ -8,6 +8,11 @@
     onMount(async () => {
         suggestions = await fetchData();
         autocomplete(input, suggestions);
+
+        const clearInput = document.querySelector('#search');
+        clearInput.addEventListener('search', () => {
+            if (marker) marker.remove();
+        });
     });
 </script>
 
