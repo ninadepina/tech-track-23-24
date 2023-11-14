@@ -1,7 +1,9 @@
+import mapboxgl from 'mapbox-gl';
 import { map } from './renderMap.js';
 
 let hasSuggestions = true;
 let processedData = [];
+let marker;
 
 const fetchData = async () => {
     try {
@@ -17,6 +19,11 @@ const fetchData = async () => {
     } catch (err) {
         console.error('Error fetching or processing data:', err);
     }
+};
+
+const updateMapMarker = (coordinates) => {
+    if (marker) marker.remove();
+    marker = new mapboxgl.Marker({ color: '#914bd2' }).setLngLat(coordinates).addTo(map);
 };
 
 const autocomplete = (input, array) => {
@@ -64,6 +71,8 @@ const autocomplete = (input, array) => {
                             zoom: 4,
                             essential: true
                         });
+
+                        updateMapMarker([selectedCoordinates.long, selectedCoordinates.lat]);
                     }
 
                     input.value = selectedLabel;
