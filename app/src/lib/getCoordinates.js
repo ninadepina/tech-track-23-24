@@ -1,3 +1,4 @@
+import { scrapeAll } from './scraper/webscraper';
 import fs from 'fs/promises';
 
 const cacheFileName = 'static/coordinateData.json';
@@ -24,8 +25,15 @@ const getCoordinate = async () => {
 
 const fetchNewDataInBackground = async () => {
     try {
-        let cityJson = await fs.readFile('static/destinations.json');
-        const cities = JSON.parse(cityJson);
+        let cities;
+        let data = await scrapeAll();
+
+        if (!data) {
+            data = await fs.readFile('static/destinations.json');
+            cities = JSON.parse(data);
+        } else {
+            cities = data;
+        }
 
         let coordinateData = [{
             iata: 'AMS',
@@ -39,7 +47,7 @@ const fetchNewDataInBackground = async () => {
 
         for (let city of cities) {
             try {
-                let airport = airports.find((airport) => airport.column_1 === city.iata);
+                let airport = await findAirport(airports, city);
                 
                 if (airport) {
                     coordinateData.push({
@@ -64,6 +72,21 @@ const fetchNewDataInBackground = async () => {
     } catch (err) {
         console.error(`Oops, something went wrong while fetching new data: ${err}`);
     }
+};
+
+const findAirport = async (airports, city) => {
+    return new Promise((resolve, reject) => {
+        try {
+            let airport = airports.find((airport) =>
+                airport.airport_name.trim().toLowerCase().includes(city.city.trim().toLowerCase()) 
+                || city.city.trim().toLowerCase().includes(airport.airport_name.trim().toLowerCase())) 
+                || airports.find(airport => airport.city_name.trim().toLowerCase().includes(city.city.trim().toLowerCase()));
+
+            resolve(airport);
+        } catch (err) {
+            reject(err);
+        }
+    });
 };
 
 const readCachedData = async () => {

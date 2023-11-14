@@ -1,33 +1,20 @@
 import puppeteer from 'puppeteer';
-import fs from 'fs/promises';
 
-const start = async () => {
+const scrapeDestinations = async (url) => {
     const browser = await puppeteer.launch({ headless: 'new' });
     const page = await browser.newPage();
-    await page.goto('https://www.schipholairport.eu/flights.shtml', {
-        waitUntil: 'domcontentloaded'
-    });
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
 
     const data = await page.evaluate(() => {
-        const items = document.querySelectorAll('div.data3.alone .item');
+        const items = document.querySelectorAll('li.rw-nested-list__item');
         const extractedData = [];
 
         items.forEach((item) => {
-            const city = item.querySelector('.col1 span');
-            const iata = item.querySelector('.col2 span');
-            const operator = item.querySelector('.col3 span');
+            const city = item.innerHTML.trim();
 
-            if (city && iata) {
-                const cityText = city.textContent.trim().replace('Airport', '');
-                const iataText = iata.textContent.trim();
-                const operatorText = operator.textContent.trim().replace(' and', ',');
-
-                extractedData.push({
-                    city: cityText,
-                    iata: iataText,
-                    operator: operatorText
-                });
-            }
+            extractedData.push({
+                city: city
+            });
         });
 
         return extractedData;
@@ -35,8 +22,20 @@ const start = async () => {
 
     await browser.close();
 
-    const filePath = 'static/destinations.json';
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
-}
+    return data;
+};
 
-start();
+const urls = [
+    'https://www.schiphol.nl/en/route-development/airport-facts/european-destinations/',
+    'https://www.schiphol.nl/en/route-development/airport-facts/intercontinental-destinations/'
+];
+
+const scrapeAll = async () => {
+    const promises = urls.map((url) => scrapeDestinations(url));
+    const results = await Promise.all(promises);
+
+    const combinedResults = [].concat(...results);
+    return combinedResults;
+};
+
+export { scrapeAll };
