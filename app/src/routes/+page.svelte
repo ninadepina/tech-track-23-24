@@ -75,10 +75,12 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        width: fit-content;
         height: 100vh;
     }
 
     #mapInfo > div {
+        width: fit-content;
         z-index: 1;
     }
 
