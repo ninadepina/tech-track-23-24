@@ -195,7 +195,6 @@ const renderMap = () => {
                     filter: ['==', ['get', 'index'], 0]
                 });
             }
-            const popups = {};
             // click effect for 'other-dots'
             map.on('click', 'other-dots', async (e) => {
                 const { properties: { index } } = e.features[0];
