@@ -15,6 +15,8 @@ const fetchData = async () => {
         }));
 
         const suggestions = processedData.map((item) => item.label);
+        suggestions.sort();
+        
         return suggestions;
     } catch (err) {
         console.error('Error fetching or processing data:', err);
