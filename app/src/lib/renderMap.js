@@ -440,13 +440,15 @@ const renderMap = () => {
                     htmlContent = `<div class="emptyCard"><img src="empty.png" alt="Schiphol" /><p>no data available for [${iata}]</p></div>`;
                 }
 
-                if (popups[index]) {
-                    popups[index].remove();
-                    delete popups[index];
-                } else {
-                    popups[index] = new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map);
+                if (popup) {
+                    popup.remove();
+                    popup = null;
                 }
 
+                !popup 
+                    ? popup = new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map) 
+                    : popup.setHTML(htmlContent);
+                
                 iataData = null;
             });
 
