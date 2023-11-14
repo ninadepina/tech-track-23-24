@@ -195,6 +195,7 @@ const renderMap = () => {
                     filter: ['==', ['get', 'index'], 0]
                 });
             }
+            const popups = {};
             // click effect for 'other-dots'
             map.on('click', 'other-dots', async (e) => {
                 const { properties: { index } } = e.features[0];
@@ -445,14 +446,12 @@ const renderMap = () => {
                     `;
                 }
 
-                if (popup) {
-                    popup.remove();
-                    popup = null;
+                if (popups[index]) {
+                    popups[index].remove();
+                    delete popups[index];
+                } else {
+                    popups[index] = new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map);
                 }
-
-                !popup 
-                    ? popup = new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map) 
-                    : popup.setHTML(htmlContent);
 
                 iataData = null;
             });
