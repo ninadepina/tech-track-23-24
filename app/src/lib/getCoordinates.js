@@ -1,4 +1,4 @@
-import { scrapeAll } from './scraper/webscraper';
+import { scrapeAll } from './scraper/webscraper.js';
 import fs from 'fs/promises';
 
 const cacheFileName = 'static/coordinateData.json';
