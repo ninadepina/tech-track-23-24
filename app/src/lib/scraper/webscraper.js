@@ -7,14 +7,10 @@ const scrapeDestinations = async (url) => {
 
     const data = await page.evaluate(() => {
         const items = document.querySelectorAll('li.rw-nested-list__item');
-        const extractedData = [];
 
-        items.forEach((item) => {
+        const extractedData = Array.from(items).map((item) => {
             const city = item.innerHTML.trim();
-
-            extractedData.push({
-                city: city
-            });
+            return { city };
         });
 
         return extractedData;
