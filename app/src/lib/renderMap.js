@@ -21,6 +21,16 @@ const getIATAData = async (selectedIATA) => {
     }
 };
 
+const handleMouseEvents = (map, layer, cursor) => {
+    map.on('mouseenter', layer, () => {
+        map.getCanvas().style.cursor = cursor;
+    });
+
+    map.on('mouseleave', layer, () => {
+        map.getCanvas().style.cursor = '';
+    });
+};
+
 const renderMap = () => {
     mapboxgl.accessToken = config.accessToken;
     if (mapboxgl.getRTLTextPluginStatus() === 'unavailable') {
@@ -265,25 +275,15 @@ const renderMap = () => {
 
                 new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map);
             });
-
-            const handleMouseEvents = (layer, cursor) => {
-                map.on('mouseenter', layer, () => {
-                    map.getCanvas().style.cursor = cursor;
-                });
             
-                map.on('mouseleave', layer, () => {
-                    map.getCanvas().style.cursor = '';
-                });
-            };
-            
-            handleMouseEvents('other-dots', 'pointer');
-            handleMouseEvents('schiphol-dot', 'pointer');
+            handleMouseEvents(map, 'other-dots', 'pointer');
+            handleMouseEvents(map, 'schiphol-dot', 'pointer');
         });
 
         map.on('idle', () => {
             // prettier-ignore
             if (!map.getLayer('lines-layer') || !map.getLayer('other-dots') || !map.getLayer('schiphol-dot')) {
-                return; // if layers not added to map, abort
+                return; // layers not added to map, abort
             }
             // prettier-ignore
             const toggleLayerVisibility = (e) => {
@@ -300,10 +300,8 @@ const renderMap = () => {
                 }
             };
 
-            // enumerate ids of layers
             const toggleableLayerIds = ['lines-layer', 'other-dots'];
 
-            // corresponding toggle button for each layer
             document.addEventListener('DOMContentLoaded', () => {
                 toggleableLayerIds.forEach((id) => {
                     const button = document.getElementById(id);
