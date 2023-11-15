@@ -265,6 +265,19 @@ const renderMap = () => {
 
                 new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map);
             });
+
+            const handleMouseEvents = (layer, cursor) => {
+                map.on('mouseenter', layer, () => {
+                    map.getCanvas().style.cursor = cursor;
+                });
+            
+                map.on('mouseleave', layer, () => {
+                    map.getCanvas().style.cursor = '';
+                });
+            };
+            
+            handleMouseEvents('other-dots', 'pointer');
+            handleMouseEvents('schiphol-dot', 'pointer');
         });
 
         map.on('idle', () => {
