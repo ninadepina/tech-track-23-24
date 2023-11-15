@@ -2,6 +2,8 @@ import { scrapeAll } from './scraper/webscraper.js';
 import fs from 'fs/promises';
 
 const cacheFileName = 'static/coordinateData.json';
+const airportsFileName = 'static/airports-code@public.json';
+const countryCodesFileName = 'static/country-codes.json';
 
 const getCoordinate = async () => {
     try {
@@ -35,14 +37,21 @@ const fetchNewDataInBackground = async () => {
             cities = data;
         }
 
+        const countryCodesData = await fs.readFile(countryCodesFileName);
+        const countryCodes = JSON.parse(countryCodesData);
+
+        console.log(countryCodes);
+
         let coordinateData = [{
             iata: 'AMS',
             lat: 52.308039,
             long: 4.762197,
-            city: 'Amsterdam'
+            city: 'Amsterdam',
+            country: 'Netherlands',
+            countryCode: 'nl'
         }];
 
-        let jsonData = await fs.readFile('static/airports-code@public.json');
+        let jsonData = await fs.readFile(airportsFileName);
         let airports = JSON.parse(jsonData);
 
         for (let city of cities) {
@@ -50,12 +59,15 @@ const fetchNewDataInBackground = async () => {
                 let airport = await findAirport(airports, city);
                 
                 if (airport) {
+                    let countryCode = Object.keys(countryCodes).find(key => countryCodes[key] === airport.country_name);
+                    
                     coordinateData.push({
                         iata: airport.column_1,
                         lat: airport.latitude,
                         long: airport.longitude,
                         city: airport.city_name,
-                        operator: city.operator
+                        country: airport.country_name,
+                        countryCode: countryCode
                     });
                 }
             } catch (err) {
