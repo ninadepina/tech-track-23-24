@@ -6,6 +6,8 @@ const config = {
     accessToken: 'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA',
     dataFile: 'coordinateData.json',
     RTLPlugin: 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js',
+    lightModeColor: '#292f36',
+    darkModeColor: '#fff'
 };
 
 let map;
@@ -13,7 +15,6 @@ let iataData = null;
 
 const getIATAData = async (selectedIATA) => {
     const url = `/api/flights?iata=${selectedIATA}`;
-
     const res = await fetch(url);
 
     if (res.ok) {
@@ -113,10 +114,10 @@ const renderMap = () => {
 
             if (!map.getLayer('lines-layer')) {
                 const currentStyleURL = map.getStyle().name;
-                let lineColor = '#292f36';
+                let lineColor = config.lightModeColor;
                 
                 if (currentStyleURL === 'Mapbox Dark' || currentStyleURL === 'Mapbox Satellite Streets') {
-                    lineColor = '#fff';
+                    lineColor = config.darkModeColor;
                 }
 
                 map.addSource('lines', {
@@ -156,10 +157,10 @@ const renderMap = () => {
 
             if (!map.getLayer('other-dots')) {
                 const currentStyleURL = map.getStyle().name;
-                let circleColor = '#292f36';
+                let circleColor = config.lightModeColor;
                 
                 if (currentStyleURL === 'Mapbox Dark' || currentStyleURL === 'Mapbox Satellite Streets') {
-                    circleColor = '#fff';
+                    circleColor = config.darkModeColor;
                 }
 
                 map.addSource('dots', {
@@ -208,7 +209,6 @@ const renderMap = () => {
             // click effect for 'other-dots'
             map.on('click', 'other-dots', async (e) => {
                 const { properties: { index } } = e.features[0];
-
 
                 const city = data.data[index].city;
                 const iata = data.data[index].iata;
