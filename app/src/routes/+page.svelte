@@ -76,7 +76,7 @@
         flex-direction: column;
         justify-content: space-between;
         width: fit-content;
-        height: 100vh;
+        height: 100svh;
     }
 
     #mapInfo > div {
