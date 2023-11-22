@@ -109,4 +109,10 @@
         gap: var(--standard-margin);
         margin: 0 0 var(--standard-margin) var(--standard-margin);
     }
+
+    @media screen and (max-width: 450px) {
+        .switches {
+            flex-direction: column;
+        }
+    }
 </style>

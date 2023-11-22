@@ -32,7 +32,7 @@ const handleMouseEvents = (map, layer, cursor) => {
     });
 };
 
-const renderMap = () => {
+const configureMap = () => {
     mapboxgl.accessToken = config.accessToken;
     if (mapboxgl.getRTLTextPluginStatus() === 'unavailable') {
         mapboxgl.setRTLTextPlugin(config.RTLPlugin, null, true) 
@@ -50,6 +50,10 @@ const renderMap = () => {
     map.addControl(new mapboxgl.NavigationControl());
     map.addControl(new mapboxgl.FullscreenControl());
     map.addControl(new mapboxgl.ScaleControl());
+};
+
+const renderMap = () => {
+    configureMap();
 
     let popup = null;
 

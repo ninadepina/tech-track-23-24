@@ -14,8 +14,7 @@ const fetchData = async () => {
             coordinates: { lat: item.lat, long: item.long }
         }));
 
-        const suggestions = processedData.map((item) => item.label);
-        suggestions.sort();
+        const suggestions = processedData.map((item) => item.label).sort();
 
         return suggestions;
     } catch (err) {
@@ -55,7 +54,7 @@ const autocomplete = (input, array) => {
             if (array[i].toUpperCase().indexOf(value.toUpperCase()) > -1) {
                 autocompleteItem = document.createElement('li');
 
-                // checks if the input value is in the array item (if yes, highlights it)
+                // if input value in array item => highlight value
                 let suggestion = array[i].replace(
                     new RegExp(value, 'gi'),
                     '<strong>$&</strong>'
