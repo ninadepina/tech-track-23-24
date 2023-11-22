@@ -1,6 +1,7 @@
 {
-	"name": "my-app",
-	"version": "0.0.1",
+	"name": "tech-track-23-24",
+	"version": "1.0.0",
+	"description": "3D map of all Schiphol destinations",
 	"private": true,
 	"scripts": {
 		"start:dev": "vite dev --port 3000",
@@ -10,6 +11,16 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com:ninadepina/tech-track-23-24.git"
+	},
+	"author": "Nina Vens",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ninadepina/tech-track-23-24/issues"
+	},
+	"homepage": "https://github.com/ninadepina/tech-track-23-24#readme",
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
