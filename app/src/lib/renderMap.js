@@ -12,6 +12,8 @@ const config = {
 
 let map;
 let iataData = null;
+let coordinatesData = null;
+let clickedDotCoordinates = null;
 
 const getIATAData = async (selectedIATA) => {
     const url = `/api/flights?iata=${selectedIATA}`;
@@ -35,7 +37,7 @@ const handleMouseEvents = (map, layer, cursor) => {
 const configureMap = () => {
     mapboxgl.accessToken = config.accessToken;
     if (mapboxgl.getRTLTextPluginStatus() === 'unavailable') {
-        mapboxgl.setRTLTextPlugin(config.RTLPlugin, null, true) 
+        mapboxgl.setRTLTextPlugin(config.RTLPlugin, null, true);
     }
 
     map = new mapboxgl.Map({
@@ -62,7 +64,7 @@ const renderMap = () => {
         .catch((err) => console.error('Error loading data:', err));
 
     const initializeMap = (data) => {
-        const coordinatesData = data.data.map((item, index) => ({
+        coordinatesData = data.data.map((item, index) => ({
             coordinates: [item.long, item.lat],
             index
         }));
@@ -119,7 +121,7 @@ const renderMap = () => {
             if (!map.getLayer('lines-layer')) {
                 const currentStyleURL = map.getStyle().name;
                 let lineColor = config.lightModeColor;
-                
+
                 if (currentStyleURL === 'Mapbox Dark' || currentStyleURL === 'Mapbox Satellite Streets') {
                     lineColor = config.darkModeColor;
                 }
@@ -162,7 +164,7 @@ const renderMap = () => {
             if (!map.getLayer('other-dots')) {
                 const currentStyleURL = map.getStyle().name;
                 let circleColor = config.lightModeColor;
-                
+
                 if (currentStyleURL === 'Mapbox Dark' || currentStyleURL === 'Mapbox Satellite Streets') {
                     circleColor = config.darkModeColor;
                 }
@@ -212,10 +214,33 @@ const renderMap = () => {
             }
             // click effect for 'other-dots'
             map.on('click', 'other-dots', async (e) => {
+                clickedDotCoordinates = e.lngLat;
                 const { properties: { index } } = e.features[0];
 
                 const city = data.data[index].city;
                 const iata = data.data[index].iata;
+
+                clickedDotCoordinates = coordinatesData[index].coordinates;
+
+                map.getSource('lines').setData({
+                    type: 'FeatureCollection',
+                    features: [
+                        {
+                            type: 'Feature',
+                            properties: { index },
+                            geometry: {
+                                type: 'LineString',
+                                coordinates: [
+                                    clickedDotCoordinates,
+                                    coordinatesData[0].coordinates
+                                ]
+                            }
+                        }
+                    ]
+                });
+
+                // Show the line layer
+                map.setLayoutProperty('lines-layer', 'visibility', 'visible');
 
                 let htmlContent = '';
 
@@ -267,19 +292,25 @@ const renderMap = () => {
                     popup = null;
                 }
 
-                !popup 
-                    ? popup = new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map) 
+                !popup
+                    ? (popup = new mapboxgl.Popup({ closeOnClick: true })
+                          .setLngLat(e.lngLat)
+                          .setHTML(htmlContent)
+                          .addTo(map))
                     : popup.setHTML(htmlContent);
-                
+
                 iataData = null;
             });
 
             map.on('click', 'schiphol-dot', (e) => {
                 const htmlContent = `<div class="schipholCard"><h2>Schiphol Airport (AMS)</h2><p>Welcome to Schiphol Airport, the primary international airport of the Netherlands. A bustling hub near Amsterdam, Schiphol connects travelers worldwide with efficient services and modern facilities since 1916.</p></div>`;
 
-                new mapboxgl.Popup({ closeOnClick: true }).setLngLat(e.lngLat).setHTML(htmlContent).addTo(map);
+                new mapboxgl.Popup({ closeOnClick: true })
+                    .setLngLat(e.lngLat)
+                    .setHTML(htmlContent)
+                    .addTo(map);
             });
-            
+
             handleMouseEvents(map, 'other-dots', 'pointer');
             handleMouseEvents(map, 'schiphol-dot', 'pointer');
         });
@@ -316,4 +347,4 @@ const renderMap = () => {
     };
 };
 
-export { map, renderMap };
+export { map, coordinatesData, renderMap };

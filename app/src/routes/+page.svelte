@@ -4,7 +4,7 @@
     import StyleSwitchButton from '$lib/StyleSwitchButton.svelte';
     import Search from '$lib/Search.svelte';
     import Map from '$lib/Map.svelte';
-    import { map } from '$lib/renderMap.js';
+    import { map, coordinatesData } from '$lib/renderMap.js';
 
     let labelsLayer = ['Dots', 'Lines'];
 
@@ -12,6 +12,23 @@
     let linesActive = false;
     // prettier-ignore
     const toggleLayer = (oldLayer, newLayer) => {
+        map.getSource('lines').setData({
+            type: 'FeatureCollection',
+            features: coordinatesData.map((coords) => ({
+                type: 'Feature',
+                properties: {
+                    index: coords.index
+                },
+                geometry: {
+                    type: 'LineString',
+                    coordinates: [
+                        coords.coordinates,
+                        coordinatesData[0].coordinates
+                    ]
+                }
+            }))
+        });
+
         const layerMap = {
             Dots: 'other-dots',
             Lines: 'lines-layer'
