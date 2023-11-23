@@ -14,6 +14,7 @@ let map;
 let iataData = null;
 let coordinatesData = null;
 let clickedDotCoordinates = null;
+let isDotClicked = false;
 
 const getIATAData = async (selectedIATA) => {
     const url = `/api/flights?iata=${selectedIATA}`;
@@ -214,6 +215,9 @@ const renderMap = () => {
             }
             // click effect for 'other-dots'
             map.on('click', 'other-dots', async (e) => {
+                if (isDotClicked) return;
+                isDotClicked = true;
+                
                 clickedDotCoordinates = e.lngLat;
                 const { properties: { index } } = e.features[0];
 
@@ -299,7 +303,12 @@ const renderMap = () => {
                           .addTo(map))
                     : popup.setHTML(htmlContent);
 
+                popup.on('close', () => {
+                    map.setLayoutProperty('lines-layer', 'visibility', 'none');
+                });
+
                 iataData = null;
+                isDotClicked = false;
             });
 
             map.on('click', 'schiphol-dot', (e) => {
