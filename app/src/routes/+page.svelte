@@ -39,15 +39,15 @@
         const inputs = layerList.getElementsByTagName('input');
 
         for (const input of inputs) {
-            input.onclick = (layer) => {
-                const layerId = layer.target.id;
+            input.addEventListener('click', (e) => {
+                const layerId = e.target.id;
                 const currentLayerUrl = map.getStyle().sprite.split('/');
 
                 if (currentLayerUrl[currentLayerUrl.length - 1] !== layerId) {
                     map.setStyle('mapbox://styles/mapbox/' + layerId);
                     document.querySelector('#radio-Dots').checked = true;
                 }
-            };
+            });
         }
     });
 </script>

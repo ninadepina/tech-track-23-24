@@ -40,8 +40,6 @@ const fetchNewDataInBackground = async () => {
         const countryCodesData = await fs.readFile(countryCodesFileName);
         const countryCodes = JSON.parse(countryCodesData);
 
-        console.log(countryCodes);
-
         let coordinateData = [{
             iata: 'AMS',
             lat: 52.308039,

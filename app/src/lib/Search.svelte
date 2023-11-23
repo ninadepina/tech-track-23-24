@@ -8,12 +8,11 @@
     onMount(async () => {
         suggestions = await fetchData();
         autocomplete(input, suggestions);
-
-        const clearInput = document.querySelector('#search');
-        clearInput.addEventListener('search', () => {
-            if (marker) marker.remove();
-        });
     });
+
+    const handleSearch = () => {
+        if (marker) marker.remove();
+    }
 </script>
 
 <div>
@@ -25,6 +24,7 @@
         autocomplete="off"
         placeholder="Search for destinations.."
         bind:this={input}
+        on:search={handleSearch}
     />
 </div>
 

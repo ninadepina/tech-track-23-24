@@ -1,6 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import { json } from 'd3';
-import { formatDateString, formatScheduleDate, getStatus } from './formatData.js';
+import { formatDateString, formatScheduleDate, getStatus } from './utils/formatData.js';
 
 const config = {
     accessToken: 'pk.eyJ1IjoibmluYWRlcGluYSIsImEiOiJjbG9kN2g4YmgwNzA1MmtwOGNwZ2pmYm5oIn0.ZxK0Rzq_visQwBFGqSWIZA',

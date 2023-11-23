@@ -41,7 +41,7 @@
         --margin-img: -0.4em;
         
         margin-top: 0.025em;
-        font-size: 16rem;
+        font-size: 18vw;
         font-weight: var(--font-weight-title);
         color: #3db640;
         z-index: 2;

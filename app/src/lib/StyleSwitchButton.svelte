@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <div id="menu" class="switch">
     <input id="streets-v12" type="radio" name="rtoggle" value="streets" checked="checked" />
     <label for="streets-v12">streets</label>
