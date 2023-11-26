@@ -52,10 +52,12 @@
             .attr('fill', (d) =>
                 d.airport === 'AMS' ? '#abe1fb' : 'lightgrey'
             )
-            .on('mouseover', (event, d) => {
-                const bar = d3.select(event.currentTarget);
+            .on('mouseover', (e, d) => {
+                const bar = d3.select(e.currentTarget);
                 const barX = parseFloat(bar.attr('x')) + xScale.bandwidth();
                 const barY = parseFloat(bar.attr('y'));
+
+                bar.attr('fill', (d) => (d.airport === 'AMS' ? '#789eb0' : 'rgba(0,0,0,0.4)'));
 
                 tooltipSelection
                     .style('opacity', 1)
@@ -63,7 +65,9 @@
                     .style('top', barY - 10 + 'px')
                     .html(`${d.passengers}M`);
             })
-            .on('mouseout', () => {
+            .on('mouseout', (e) => {
+                const bar = d3.select(e.currentTarget);
+                bar.attr('fill', (d) => (d.airport === 'AMS' ? '#abe1fb' : 'lightgrey'));
                 tooltipSelection.style('opacity', 0);
             });
 
