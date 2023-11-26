@@ -1,10 +1,10 @@
 <script>
     import { onMount } from 'svelte';
+    import { map } from '$lib/renderMap.js';
     import LayerSwitchButton from '$lib/LayerSwitchButton.svelte';
     import StyleSwitchButton from '$lib/StyleSwitchButton.svelte';
     import Search from '$lib/Search.svelte';
     import Map from '$lib/Map.svelte';
-    import { map, coordinatesData } from '$lib/renderMap.js';
 
     let labelsLayer = ['Dots', 'Lines'];
 

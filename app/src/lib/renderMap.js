@@ -305,7 +305,7 @@ const renderMap = () => {
             });
 
             map.on('click', 'schiphol-dot', (e) => {
-                const htmlContent = `<div class="schipholCard"><h2>Schiphol Airport (AMS)</h2><p>Welcome to Schiphol Airport, the primary international airport of the Netherlands. A bustling hub near Amsterdam, Schiphol connects travelers worldwide with efficient services and modern facilities since 1916.</p></div>`;
+                const htmlContent = `<div class="schipholCard"><h2>Schiphol Airport (AMS)</h2><p>Welcome to Schiphol Airport, the primary international airport of the Netherlands. A bustling hub near Amsterdam, Schiphol connects travellers worldwide with efficient services and modern facilities since 1916.</p></div>`;
 
                 new mapboxgl.Popup({ closeOnClick: true })
                     .setLngLat(e.lngLat)
