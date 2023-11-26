@@ -49,13 +49,12 @@
         path.style.strokeDasharray = pathLength + ' ' + pathLength;
         path.style.strokeDashoffset = pathLength;
 
-        window.addEventListener('scroll', (e) => {
-            let scrollPercentage =
+        window.addEventListener('scroll', () => {
+            const scrollPercentage = 
                 (document.documentElement.scrollTop + document.body.scrollTop) /
-                (document.documentElement.scrollHeight -
-                    document.documentElement.clientHeight);
+                (document.documentElement.scrollHeight - document.documentElement.clientHeight);
 
-            let drawLength = pathLength * scrollPercentage;
+            const drawLength = pathLength * scrollPercentage;
 
             path.style.strokeDashoffset = pathLength - drawLength;
         });
