@@ -39,6 +39,14 @@ body {
     user-select: none;
 }
 
+canvas {
+    width: 100% !important;
+}
+
+.show {
+    display: block !important;
+}
+
 /* popup */
 .flightCardHeading {
     margin-left: 0.2em;

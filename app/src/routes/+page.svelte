@@ -31,6 +31,18 @@
     };
     // prettier-ignore
     onMount(() => {
+        const intro = document.querySelector('#intro');
+        const button = document.querySelector('section.seven button');
+
+        sessionStorage.getItem('seenIntro') === 'true'
+            ? intro.classList.remove('show')
+            : intro.classList.add('show');
+
+        button.addEventListener('click', () => {
+            sessionStorage.setItem("seenIntro", "true");
+            intro.classList.remove('show');
+        });
+
         let path = document.querySelector('path');
         let pathLength = path.getTotalLength();
 
@@ -150,6 +162,7 @@
 
 <style>
     #intro {
+        display: none;
         position: absolute;
         inset: 0;
         background-color: #fff;
