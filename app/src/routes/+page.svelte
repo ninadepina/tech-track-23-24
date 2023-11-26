@@ -12,23 +12,6 @@
     let linesActive = false;
     // prettier-ignore
     const toggleLayer = (oldLayer, newLayer) => {
-        map.getSource('lines').setData({
-            type: 'FeatureCollection',
-            features: coordinatesData.map((coords) => ({
-                type: 'Feature',
-                properties: {
-                    index: coords.index
-                },
-                geometry: {
-                    type: 'LineString',
-                    coordinates: [
-                        coords.coordinates,
-                        coordinatesData[0].coordinates
-                    ]
-                }
-            }))
-        });
-
         const layerMap = {
             Dots: 'other-dots',
             Lines: 'lines-layer'

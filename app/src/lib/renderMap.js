@@ -243,9 +243,6 @@ const renderMap = () => {
                     ]
                 });
 
-                // Show the line layer
-                map.setLayoutProperty('lines-layer', 'visibility', 'visible');
-
                 let htmlContent = '';
 
                 await getIATAData(iata);
@@ -302,10 +299,6 @@ const renderMap = () => {
                           .setHTML(htmlContent)
                           .addTo(map))
                     : popup.setHTML(htmlContent);
-
-                popup.on('close', () => {
-                    map.setLayoutProperty('lines-layer', 'visibility', 'none');
-                });
 
                 iataData = null;
                 isDotClicked = false;
