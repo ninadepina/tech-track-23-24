@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Lalezar';
+    src: url('/fonts/Lalezar.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GothamLight';
+    src: url('/fonts/GothamLight.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+}
