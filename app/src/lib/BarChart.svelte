@@ -1,34 +1,22 @@
 <script>
     import { onMount } from 'svelte';
     import * as d3 from 'd3';
-
+    // prettier-ignore
     const airportData = [
-        {
-            airport: 'IST',
-            passengers: 64.5
-        },
-        {
-            airport: 'LHR',
-            passengers: 61.6
-        },
-        {
-            airport: 'CDG',
-            passengers: 57.5
-        },
-        {
-            airport: 'AMS',
-            passengers: 52.5
-        },
-        {
-            airport: 'MAD',
-            passengers: 50.6
-        }
+        { airport: 'IST', passengers: 64.5 },
+        { airport: 'LHR', passengers: 61.6 },
+        { airport: 'CDG', passengers: 57.5 },
+        { airport: 'AMS', passengers: 52.5 },
+        { airport: 'MAD', passengers: 50.6 }
     ];
+
+    let tooltip;
 
     onMount(async () => {
         const width = 250;
         const height = 250;
         const margin = { top: 20, right: 20, bottom: 40, left: 55 };
+        const tooltipSelection = d3.select(tooltip);
 
         const svg = d3
             .select('#bar')
@@ -63,7 +51,21 @@
             .attr('height', (d) => height - yScale(d.passengers))
             .attr('fill', (d) =>
                 d.airport === 'AMS' ? '#abe1fb' : 'lightgrey'
-            );
+            )
+            .on('mouseover', (event, d) => {
+                const bar = d3.select(event.currentTarget);
+                const barX = parseFloat(bar.attr('x')) + xScale.bandwidth();
+                const barY = parseFloat(bar.attr('y'));
+
+                tooltipSelection
+                    .style('opacity', 1)
+                    .style('left', barX + 13.5 + 'px')
+                    .style('top', barY - 10 + 'px')
+                    .html(`${d.passengers}M`);
+            })
+            .on('mouseout', () => {
+                tooltipSelection.style('opacity', 0);
+            });
 
         // draw x-axis
         svg.append('g')
@@ -96,4 +98,29 @@
     });
 </script>
 
-<div id="bar" />
+<div class="container">
+    <div id="bar" />
+    <div id="tooltip" bind:this={tooltip} class="tooltip" />
+</div>
+
+<style>
+    .container {
+        position: relative;
+    }
+
+    #bar {
+        z-index: 1111 !important;
+    }
+
+    .tooltip {
+        opacity: 0;
+        position: absolute;
+        text-align: left;
+        padding: 4px;
+        font-size: 0.6em;
+        border: 1px solid #000;
+        border-radius: 4px;
+        pointer-events: none;
+        z-index: 1112 !important;
+    }
+</style>
