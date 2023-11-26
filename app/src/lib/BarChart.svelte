@@ -57,7 +57,9 @@
                 const barX = parseFloat(bar.attr('x')) + xScale.bandwidth();
                 const barY = parseFloat(bar.attr('y'));
 
-                bar.attr('fill', (d) => (d.airport === 'AMS' ? '#789eb0' : 'rgba(0,0,0,0.4)'));
+                bar.attr('fill', (d) =>
+                    d.airport === 'AMS' ? '#789eb0' : 'rgba(0,0,0,0.4)'
+                );
 
                 tooltipSelection
                     .style('opacity', 1)
@@ -67,7 +69,9 @@
             })
             .on('mouseout', (e) => {
                 const bar = d3.select(e.currentTarget);
-                bar.attr('fill', (d) => (d.airport === 'AMS' ? '#abe1fb' : 'lightgrey'));
+                bar.attr('fill', (d) =>
+                    d.airport === 'AMS' ? '#abe1fb' : 'lightgrey'
+                );
                 tooltipSelection.style('opacity', 0);
             });
 
