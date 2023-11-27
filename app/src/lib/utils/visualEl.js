@@ -41,6 +41,7 @@ const changeOpacityChevron = (chevronDown) => {
     }
 };
 
+// move scale control (l to r)
 const moveScaleControl = () => {
     const scaleControl = document.querySelector('.mapboxgl-ctrl.mapboxgl-ctrl-scale');
 
@@ -48,6 +49,7 @@ const moveScaleControl = () => {
     document.querySelector('.mapboxgl-ctrl-bottom-right').appendChild(scaleControl);
 };
 
+// line path animation on scroll
 const linePathAnimation = () => {
     const introContainer = document.querySelector('#intro');
     const button = document.querySelector('section.seven button');
