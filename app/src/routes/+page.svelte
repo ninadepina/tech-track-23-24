@@ -32,6 +32,24 @@
     };
     // prettier-ignore
     onMount(() => {
+        window.addEventListener('scroll', () => {
+            const chevronDown = document.querySelector('.chevron');
+            const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+            switch (true) {
+                case (scrollPosition >= 50 && scrollPosition <= 150):
+                    const opacity = 1 - (scrollPosition - 50) / 100;
+                    chevronDown.style.opacity = opacity;
+                    break;
+                case (scrollPosition > 150):
+                    chevronDown.style.opacity = 0;
+                    break;
+                default:
+                    chevronDown.style.opacity = 1;
+                    break;
+            }
+        });
+
         const scaleControl = document.querySelector('.mapboxgl-ctrl.mapboxgl-ctrl-scale');
 
         document.querySelector('.mapboxgl-ctrl-bottom-left').removeChild(scaleControl);
@@ -113,6 +131,7 @@
         <div>
             <img src="paper-airplane.png" alt="throwing paper airplane illustration" />
         </div>
+        <span class="chevron"></span>
     </section>
 
     <section class="two">
@@ -212,8 +231,37 @@
         background-color: transparent;
     }
 
+    .chevron {
+        position: absolute;
+        bottom: 2.9375em;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        animation: chevronDown 1.5s infinite;
+    }
+    .chevron::before {
+        content: '';
+        display: inline-block;
+        position: relative;
+        top: 0;
+        left: 0.15em;
+        width: 0.8em;
+        height: 0.8em;
+        vertical-align: top;
+        border-style: solid;
+        border-width: 0.25em 0.25em 0 0;
+        transform: rotate(135deg);
+    }
+    /* prettier-ignore */
+    @keyframes chevronDown {
+        0% { transform: translate(-50%, 0); }
+        20% { transform: translate(-50%, 0.9375em); }
+        40% { transform: translate(-50%, 0); }
+    }
+
     /* section one */
     section.one {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
