@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { map } from '$lib/renderMap.js';
-    import { observe } from '$lib/intersectionObserver.js';
+    import { observe, changeOpacityChevron } from '$lib/utils/visualEl.js';
     import BarChart from '$lib/BarChart.svelte';
     import LayerSwitchButton from '$lib/LayerSwitchButton.svelte';
     import StyleSwitchButton from '$lib/StyleSwitchButton.svelte';
@@ -32,24 +32,6 @@
     };
     // prettier-ignore
     onMount(() => {
-        window.addEventListener('scroll', () => {
-            const chevronDown = document.querySelector('.chevron');
-            const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-
-            switch (true) {
-                case (scrollPosition >= 50 && scrollPosition <= 150):
-                    const opacity = 1 - (scrollPosition - 50) / 100;
-                    chevronDown.style.opacity = opacity;
-                    break;
-                case (scrollPosition > 150):
-                    chevronDown.style.opacity = 0;
-                    break;
-                default:
-                    chevronDown.style.opacity = 1;
-                    break;
-            }
-        });
-
         const scaleControl = document.querySelector('.mapboxgl-ctrl.mapboxgl-ctrl-scale');
 
         document.querySelector('.mapboxgl-ctrl-bottom-left').removeChild(scaleControl);
@@ -79,6 +61,9 @@
         path.style.strokeDashoffset = pathLength;
 
         window.addEventListener('scroll', () => {
+            const chevronDown = document.querySelector('.chevron');
+            changeOpacityChevron(chevronDown);
+
             const scrollPercentage = 
                 (document.documentElement.scrollTop + document.body.scrollTop) /
                 (document.documentElement.scrollHeight - document.documentElement.clientHeight);
