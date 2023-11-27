@@ -182,7 +182,7 @@
 
     .line-container {
         position: absolute;
-        top: 28.2em;
+        top: 28.15em;
         left: 18%;
         width: 80%;
         height: 200%;
@@ -336,21 +336,23 @@
         padding: 0.6em 1em;
         text-align: center;
         background-color: #d3effb;
+        border: 2px solid #d3effb;
         border-radius: 6px;
+        transition: background-color 150ms ease-in-out, color 150ms ease-in-out, border 150ms ease-in-out;
         cursor: pointer;
     }
     section.seven button:hover {
         color: #fff;
         background-color: var(--color-dark);
-        outline: 2px solid var(--color-dark);
+        border: 2px solid var(--color-dark);
     }
     section.seven button:focus-visible {
-        outline: 2px solid var(--color-dark);
+        border: 2px solid var(--color-dark);
     }
 
     section.seven img {
         position: absolute;
-        top: -4.7em;
+        top: -4.6em;
         left: 0;
         width: 66%;
         z-index: -1;
