@@ -111,10 +111,7 @@
             <p>A 3D map that displays all of Schiphol's destinations.</p>
         </div>
         <div>
-            <img
-                src="paper-airplane.png"
-                alt="throwing paper airplane illustration"
-            />
+            <img src="paper-airplane.png" alt="throwing paper airplane illustration" />
         </div>
     </section>
 
