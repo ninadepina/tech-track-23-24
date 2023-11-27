@@ -34,7 +34,6 @@
         margin-right: -1px;
         padding: 0.5em 1em;
         font-size: 14px;
-        font-weight: var(--font-weight-text);
         line-height: 1;
         text-align: center;
         text-transform: capitalize;

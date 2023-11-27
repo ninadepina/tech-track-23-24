@@ -192,14 +192,14 @@
     }
 
     h2 {
-        font-family: 'Lalezar', sans-serif;
+        font-family: var(--font-family-title);
         font-size: 5em;
         line-height: 1em;
     }
 
     p,
     button {
-        font-family: 'GothamLight', sans-serif;
+        font-family: var(--font-family);
         text-align: center;
     }
     section:not(section.one) p,
@@ -339,6 +339,7 @@
         margin: var(--standard-margin);
         padding: 0.1em;
         font-weight: var(--font-weight-title);
+        font-family: var(--font-family-title);
         word-wrap: break-word;
         text-align: center;
         color: var(--color-dark);

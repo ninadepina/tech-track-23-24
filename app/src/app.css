@@ -10,9 +10,8 @@
 }
 
 :root {
-    --font-family: 'Inter', sans-serif;
-    --font-weight-title: 600;
-    --font-weight-text: 500;
+    --font-family-title: 'Lalezar', sans-serif;
+    --font-family: 'GothamLight', sans-serif;
 
     --color-light: #fff;
     --color-dark: #333;
