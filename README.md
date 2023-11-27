@@ -19,11 +19,11 @@ $ git clone https://github.com/ninadepina/tech-track-23-24.git
 2. Install dependencies
 
 ```
-$ cd tech-track-23-24
+$ cd tech-track-23-24/app
 $ npm i
 ```
 
-3. Create a `.env` file in the root of the project and add the following (can be obtained by creating a account for the [Schiphol Flight API](https://www.schiphol.nl/en/developer-center/page/explore-all-schiphols-apis-in-the-developer-center/)):
+3. Create a `.env` file in the root of the project and add the following (can be obtained by creating an account for the [Schiphol Flight API](https://www.schiphol.nl/en/developer-center/page/explore-all-schiphols-apis-in-the-developer-center/)):
 
 ```
 APP_ID=<YOUR_APP_ID>
@@ -36,7 +36,7 @@ APP_KEY=<YOUR_APP_KEY>
 $ npm run start:dev
 ```
 
-In your browser, go to `http://localhost:3000`
+In your browser, go to `http://localhost:3000` (port can be changed in your `package.json`)
 
 ---
 
