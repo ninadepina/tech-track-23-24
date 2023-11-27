@@ -42,16 +42,16 @@
         observe(faders);
 
         // line path animation
-        const intro = document.querySelector('#intro');
+        const introContainer = document.querySelector('#intro');
         const button = document.querySelector('section.seven button');
 
         sessionStorage.getItem('seenIntro') === 'true'
-            ? intro.classList.remove('show')
-            : intro.classList.add('show');
+            ? introContainer.classList.remove('show')
+            : introContainer.classList.add('show');
 
         button.addEventListener('click', () => {
             sessionStorage.setItem("seenIntro", "true");
-            intro.classList.remove('show');
+            introContainer.classList.remove('show');
         });
 
         let path = document.querySelector('path');

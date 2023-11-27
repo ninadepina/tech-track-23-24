@@ -24,10 +24,7 @@
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
             .append('g')
-            .attr(
-                'transform',
-                'translate(' + margin.left + ',' + margin.top + ')'
-            );
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
         const xScale = d3
             .scaleBand()
@@ -49,17 +46,13 @@
             .attr('y', (d) => yScale(d.passengers))
             .attr('width', xScale.bandwidth())
             .attr('height', (d) => height - yScale(d.passengers))
-            .attr('fill', (d) =>
-                d.airport === 'AMS' ? '#abe1fb' : 'lightgrey'
-            )
+            .attr('fill', (d) => d.airport === 'AMS' ? '#abe1fb' : 'lightgrey')
             .on('mouseover', (e, d) => {
                 const bar = d3.select(e.currentTarget);
                 const barX = parseFloat(bar.attr('x')) + xScale.bandwidth();
                 const barY = parseFloat(bar.attr('y'));
 
-                bar.attr('fill', (d) =>
-                    d.airport === 'AMS' ? '#789eb0' : 'rgba(0,0,0,0.4)'
-                );
+                bar.attr('fill', (d) => d.airport === 'AMS' ? '#789eb0' : 'rgba(0,0,0,0.4)');
 
                 tooltipSelection
                     .style('opacity', 1)
@@ -69,9 +62,7 @@
             })
             .on('mouseout', (e) => {
                 const bar = d3.select(e.currentTarget);
-                bar.attr('fill', (d) =>
-                    d.airport === 'AMS' ? '#abe1fb' : 'lightgrey'
-                );
+                bar.attr('fill', (d) => d.airport === 'AMS' ? '#abe1fb' : 'lightgrey');
                 tooltipSelection.style('opacity', 0);
             });
 
