@@ -110,10 +110,12 @@
             <h2>Schiphol Hub</h2>
             <p>A 3D map that displays all of Schiphol's destinations.</p>
         </div>
-        <img
-            src="paper-airplane.png"
-            alt="throwing paper airplane illustration"
-        />
+        <div>
+            <img
+                src="paper-airplane.png"
+                alt="throwing paper airplane illustration"
+            />
+        </div>
     </section>
 
     <section class="two">
@@ -179,8 +181,9 @@
 
     .line-container {
         position: absolute;
-        top: 28.3em;
-        right: 25.1%;
+        top: 28.2em;
+        left: 18%;
+        width: 80%;
         height: 200%;
         text-align: center;
         overflow: hidden;
@@ -214,24 +217,33 @@
 
     /* section one */
     section.one {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 102vh;
         padding-top: 7.8em;
     }
 
-    section.one > div {
+    section.one > div:first-of-type {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
+    section.one > div:last-of-type {
+        margin-left: 54.3vw;
+        overflow: hidden;
+    }
+
     section.one p {
-        max-width: 30%;
+        max-width: 14em;
         font-size: 2em;
     }
 
     section.one img {
-        display: block;
-        margin: auto 5.55% 0 auto;
-        width: 40%;
+        width: 39%;
+        min-width: 555.75px;
+        overflow-x: visible;
     }
 
     /* section two */
@@ -337,9 +349,10 @@
         display: inline-block;
         width: var(--searchbar-width);
         margin: var(--standard-margin);
-        padding: 0.1em;
-        font-weight: var(--font-weight-title);
+        padding: 0.4em 0.4em 0.2em 0.4em;
         font-family: var(--font-family-title);
+        font-size: 2.4em;
+        line-height: 1em;
         word-wrap: break-word;
         text-align: center;
         color: var(--color-dark);

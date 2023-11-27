@@ -38,7 +38,7 @@
         height: 2em;
         margin-left: var(--standard-margin);
         font-family: var(--font-family);
-        text-indent: 0.8em;
+        text-indent: 1.5em;
         border: none;
         border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
