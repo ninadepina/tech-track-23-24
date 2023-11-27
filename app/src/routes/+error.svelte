@@ -19,7 +19,7 @@
         flex-direction: column;
         gap: 1rem;
         width: 100%;
-        height: 100svh;
+        height: 100dvh;
         background-color: #a9fafe;
     }
 

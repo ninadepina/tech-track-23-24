@@ -265,7 +265,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 102vh;
+        height: 102dvh;
         padding-top: 7.8em;
     }
 
@@ -376,7 +376,7 @@
         flex-direction: column;
         justify-content: space-between;
         width: fit-content;
-        height: 100svh;
+        height: 100dvh;
     }
 
     #mapInfo > div {
