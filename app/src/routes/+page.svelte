@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { map } from '$lib/renderMap.js';
-    import { observe, changeOpacityChevron } from '$lib/utils/visualEl.js';
+    import { observe, moveScaleControl, linePathAnimation } from '$lib/utils/visualEl.js';
     import BarChart from '$lib/BarChart.svelte';
     import LayerSwitchButton from '$lib/LayerSwitchButton.svelte';
     import StyleSwitchButton from '$lib/StyleSwitchButton.svelte';
@@ -30,50 +30,8 @@
         map.setLayoutProperty(layerMap['Dots'], 'visibility', visibilityMap['Dots'] ? 'visible' : 'none');
         map.setLayoutProperty(layerMap['Lines'], 'visibility', visibilityMap['Lines'] ? 'visible' : 'none');
     };
-    // prettier-ignore
-    onMount(() => {
-        const scaleControl = document.querySelector('.mapboxgl-ctrl.mapboxgl-ctrl-scale');
 
-        document.querySelector('.mapboxgl-ctrl-bottom-left').removeChild(scaleControl);
-        document.querySelector('.mapboxgl-ctrl-bottom-right').appendChild(scaleControl);
-
-        // intersection observer
-        const faders = document.querySelectorAll('#intro section:not(:first-of-type)');
-        observe(faders);
-
-        // line path animation
-        const introContainer = document.querySelector('#intro');
-        const button = document.querySelector('section.seven button');
-
-        sessionStorage.getItem('seenIntro') === 'true'
-            ? introContainer.classList.remove('show')
-            : introContainer.classList.add('show');
-
-        button.addEventListener('click', () => {
-            sessionStorage.setItem("seenIntro", "true");
-            introContainer.classList.remove('show');
-        });
-
-        let path = document.querySelector('path');
-        let pathLength = path.getTotalLength();
-
-        path.style.strokeDasharray = pathLength + ' ' + pathLength;
-        path.style.strokeDashoffset = pathLength;
-
-        window.addEventListener('scroll', () => {
-            const chevronDown = document.querySelector('.chevron');
-            changeOpacityChevron(chevronDown);
-
-            const scrollPercentage = 
-                (document.documentElement.scrollTop + document.body.scrollTop) /
-                (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-
-            const drawLength = pathLength * scrollPercentage;
-
-            path.style.strokeDashoffset = pathLength - drawLength;
-        });
-
-        // layer style switcher
+    const changeLayer = () => {
         const layerList = document.getElementById('menu');
         const inputs = layerList.getElementsByTagName('input');
 
@@ -88,6 +46,15 @@
                 }
             });
         }
+    }
+
+    onMount(() => {
+        const faders = document.querySelectorAll('#intro section:not(:first-of-type)');
+        observe(faders);
+
+        moveScaleControl();
+        linePathAnimation();
+        changeLayer();
     });
 </script>
 
@@ -174,12 +141,6 @@
         z-index: 999;
     }
 
-    #intro section:not(:first-of-type) {
-        opacity: 0;
-        transform: translateY(10%);
-        transition: opacity 150ms ease-in, transform 250ms ease-in;
-    }
-
     .line-container {
         position: absolute;
         top: 28.15em;
@@ -236,12 +197,6 @@
         border-style: solid;
         border-width: 0.25em 0.25em 0 0;
         transform: rotate(135deg);
-    }
-    /* prettier-ignore */
-    @keyframes chevronDown {
-        0% { transform: translate(-50%, 0); }
-        20% { transform: translate(-50%, 0.9375em); }
-        40% { transform: translate(-50%, 0); }
     }
 
     /* section one */
@@ -397,6 +352,21 @@
         display: flex;
         gap: var(--standard-margin);
         margin: 0 0 var(--standard-margin) var(--standard-margin);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        #intro section:not(:first-of-type) {
+            opacity: 0;
+            transform: translateY(10%);
+            transition: opacity 150ms ease-in, transform 250ms ease-in;
+        }
+
+        /* prettier-ignore */
+        @keyframes chevronDown {
+            0% { transform: translate(-50%, 0); }
+            20% { transform: translate(-50%, 0.9375em); }
+            40% { transform: translate(-50%, 0); }
+        }
     }
 
     @media screen and (max-width: 450px) {

@@ -41,4 +41,44 @@ const changeOpacityChevron = (chevronDown) => {
     }
 };
 
-export { observe, changeOpacityChevron };
+const moveScaleControl = () => {
+    const scaleControl = document.querySelector('.mapboxgl-ctrl.mapboxgl-ctrl-scale');
+
+    document.querySelector('.mapboxgl-ctrl-bottom-left').removeChild(scaleControl);
+    document.querySelector('.mapboxgl-ctrl-bottom-right').appendChild(scaleControl);
+};
+
+const linePathAnimation = () => {
+    const introContainer = document.querySelector('#intro');
+    const button = document.querySelector('section.seven button');
+
+    sessionStorage.getItem('seenIntro') === 'true'
+        ? introContainer.classList.remove('show')
+        : introContainer.classList.add('show');
+
+    button.addEventListener('click', () => {
+        sessionStorage.setItem("seenIntro", "true");
+        introContainer.classList.remove('show');
+    });
+
+    const path = document.querySelector('path');
+    let pathLength = path.getTotalLength();
+
+    path.style.strokeDasharray = pathLength + ' ' + pathLength;
+    path.style.strokeDashoffset = pathLength;
+
+    window.addEventListener('scroll', () => {
+        const chevronDown = document.querySelector('.chevron');
+        changeOpacityChevron(chevronDown);
+
+        const scrollPercentage = 
+            (document.documentElement.scrollTop + document.body.scrollTop) /
+            (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+
+        const drawLength = pathLength * scrollPercentage;
+
+        path.style.strokeDashoffset = pathLength - drawLength;
+    });
+};
+
+export { observe, moveScaleControl, linePathAnimation };
