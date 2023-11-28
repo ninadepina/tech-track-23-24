@@ -201,6 +201,7 @@
         width: 0.8em;
         height: 0.8em;
         vertical-align: top;
+        border-color: var(--color-dark);
         border-style: solid;
         border-width: 0.25em 0.25em 0 0;
         transform: rotate(135deg);

@@ -38,9 +38,10 @@
     }
 
     span {
-        --margin-img: -0.4em;
+        --margin-img: -0.3em;
         
         margin-top: 0.025em;
+        font-family: var(--font-family-title);
         font-size: 18vw;
         color: #3db640;
         z-index: 2;

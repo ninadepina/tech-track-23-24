@@ -38,6 +38,10 @@ body {
     user-select: none;
 }
 
+text {
+    font-family: var(--font-family);
+}
+
 canvas {
     width: 100% !important;
 }
