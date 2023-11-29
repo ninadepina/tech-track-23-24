@@ -25,7 +25,7 @@
     });
 
     afterUpdate(() => {
-        d3.select('#bar').selectAll('*').remove(); // remove existing chart before redrawing
+        d3.select('#bar').selectAll('*').remove();
         drawChart();
         selectElement.value = topAirports;
     });
@@ -142,9 +142,9 @@
     .tooltip {
         opacity: 0;
         position: absolute;
-        text-align: left;
         padding: 4px;
         font-size: 0.6em;
+        text-align: left;
         border: 1px solid var(--color-dark);
         border-radius: 4px;
         pointer-events: none;
@@ -163,7 +163,6 @@
         border: none;
         outline: none;
         z-index: 1;
-
         cursor: inherit;
     }
     select::-ms-expand {
@@ -177,11 +176,11 @@
         grid-template-areas: 'select';
         align-items: center;
         width: fit-content;
-        padding: 0.2em 0.4em 0.1em 0.3em;
+        padding: 0.2em 0.4em 0.25em 0.3em;
         font-size: 0.8em;
         line-height: 1.1;
-        background-color: #fff;
-        background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+        background-color: var(--color-light);
+        background-image: linear-gradient(to top, #f9f9f9, var(--color-light) 33%);
         border: 1px solid var(--color-dark);
         border-radius: 0.25em;
         cursor: pointer;
@@ -196,17 +195,13 @@
         width: 0.4em;
         height: 0.4em;
         margin-top: -0.15em;
-        border-color: var(--color-dark);
-        border-style: solid;
+        border: 0.1em solid var(--color-dark);
         border-width: 0.1em 0.1em 0 0;
         transform: rotate(135deg);
     }
     select:active + .focus {
         position: absolute;
-        top: -1px;
-        left: -1px;
-        bottom: -1px;
-        right: -1px;
+        inset: -1px;
         border: 2px solid #abe1fb;
         border-radius: inherit;
     }
