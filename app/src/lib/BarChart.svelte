@@ -71,13 +71,15 @@
                 const bar = d3.select(e.currentTarget);
                 const barX = parseFloat(bar.attr('x')) + xScale.bandwidth();
                 const barY = parseFloat(bar.attr('y'));
+                const leftOffset = topAirports === 5 ? 13.5 : 23.75;
 
                 bar.attr('fill', (d) => d.airport === 'AMS' ? '#789eb0' : 'rgba(0,0,0,0.4)');
 
                 tooltipSelection
                     .style('opacity', 1)
-                    .style('left', barX + 13.5 + 'px')
+                    .style('left', barX + leftOffset + 'px')
                     .style('top', barY - 10 + 'px')
+                    .style('background-color', '#fff')
                     .html(`${d.passengers}M`);
             })
             .on('mouseout', (e) => {
