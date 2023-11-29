@@ -51,18 +51,6 @@ const moveScaleControl = () => {
 
 // line path animation on scroll
 const linePathAnimation = () => {
-    const introContainer = document.querySelector('#intro');
-    const button = document.querySelector('section.seven button');
-
-    sessionStorage.getItem('seenIntro') === 'true'
-        ? introContainer.classList.remove('show')
-        : introContainer.classList.add('show');
-
-    button.addEventListener('click', () => {
-        sessionStorage.setItem("seenIntro", "true");
-        introContainer.classList.remove('show');
-    });
-
     const path = document.querySelector('path');
     let pathLength = path.getTotalLength();
 
@@ -83,4 +71,11 @@ const linePathAnimation = () => {
     });
 };
 
-export { observe, moveScaleControl, linePathAnimation };
+// remove intro container
+const removeIntro = (introContainer) => {
+    sessionStorage.setItem("seenIntro", "true");
+    introContainer.classList.remove('show');
+    location.reload();
+};
+
+export { observe, moveScaleControl, linePathAnimation, removeIntro };
