@@ -50,16 +50,14 @@ const moveScaleControl = () => {
 };
 
 // line path animation on scroll
-const linePathAnimation = () => {
-    const path = document.querySelector('path');
+const linePathAnimation = (path, chevron) => {
     let pathLength = path.getTotalLength();
 
     path.style.strokeDasharray = pathLength + ' ' + pathLength;
     path.style.strokeDashoffset = pathLength;
 
     window.addEventListener('scroll', () => {
-        const chevronDown = document.querySelector('.chevron');
-        changeOpacityChevron(chevronDown);
+        changeOpacityChevron(chevron);
 
         const scrollPercentage = 
             (document.documentElement.scrollTop + document.body.scrollTop) /
