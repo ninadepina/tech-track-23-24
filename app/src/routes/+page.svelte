@@ -58,7 +58,7 @@
 <svelte:head>
     <!-- prettier-ignore -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
-    <title>Schiphol</title>
+    <title>Schiphol Hub</title>
 </svelte:head>
 
 <Intro />
