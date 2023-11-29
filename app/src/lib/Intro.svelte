@@ -6,11 +6,11 @@
     let introContainer;
     let path;
     let chevron;
-
+    let seenIntro
+    
     onMount(() => {
-        sessionStorage.getItem('seenIntro') === 'true'
-            ? introContainer.classList.remove('show')
-            : introContainer.classList.add('show');
+        seenIntro = sessionStorage.getItem('seenIntro') === 'true';
+        introContainer.classList.toggle('show', !seenIntro);
 
         const faders = document.querySelectorAll('#intro section:not(:first-of-type)');
         observe(faders);
@@ -19,7 +19,7 @@
     });
 </script>
 
-<div id="intro" bind:this={introContainer}>
+<div id="intro" bind:this={introContainer} class:bind={seenIntro ? 'show' : ''}>
     <div class="line-container">
         <svg viewBox="0 0 726 2226" preserveAspectRatio="xMidYMax meet">
             <path bind:this={path}
