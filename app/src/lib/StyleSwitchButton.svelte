@@ -1,15 +1,25 @@
+<script>
+    let mapStyles = [
+        { id: 'streets-v12', value: 'streets' },
+        { id: 'satellite-streets-v12', value: 'satellite' },
+        { id: 'light-v11', value: 'light' },
+        { id: 'dark-v11', value: 'dark' }
+    ];
+
+    let selectedStyle = 'streets';
+</script>
+
 <div id="menu" class="switch">
-    <input id="streets-v12" type="radio" name="rtoggle" value="streets" checked="checked" />
-    <label for="streets-v12">streets</label>
-
-    <input id="satellite-streets-v12" type="radio" name="rtoggle" value="satellite" />
-    <label for="satellite-streets-v12">satellite</label>
-
-    <input id="light-v11" type="radio" name="rtoggle" value="light" />
-    <label for="light-v11">light</label>
-
-    <input id="dark-v11" type="radio" name="rtoggle" value="dark" />
-    <label for="dark-v11">dark</label>
+    {#each mapStyles as { id, value }}
+        <input
+            type="radio"
+            {id}
+            name="rtoggle"
+            bind:group={selectedStyle}
+            {value}
+        />
+        <label for={id}>{value}</label>
+    {/each}
 </div>
 
 <style>
